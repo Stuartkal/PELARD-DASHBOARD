@@ -10,7 +10,7 @@ import ForgotPassword from '../Layouts/LandingPage/ForgotPassword';
 export default [
 	{
 		path: '/',
-		component: Overview,
+		component: LandingPage,
 		exact: true
 	},
 	{
@@ -34,11 +34,11 @@ export default [
 		component: SignUp,
 		exact: true
 	},
-	// {
-	// 	path: '/overview',
-	// 	component: Overview,
-	// 	exact: true
-	// },
+	{
+		path: '/overview',
+		component: Overview,
+		exact: true
+	},
 	{
 		path: '/overview/cases',
 		component: Cases,

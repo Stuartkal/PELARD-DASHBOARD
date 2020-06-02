@@ -15,7 +15,7 @@ const secret = '2cfb9e9a-34a9-4843-961f-6e2639c41856-b10445eb-a0e8-4fa2-b636-015
 // };
 
 //GET TOKEN REQUEST
-const getToken = async ({ secret, _id }) => {
+export const getToken = async ({ secret, _id }) => {
 	const response = await fetch(`${baseUrl}/token/generate`, {
 		method: 'POST',
 		headers: {
@@ -72,7 +72,7 @@ export const userLogin = async (userName, password) => {
 };
 
 //GET ALL REPORTED CASES REQUEST
-export const getReportedCases = async ({}) => {
+export const getReportedCases = async () => {
 	const token = await getToken({ secret });
 	const response = await fetch(`${baseUrl}/violations`, {
 		method: 'GET',

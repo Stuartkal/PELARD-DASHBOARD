@@ -29,9 +29,7 @@ const Sidebar = withRouter((props) => {
 				<Dashlink1 />
 				<Dashlink2 />
 			</div>
-			<button type="submit" onClick={logout}>
-				Logout
-			</button>
+			<button onClick={logout}>Logout</button>
 			<div className="patner_logos">
 				<div className="separator_sidebar" />
 				<div className="logos_ ">

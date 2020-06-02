@@ -20,6 +20,74 @@
 	align-items: center;
 }
 
+.cases-main-form {
+	position: absolute;
+	top: 0;
+	width: 75%;
+	height: 100vh;
+	margin: 15rem 19rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	button {
+		height: 50px;
+		background-color: #6055a5;
+		padding: 10px;
+		color: var(--mainWhite);
+		border-radius: 5px;
+		border: 0px;
+		font-size: 15px;
+		font-family: var(--mainFont);
+		font-weight: 500;
+		z-index: 1;
+		outline: none;
+		&:hover {
+			box-sizing: border-box;
+			box-shadow: 0px 5px 10px rgba(0, 0, 0, .095);
+			cursor: pointer;
+		}
+	}
+}
+
+.case-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 30%;
+	padding: 10px;
+	margin-top: 1rem;
+	visibility: hidden;
+	background-color: var(--mainWhite);
+	transform: translateY(-50%);
+	box-sizing: border-box;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, .095);
+	transition: all 0.3s linear;
+	input {
+		width: 80%;
+		height: 40px;
+		outline: none;
+		border-top-width: 0px;
+		border-left-width: 0px;
+		border-right-width: 0px;
+	}
+
+	button {
+		height: 40px;
+		margin-top: 0.5rem;
+	}
+
+	h3 {
+		color: var(--mainGrey);
+		font-weight: 400;
+	}
+}
+
+.showCase {
+	visibility: visible;
+	transform: translateY(0);
+}
+
 .humburger_menu {
 	position: sticky;
 	top: 5px;
@@ -137,7 +205,17 @@
 
 @media screen and (max-width: 768px) {
 	.cases-main {
-		margin: auto 3rem;
+		margin: 2rem 3rem;
+	}
+	.cases-main-form {
+		margin: 10rem 3rem;
+	}
+	.case-form {
+		width: 100%;
+
+		h3 {
+			font-size: 12px;
+		}
 	}
 	.humburger_menu {
 		visibility: visible;

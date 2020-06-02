@@ -7,10 +7,12 @@ import { ActionCreators } from '../../../Store/ActionCreators';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withRouter } from 'react-router-dom';
 import Fuse from 'fuse.js';
+import { AdminRequest } from '../../../Store/API';
 
 import './Cases.scss';
 class Cases extends Component {
 	state = {
+		role: 'Contributor',
 		searchResult: '',
 		filteredCases: [],
 		searchFilter: []
@@ -32,6 +34,30 @@ class Cases extends Component {
 	humburgerHandler = () => {
 		const profileDOM = document.querySelector('.sidebar-main');
 		profileDOM.classList.add('sidebar-main-slide');
+	};
+
+	adminRoleHandler = async () => {
+		const { role } = this.state;
+		const secret = '2cfb9e9a-34a9-4843-961f-6e2639c41856-b10445eb-a0e8-4fa2-b636-015b2f1e3660';
+		const token = await AdminRequest.getToken({ secret });
+		const baseUrl = 'https://pelard-n.herokuapp.com';
+		const { userId } = this.props;
+		const response = await fetch(`${baseUrl}/user/${userId}/apply`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: token
+			},
+			body: JSON.stringify({ role })
+		});
+		const json = await response.json();
+		console.log('my respone', json);
+		return json;
+	};
+
+	handleFormVisibility = () => {
+		const profileDOM = document.querySelector('.case-form');
+		profileDOM.classList.add('showCase');
 	};
 
 	searchHandler = (e) => {
@@ -63,7 +89,7 @@ class Cases extends Component {
 
 	render() {
 		const { searchResult } = this.state;
-		// console.log(searchResult);
+		console.log(this.state.role);
 		const { allCases, loading } = this.props;
 		// console.log(this.props);
 		const caseHeader = [
@@ -76,30 +102,48 @@ class Cases extends Component {
 		return (
 			<div>
 				<Sidebar />
-				<div className="cases-main">
-					<div className="humburger_menu">
-						<i className="material-icons" onClick={this.humburgerHandler}>
-							dehaze
-						</i>
-					</div>
-					<div className="search-container">
-						<i className="material-icons" onClick={this.searchHandler}>
-							search
-						</i>
-						<input
-							placeholder="Search Reporter, Violation, District"
-							type="text"
-							value={this.state.searchResult}
-							onChange={(e) => this.searchHandler(e)}
+				<div className="humburger_menu">
+					<i className="material-icons" onClick={this.humburgerHandler}>
+						dehaze
+					</i>
+				</div>
+				{!this.state.filteredCases ? (
+					<div className="cases-main">
+						<div className="search-container">
+							<i className="material-icons" onClick={this.searchHandler}>
+								search
+							</i>
+							<input
+								placeholder="Search Reporter, Violation, District"
+								type="text"
+								value={this.state.searchResult}
+								onChange={(e) => this.searchHandler(e)}
+							/>
+						</div>
+						{loading && <CircularProgress />}
+						<CaseTable
+							caseHeaders={caseHeader}
+							data={this.state.filteredCases}
+							toggleModal={(row) => this.toggleModal(row)}
 						/>
 					</div>
-					{loading && <CircularProgress />}
-					<CaseTable
-						caseHeaders={caseHeader}
-						data={this.state.filteredCases}
-						toggleModal={(row) => this.toggleModal(row)}
-					/>
-				</div>
+				) : (
+					<div className="cases-main-form">
+						<button onClick={this.handleFormVisibility}>
+							GET CONTRIBUTOR ROLE TO ACCESS ALL REPORTED CASES
+						</button>
+						<div className="case-form">
+							<input
+								placeholder="role"
+								type="text"
+								value={this.state.role}
+								onChange={(e) => this.setState({ role: e.target.value })}
+							/>
+							<button onClick={this.adminRoleHandler}>Request</button>
+							<h3>Access will be granted if eligible</h3>
+						</div>
+					</div>
+				)}
 			</div>
 		);
 	}
@@ -107,7 +151,8 @@ class Cases extends Component {
 
 const mapStateToProps = (state) => ({
 	loading: state.adminReducer.loading,
-	allCases: state.adminReducer.allCases
+	allCases: state.adminReducer.allCases,
+	userId: state.adminReducer.userId
 });
 
 const mapDispatchToProps = (dispatch) => ({

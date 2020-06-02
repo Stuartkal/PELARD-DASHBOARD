@@ -27,7 +27,7 @@ const CaseDetails = (props) => {
 		profileDOM.classList.add('sidebar-main-slide');
 	};
 	//Create And Download PDFs
-	const createAndDownLoadPdf = (id) => {
+	const createAndDownLoadPdf = () => {
 		const profId = caseDetails._id;
 		console.log('my id', profId);
 		return (

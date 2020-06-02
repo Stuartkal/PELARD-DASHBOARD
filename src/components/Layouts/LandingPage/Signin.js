@@ -34,7 +34,7 @@ const Signin = withRouter((props) => {
 						click here
 					</a>
 				</div>
-				<button type="submit" onClick={props.loginHandler}>
+				<button onClick={props.loginHandler}>
 					{props.loading ? (
 						<CircularProgress style={{ color: '#fff', width: '30px', height: '30px' }} />
 					) : (

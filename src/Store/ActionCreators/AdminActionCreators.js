@@ -67,11 +67,11 @@ export const resetPasswordAction = (identifier, callback) => ({
 });
 
 export const resetPasswordSuccess = (payload) => ({
-	type: AdminActions.RESET_PASSWORD_ACTION,
+	type: AdminActions.RESET_PASSWORD_SUCCESS,
 	payload
 });
 
 export const resetPasswordFail = (error) => ({
-	type: AdminActions.RESET_PASSWORD_ACTION,
+	type: AdminActions.RESET_PASSWORD_FAIL,
 	error
 });
