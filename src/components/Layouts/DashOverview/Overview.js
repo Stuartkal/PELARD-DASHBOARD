@@ -30,13 +30,13 @@ const Overview = () => {
 					<div className="chart-main-row">
 						<h2>CASE DISTRIBUTION IN DISTRICTS</h2>
 						<div className="row">
-							<DistrictCases district="GULU" value="40" text="135" />
-							<DistrictCases district="LAMWO" value="20" text="78" />
-							<DistrictCases district="KITGUM" value="20" text="78" />
-							<DistrictCases district="AMURU" value="60" text="358" />
-							<DistrictCases district="NWOYA" value="70" text="452" />
-							<DistrictCases district="AGOGO" value="55" text="234" />
-							<DistrictCases district="PADER" value="89" text="632" />
+							<DistrictCases district="GULU" value="0" text="0" />
+							<DistrictCases district="LAMWO" value="0" text="0" />
+							<DistrictCases district="KITGUM" value="0" text="0" />
+							<DistrictCases district="AMURU" value="0" text="0" />
+							<DistrictCases district="NWOYA" value="0" text="0" />
+							<DistrictCases district="AGOGO" value="0" text="0" />
+							<DistrictCases district="PADER" value="0" text="0" />
 						</div>
 					</div>
 				</div>

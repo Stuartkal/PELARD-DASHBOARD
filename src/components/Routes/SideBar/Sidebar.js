@@ -1,6 +1,7 @@
 import React from 'react';
 import Dashlink1 from './Dashlink1';
 import Dashlink2 from './Dashlink2';
+import Dashlink3 from './Dashlink3';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -10,7 +11,6 @@ const Sidebar = withRouter((props) => {
 	const email = useSelector((state) => state.adminReducer.email);
 
 	const logout = () => {
-		console.log('logged out');
 		localStorage.removeItem('adminToken');
 		sessionStorage.removeItem('adminId');
 		return props.history.push('/');
@@ -28,6 +28,7 @@ const Sidebar = withRouter((props) => {
 			<div className="dash-links">
 				<Dashlink1 />
 				<Dashlink2 />
+				<Dashlink3 />
 			</div>
 			<button onClick={logout}>Logout</button>
 			<div className="patner_logos">

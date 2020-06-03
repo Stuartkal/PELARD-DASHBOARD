@@ -42,12 +42,27 @@
 		font-weight: 500;
 		z-index: 1;
 		outline: none;
+		transition: var(--mainTransition);
 		&:hover {
+			background-color: #655d97;
 			box-sizing: border-box;
-			box-shadow: 0px 5px 10px rgba(0, 0, 0, .095);
+			box-shadow: 0px 10px 20px rgba(0, 0, 0, .095);
 			cursor: pointer;
 		}
 	}
+}
+
+.message-alert {
+	visibility: hidden;
+	margin-top: 2rem;
+	p {
+		color: var(--mainGrey);
+		font-weight: 400;
+	}
+}
+
+.show-message-alert {
+	visibility: visible;
 }
 
 .case-form {
@@ -62,7 +77,13 @@
 	transform: translateY(-50%);
 	box-sizing: border-box;
 	box-shadow: 0px 5px 10px rgba(0, 0, 0, .095);
-	transition: all 0.3s linear;
+	transition: var(--mainTransition);
+
+	&:hover {
+		box-sizing: border-box;
+		box-shadow: 0px 10px 20px rgba(0, 0, 0, .095);
+	}
+
 	input {
 		width: 80%;
 		height: 40px;

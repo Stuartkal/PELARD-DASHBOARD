@@ -6,9 +6,6 @@ import SignUp from './SignUp';
 import ForgotPassword from './ForgotPassword';
 
 class LandingPage extends Component {
-	constructor(props) {
-		super(props);
-	}
 	state = {
 		firstName: '',
 		lastName: '',
@@ -29,7 +26,7 @@ class LandingPage extends Component {
 		const { userName, password } = this.state;
 		userLogin(userName, password, (response) => {
 			if ((response.token && response.statusCode === 200) || (201 && response.data)) {
-				console.log('response log signin', response, this.props);
+				// console.log('response log signin', response, this.props);
 				return this.props.history.push('/overview');
 			} else return alert('User Not Registered');
 			// if (response.token) {

@@ -31,7 +31,7 @@ export const getToken = async ({ secret, _id }) => {
 
 //USER REGISTRATION REQUEST
 export const userRegistration = async (data) => {
-	console.log(data);
+	// console.log(data);
 	try {
 		const token = await getToken({ secret });
 		const response = await fetch(`${baseUrl}/user/register`, {
@@ -44,8 +44,8 @@ export const userRegistration = async (data) => {
 		});
 
 		const json = await response.json();
-		console.log('Registration');
-		console.log(json);
+		// console.log('Registration');
+		// console.log(json);
 	} catch (errors) {
 		console.log(errors);
 	}
@@ -54,7 +54,7 @@ export const userRegistration = async (data) => {
 //USER LOGIN REQUEST
 export const userLogin = async (userName, password) => {
 	const token = await getToken({ secret });
-	console.log('fetch token', token);
+	// console.log('fetch token', token);
 	const response = await fetch(`${baseUrl}/user/login`, {
 		method: 'POST',
 		headers: {
@@ -67,7 +67,7 @@ export const userLogin = async (userName, password) => {
 	// json.payload.data.token = token;
 	const userdata_token = Object.assign({}, json, { token: token });
 
-	console.log('token', userdata_token);
+	// console.log('token', userdata_token);
 	return userdata_token;
 };
 

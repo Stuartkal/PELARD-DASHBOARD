@@ -9,7 +9,7 @@ const state = {
 			backgroundColor: '#6055a5',
 			borderColor: 'rgba(0,0,0,1)',
 			borderWidth: 0,
-			data: [ 65, 59, 80, 81, 56, 65, 59, 80, 81, 56, 70, 67 ]
+			data: [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ]
 		}
 	]
 };

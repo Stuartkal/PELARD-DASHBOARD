@@ -15,7 +15,8 @@ class Cases extends Component {
 		role: 'Contributor',
 		searchResult: '',
 		filteredCases: [],
-		searchFilter: []
+		searchFilter: [],
+		showBtn: true
 	};
 
 	async componentDidMount() {
@@ -52,12 +53,16 @@ class Cases extends Component {
 		});
 		const json = await response.json();
 		console.log('my respone', json);
-		return json;
+		if (json.statusCode === 201) {
+			const profileDOM = document.querySelector('.message-alert');
+			profileDOM.classList.add('show-message-alert');
+		} else return alert('Request failed');
 	};
 
 	handleFormVisibility = () => {
 		const profileDOM = document.querySelector('.case-form');
 		profileDOM.classList.add('showCase');
+		this.setState({ showBtn: false });
 	};
 
 	searchHandler = (e) => {
@@ -89,7 +94,6 @@ class Cases extends Component {
 
 	render() {
 		const { searchResult } = this.state;
-		console.log(this.state.role);
 		const { allCases, loading } = this.props;
 		// console.log(this.props);
 		const caseHeader = [
@@ -129,9 +133,11 @@ class Cases extends Component {
 					</div>
 				) : (
 					<div className="cases-main-form">
-						<button onClick={this.handleFormVisibility}>
-							GET CONTRIBUTOR ROLE TO ACCESS ALL REPORTED CASES
-						</button>
+						{this.state.showBtn && (
+							<button onClick={this.handleFormVisibility}>
+								GET CONTRIBUTOR ROLE TO ACCESS ALL REPORTED CASES
+							</button>
+						)}
 						<div className="case-form">
 							<input
 								placeholder="role"
@@ -141,6 +147,9 @@ class Cases extends Component {
 							/>
 							<button onClick={this.adminRoleHandler}>Request</button>
 							<h3>Access will be granted if eligible</h3>
+						</div>
+						<div className="message-alert">
+							<p>Request sent successfully, email verification will be sent to you shortly</p>
 						</div>
 					</div>
 				)}

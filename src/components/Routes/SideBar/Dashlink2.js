@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import './Sidebar.scss';
-const Dashlink1 = withRouter((props) => {
+const Dashlink2 = withRouter((props) => {
 	const redirectToCases = () => {
 		return props.history.push('/overview/cases');
 	};
@@ -17,4 +17,4 @@ const Dashlink1 = withRouter((props) => {
 	);
 });
 
-export default Dashlink1;
+export default Dashlink2;

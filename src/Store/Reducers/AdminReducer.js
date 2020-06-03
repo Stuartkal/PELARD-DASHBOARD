@@ -29,7 +29,7 @@ export default function(state = initialState, { type, payload, error }) {
 		case AdminActions.USER_LOGIN_ACTION:
 			return { ...state, loading: true };
 		case AdminActions.USER_LOGIN_SUCCESS:
-			console.log('token', payload);
+			// console.log('token', payload);
 			localStorage.setItem('adminToken', payload.token);
 			return {
 				...state,

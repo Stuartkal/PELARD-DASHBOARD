@@ -172,8 +172,9 @@
 		background-color: #6055a5;
 		font-size: 15px;
 		&:hover {
-			background-color: #2bbbad;
-			cursor: pointer;
+			background-color: #655d97;
+			box-sizing: border-box;
+			box-shadow: 0px 10px 20px rgba(0, 0, 0, .095);
 		}
 	}
 }
