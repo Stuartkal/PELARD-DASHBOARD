@@ -56,7 +56,7 @@ class Cases extends Component {
 		if (json.statusCode === 201) {
 			const profileDOM = document.querySelector('.message-alert');
 			profileDOM.classList.add('show-message-alert');
-		} else return alert('Request failed');
+		} else return alert('Request failed, Enter contributor with lowercase c');
 	};
 
 	handleFormVisibility = () => {
