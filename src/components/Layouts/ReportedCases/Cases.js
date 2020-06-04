@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CaseTable from './CaseTable';
 import Sidebar from '../../Routes/SideBar/Sidebar';
-import CaseDetails from './CaseDetails';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../../Store/ActionCreators';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -12,7 +11,7 @@ import { AdminRequest } from '../../../Store/API';
 import './Cases.scss';
 class Cases extends Component {
 	state = {
-		role: 'Contributor',
+		role: '',
 		searchResult: '',
 		filteredCases: [],
 		searchFilter: [],
@@ -21,7 +20,8 @@ class Cases extends Component {
 
 	async componentDidMount() {
 		const { getAllReportedCases } = this.props;
-		getAllReportedCases((response) => {
+		const { userId } = this.props;
+		getAllReportedCases(userId, (response) => {
 			// console.log(response);
 			this.setState({ filteredCases: this.props.allCases, searchFilter: this.props.allCases });
 		});
@@ -93,8 +93,7 @@ class Cases extends Component {
 	};
 
 	render() {
-		const { searchResult } = this.state;
-		const { allCases, loading } = this.props;
+		const { loading } = this.props;
 		// console.log(this.props);
 		const caseHeader = [
 			{ label: 'Reporter ' },
@@ -111,7 +110,8 @@ class Cases extends Component {
 						dehaze
 					</i>
 				</div>
-				{!this.state.filteredCases ? (
+
+				{this.state.filteredCases.length > 0 ? (
 					<div className="cases-main">
 						<div className="search-container">
 							<i className="material-icons" onClick={this.searchHandler}>
@@ -124,7 +124,7 @@ class Cases extends Component {
 								onChange={(e) => this.searchHandler(e)}
 							/>
 						</div>
-						{loading && <CircularProgress />}
+
 						<CaseTable
 							caseHeaders={caseHeader}
 							data={this.state.filteredCases}
@@ -133,6 +133,7 @@ class Cases extends Component {
 					</div>
 				) : (
 					<div className="cases-main-form">
+						{loading && <CircularProgress />}
 						{this.state.showBtn && (
 							<button onClick={this.handleFormVisibility}>
 								GET CONTRIBUTOR ROLE TO ACCESS ALL REPORTED CASES
@@ -165,7 +166,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	getAllReportedCases: (callback) => dispatch(ActionCreators.allReportedCases(callback)),
+	getAllReportedCases: (_id, callback) => dispatch(ActionCreators.allReportedCases(_id, callback)),
 	toggleModal: () => dispatch(ActionCreators.toggleModalAction())
 });
 

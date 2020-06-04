@@ -1,6 +1,6 @@
 import React from 'react';
 import PageRoutes from './PageRoutes';
-import Sidebar from './SideBar/Sidebar';
+
 // import { createBrowserHistory } from 'history';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';

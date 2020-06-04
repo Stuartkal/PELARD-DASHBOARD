@@ -44,8 +44,9 @@ export const userLoginFail = (error) => ({
 });
 
 //ALL REPORTED CASES
-export const allReportedCases = (callback) => ({
+export const allReportedCases = (_id, callback) => ({
 	type: AdminActions.ALL_REPORTED_CASES_ACTION,
+	_id,
 	callback
 });
 

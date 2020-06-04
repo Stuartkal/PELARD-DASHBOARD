@@ -1,18 +1,5 @@
-import Axios from 'axios';
-
 const baseUrl = 'https://pelard-n.herokuapp.com';
 const secret = '2cfb9e9a-34a9-4843-961f-6e2639c41856-b10445eb-a0e8-4fa2-b636-015b2f1e3660';
-
-// export const userRegistration = async (data) => {
-// 	try {
-// 		const token = await Axios.post('https://pelrard-n.heokuapp.com/token/generate', { secret });
-// 		console.log(token);
-// 		if (token.data.data.token) {
-// 			const response = await Axios.post('https://pelard-n.herokuapp.com/user/register', { ...data });
-// 			console.log('response from registering', response);
-// 		} else return token;
-// 	} catch (error) {}
-// };
 
 //GET TOKEN REQUEST
 export const getToken = async ({ secret, _id }) => {
@@ -25,7 +12,7 @@ export const getToken = async ({ secret, _id }) => {
 	});
 
 	const json = await response.json();
-	// console.log(json);
+	// console.log('token response', json);
 	return json.data.token;
 };
 
@@ -43,9 +30,9 @@ export const userRegistration = async (data) => {
 			body: JSON.stringify(data)
 		});
 
-		const json = await response.json();
-		// console.log('Registration');
-		// console.log(json);
+		// const json = await response.json();
+		// // console.log('Registration');
+		// // console.log(json);
 	} catch (errors) {
 		console.log(errors);
 	}
@@ -64,6 +51,7 @@ export const userLogin = async (userName, password) => {
 		body: JSON.stringify({ userName, password })
 	});
 	const json = await response.json();
+	// console.log('userId', json);
 	// json.payload.data.token = token;
 	const userdata_token = Object.assign({}, json, { token: token });
 
@@ -72,8 +60,10 @@ export const userLogin = async (userName, password) => {
 };
 
 //GET ALL REPORTED CASES REQUEST
-export const getReportedCases = async () => {
-	const token = await getToken({ secret });
+export const getReportedCases = async (_id) => {
+	// console.log('my request', JSON.stringify(_id));
+	const token = await getToken({ secret, _id });
+
 	const response = await fetch(`${baseUrl}/violations`, {
 		method: 'GET',
 		headers: {

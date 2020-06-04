@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../../Routes/SideBar/Sidebar';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
-import { saveAs } from 'file-saver';
-import { AdminRequest } from '../../../Store/API';
 
 import './CaseDetails.scss';
 
@@ -16,7 +13,7 @@ const CaseDetails = (props) => {
 		const { data } = props.location.state;
 		setcaseDetails(data);
 	}, []);
-	console.log('CaseDetails violations', caseDetails);
+	// console.log('CaseDetails violations', caseDetails);
 
 	//Convert Date
 	const convertDate = (date) => new Date(date).toDateString();
