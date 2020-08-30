@@ -1,8 +1,18 @@
 @secret="2cfb9e9a-34a9-4843-961f-6e2639c41856-b10445eb-a0e8-4fa2-b636-015b2f1e3660"
 @base=https://pelard-n.herokuapp.com
+
+@_id=5ed33814a754af1864dd83c2
 POST {{base}}/token/generate HTTP/1.1
 Content-Type: application/json
 
 {
-    "secret": {{secret}}
+    "secret": {{secret ,_id}}
+}
+
+###
+GET {{base}}/violations/5ed33814a754af1864dd83c2 HTTP/1.1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTE2OTg4OTEsImV4cCI6MTU5MTcwMjQ5MX0.SMo_9hgqNRh6f_Rsi9hRrHcnIlwr7XASCIshT85v3AM
+
+{
+    "name":"stuart"
 }

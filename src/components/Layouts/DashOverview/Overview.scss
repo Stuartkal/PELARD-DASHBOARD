@@ -20,6 +20,7 @@
 	// justify-content: center;
 	// background-color: var(--mainBgGrey);
 }
+
 .humburger_menu {
 	position: sticky;
 	top: 0;
@@ -152,29 +153,52 @@
 		margin-top: 2rem;
 		font-family: var(--mainFont);
 	}
-	h2 {
-		color: var(--mainGrey);
-		margin-top: 20px;
-		font-weight: 500;
-		font-family: var(--mainFont);
-	}
+	// h2 {
+	// 	color: var(--mainGrey);
+	// 	margin-top: 20px;
+	// 	font-weight: 500;
+	// 	font-family: var(--mainFont);
+	// }
 	h3 {
 		color: var(--mainGrey);
 		font-weight: 300;
 		font-family: var(--mainFont);
 	}
+	// button {
+	// 	transform: translateY(100%);
+	// 	width: 100px;
+	// 	height: 40px;
+	// 	border: 0px;
+	// 	color: var(--mainWhite);
+	// 	background-color: #6055a5;
+	// 	font-size: 15px;
+	// 	&:hover {
+	// 		background-color: #655d97;
+	// 		box-sizing: border-box;
+	// 		box-shadow: 0px 10px 20px rgba(0, 0, 0, .095);
+	// 	}
+	// }
+}
+
+.logout_btn {
+	width: 100%;
 	button {
-		transform: translateY(100%);
-		width: 100px;
-		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: translateY(200%);
+		transition: 0.8s ease-in;
+		outline: none;
+		width: 100%;
+		height: 50px;
 		border: 0px;
-		color: var(--mainWhite);
-		background-color: #6055a5;
+		color: rgba(0, 0, 0, 0.3);
 		font-size: 15px;
+		background: none;
 		&:hover {
-			background-color: #655d97;
-			box-sizing: border-box;
-			box-shadow: 0px 10px 20px rgba(0, 0, 0, .095);
+			background: rgba(0, 0, 0, 0.1);
+			color: rgba(0, 0, 0, 0.5);
+			cursor: pointer;
 		}
 	}
 }
@@ -226,20 +250,12 @@
 		h3 {
 			font-size: 15px;
 		}
-		button {
-			position: relative;
-			top: 10px;
-			width: 80px;
-			height: 30px;
-			border: 0px;
-			color: var(--mainWhite);
-			background-color: var(--primaryColor1);
-			font-size: 15px;
+	}
 
-			&:hover {
-				background-color: var(--mainGrey);
-				cursor: pointer;
-			}
+	.logout_btn {
+		width: 100%;
+		button {
+			transform: translateY(300%);
 		}
 	}
 }

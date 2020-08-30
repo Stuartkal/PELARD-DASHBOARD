@@ -76,3 +76,6 @@ export const resetPasswordFail = (error) => ({
 	type: AdminActions.RESET_PASSWORD_FAIL,
 	error
 });
+
+//UPDATE VIOLATION
+

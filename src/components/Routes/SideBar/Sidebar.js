@@ -4,7 +4,7 @@ import Dashlink2 from './Dashlink2';
 import Dashlink3 from './Dashlink3';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import prof from '../../../assets/images/prof.png';
 import './Sidebar.scss';
 const Sidebar = withRouter((props) => {
 	const userName = useSelector((state) => state.adminReducer.userName);
@@ -19,18 +19,25 @@ const Sidebar = withRouter((props) => {
 	return (
 		<div className="sidebar-main">
 			<h1>PELARD-N</h1>
+			<div className="header-separator" />
 			<div className="avatar">
 				{/* <i class="material-icons">person</i> */}
-				<p>{userName.charAt(0)}</p>
+				{/* <p>{userName.charAt(0)}</p>
+				 */}
+				<img src={prof} alt="Profile image" />
 			</div>
-			<h2>{userName}</h2>
-			<h3>{email}</h3>
+			<div className="profile-col">
+				<h2>{userName}</h2>
+				<h3>{email}</h3>
+			</div>
 			<div className="dash-links">
 				<Dashlink1 />
 				<Dashlink2 />
 				<Dashlink3 />
 			</div>
-			<button onClick={logout}>Logout</button>
+			<div className="logout_btn">
+				<button onClick={logout}>Logout</button>
+			</div>
 			<div className="patner_logos">
 				<div className="separator_sidebar" />
 				<div className="logos_ ">

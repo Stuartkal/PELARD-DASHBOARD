@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../../Routes/SideBar/Sidebar';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
+import { AdminRequest } from '../../../Store/API';
+import EditCase from './EditCase';
+import DeleteCase from './DeleteCase';
+import axios from 'axios';
 
 import './CaseDetails.scss';
 
@@ -23,10 +27,46 @@ const CaseDetails = (props) => {
 		const profileDOM = document.querySelector('.sidebar-main');
 		profileDOM.classList.add('sidebar-main-slide');
 	};
+
+	//Toggle Edit Modal
+	const modalHandler = () => {
+		const profileDOM = document.querySelector('.edit-container');
+		profileDOM.classList.add('show-edit-container');
+	};
+
+	//Delete Toggle Edit Modal
+	const deleteModalHandler = () => {
+		const profileDOM = document.querySelector('.delete-container');
+		profileDOM.classList.add('show-delete-container');
+	};
+
+	const deleteViolation = async () => {
+		const caseID = caseDetails._id;
+		const baseUrl = 'https://pelard-n.herokuapp.com';
+		const secret = '2cfb9e9a-34a9-4843-961f-6e2639c41856-b10445eb-a0e8-4fa2-b636-015b2f1e3660';
+		const token = await AdminRequest.getToken({ secret });
+
+		axios
+			.delete(`${baseUrl}/violations/${caseID}`, {
+				headers: {
+					'content-Type': 'application/json',
+					Authorization: token
+				}
+			})
+			.then((res) => {
+				// console.log(res);
+				if (res.status === 201) {
+					return props.history.push('/overview/cases');
+				}
+			})
+			.catch((errors) => {
+				console.log(errors);
+			});
+	};
 	//Create And Download PDFs
 	const createAndDownLoadPdf = () => {
 		const profId = caseDetails._id;
-		console.log('my id', profId);
+		// console.log('my id', profId);
 		return (
 			window.open(`https://pelard-n.herokuapp.com/documents/${profId}/generate-pdf`, '_blank') ||
 			(window.location.href = `https://pelard-n.herokuapp.com/documents/${profId}/generate-pdf`)
@@ -37,11 +77,12 @@ const CaseDetails = (props) => {
 	const responses = caseDetails.authorityResponse;
 	// const otherInfo = caseDetails.otherInfo;
 	const imageUrls = caseDetails.injuries;
-
+	// const violation = caseDetails;
 	return (
 		<div>
+			<DeleteCase delete={deleteViolation} />
+			<EditCase />
 			<Sidebar />
-
 			<div className="case-details-main">
 				<Button size="small" style={{ color: '#17448a' }} onClick={() => props.history.push('/overview/cases')}>
 					<ArrowBackIcon style={{ color: '#17448a' }} /> Go back
@@ -61,6 +102,12 @@ const CaseDetails = (props) => {
 						{/* <i className="material-icons">share</i> */}
 						<i className="material-icons" onClick={createAndDownLoadPdf}>
 							file_download
+						</i>
+						<i className="material-icons" onClick={modalHandler}>
+							edit
+						</i>
+						<i className="material-icons" onClick={deleteModalHandler}>
+							delete
 						</i>
 					</div>
 				</div>
@@ -186,7 +233,7 @@ const CaseDetails = (props) => {
 								<div className="detail">
 									{caseDetails.injuries &&
 										imageUrls.map((url) => (
-											<div className="detail">
+											<div className="detail-link">
 												<a href={url.link} target="blank">
 													{url.link}
 												</a>

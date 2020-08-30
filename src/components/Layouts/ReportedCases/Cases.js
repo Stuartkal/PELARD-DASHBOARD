@@ -52,7 +52,7 @@ class Cases extends Component {
 			body: JSON.stringify({ role })
 		});
 		const json = await response.json();
-		console.log('my respone', json);
+		// console.log('my respone', json);
 		if (json.statusCode === 201) {
 			const profileDOM = document.querySelector('.message-alert');
 			profileDOM.classList.add('show-message-alert');

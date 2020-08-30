@@ -37,7 +37,7 @@ export default function(state = initialState, { type, payload, error }) {
 				token: payload.token,
 				userId: payload.data.user._id,
 				userName: payload.data.user.userName,
-				email: payload.data.user.email
+				email: payload.data.user.emailS
 			};
 		case AdminActions.USER_LOGIN_FAIL:
 			return { ...state, loading: true, error: error.message };
@@ -59,5 +59,13 @@ export default function(state = initialState, { type, payload, error }) {
 			return { ...state, loading: false, error: payload.data.message };
 		default:
 			return state;
+
+		//UPDATE VIOLATION
+		// 		case AdminActions.UPDATE_VIOLATION_ACTION:
+		// 			return { ...state, loading: true };
+		// 		case AdminActions.UPDATE_VIOLATION_SUCCESS:
+		// 			return { ...state, loading: false };
+		// 		case AdminActions.USER_LOGIN_FAIL:
+		// 			return { ...state, loading: false, error: error.message };
 	}
 }

@@ -29,7 +29,7 @@ export const userRegistration = async (data) => {
 			},
 			body: JSON.stringify(data)
 		});
-
+		return response;
 		// const json = await response.json();
 		// // console.log('Registration');
 		// // console.log(json);
@@ -89,3 +89,109 @@ export const resetAdminPassword = async ({ identifier }) => {
 	const json = await response.json();
 	return json;
 };
+
+//UDATE VIOLATION
+// export const updateViolation = async (
+// 	id,
+// 	reporterName,
+// 	reporterContact,
+// 	dateTime,
+// 	violationType,
+// 	violationDescription,
+// 	village,
+// 	districtOfViolation,
+// 	victimName,
+// 	otherVictim,
+// 	suspectName,
+// 	otherSuspect,
+// 	witnessName,
+// 	otherSuspect,
+// 	otherWitness,
+// 	injuries,
+// 	secure_url,
+// 	contactAuthority,
+// 	authorityResponse,
+// 	otherViolation,
+// 	fileDescription,
+// 	secure_url
+
+// 	) => {
+// 	try {
+// 		const token = await getToken({secret});
+// 	const response = await fetch(`${baseUrl}/violation/${id}`, {
+// 		method: 'POST',
+// 		headers: {
+// 			'content-Type' : 'application/json',
+// 		},
+// 		body: JSON.stringify(
+// 			{
+// 				reporter: {
+// 					name: reporterName,
+// 					contact: reporterContact,
+// 				},
+// 				dateTime: dateTime,
+// 				type: violationType,
+// 				description: violationDescription,
+// 				location: {
+// 				  name:village,
+// 				  district: districtOfViolation
+// 				  },
+
+// 				involved: [
+// 					{ type: "victim", name: victimName,
+// 					relevantLinks:[
+// 					{
+// 					  description:otherVictim,
+// 					  link:'string'
+// 					  }
+// 					]
+// 					},
+
+// 					{ type: "suspect", name: suspectName,
+// 					relevantLinks:[
+// 					{
+// 					  description:otherSuspect,
+// 					  link:'string'
+// 					  }
+// 					]
+// 					 },
+// 					{ type: "witness", name: witnessName,
+// 					relevantLinks:[
+// 					{
+// 					  description:otherWitness,
+// 					  link:'string'
+// 					  }
+// 					]
+// 					 },
+// 				],
+// 				 injuries: [
+// 				  {
+// 					description: injuries,
+// 					link:secure_url
+// 				  }
+// 				],
+// 				authorityResponse:[
+// 					{ name: contactAuthority, response: authorityResponse,
+// 					 relevantLinks:[
+// 					{
+// 					  description:otherViolation,
+// 					  link:fileDescription
+// 					  }
+// 					]
+// 					 },
+
+// 				],
+// 				otherInfo: [
+// 				  {
+// 					description: "string",
+// 					link:secure_url
+// 				  }
+// 				]
+// 			}
+// 		)
+// 	})
+// 	}
+// 	catch(errors) {
+// 		console.log(errors)
+// 	}
+// }
