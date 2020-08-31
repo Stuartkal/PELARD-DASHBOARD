@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Changa+One&family=Titan+One&display=swap");
+.login-main {
+  margin: 100px auto;
+  width: 35%;
+  background-color: white;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.095);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.095);
+}
+
+.login-main h1 {
+  font-size: 60px;
+  color: #01579b;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.login-main h2 {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.login-main p {
+  text-align: center;
+}
+
+.login-main button {
+  width: 200px;
+  height: 50px;
+  border: none;
+  color: white;
+  background-color: #6055a5;
+  font-size: 18px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.login-main button:hover {
+  cursor: pointer;
+  color: #ffcb02;
+}
+
+.login-main:hover {
+  -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+  width: 36%;
+}
+
+.signUp-main {
+  margin: auto;
+  width: 35%;
+  background-color: white;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transform: translatey(-95%);
+          transform: translatey(-95%);
+  z-index: 1;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.095);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.095);
+  visibility: hidden;
+}
+
+.signUp-main h1 {
+  font-size: 60px;
+  color: #01579b;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.signUp-main h2 {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.signUp-main button {
+  width: 200px;
+  height: 50px;
+  border: none;
+  color: white;
+  background-color: #6055a5;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+}
+
+.signUp-main button:hover {
+  cursor: pointer;
+  color: #ffcb02;
+}
+
+.signUp-main:hover {
+  -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+  width: 36%;
+}
+
+.success-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.success-label p {
+  color: #ffcb02;
+}
+
+.success-label a {
+  text-decoration: none;
+  color: #17448a;
+  margin-left: 1rem;
+}
+
+.show-signUp-main {
+  visibility: visible;
+}
+
+.hide-login-main {
+  visibility: hidden;
+}
+
+.input-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1rem;
+}
+
+.input-form input {
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 20px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.login-links {
+  margin-bottom: 1rem;
+}
+
+.login-links a {
+  text-decoration: none;
+  color: #17448a;
+}
+
+.signup-link a {
+  color: #17448a;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .login-main {
+    width: 80%;
+  }
+  .login-main h1 {
+    font-size: 40px;
+  }
+  .login-main:hover {
+    -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+    width: 85%;
+  }
+  .signUp-main {
+    width: 80%;
+  }
+  .signUp-main h1 {
+    font-size: 40px;
+  }
+  .signUp-main:hover {
+    -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.9);
+    width: 85%;
+  }
+  .input-form input {
+    width: 95%;
+    height: 40px;
+  }
+}
+/*# sourceMappingURL=LandingPage.css.map */

@@ -10,7 +10,7 @@ const DistrictCases = (props) => {
 				value={props.value}
 				maxValue={100}
 				text={props.text}
-				styles={{ path: { stroke: '#003399', fontSize: '20px' } }}
+				styles={{ path: { stroke: '#6055a5', fontSize: '20px' } }}
 			/>
 			<h3>Reported cases</h3>
 			<h2>{props.district}</h2>

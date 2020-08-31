@@ -3,25 +3,20 @@ import { ActionCreators } from '../../../Store/ActionCreators';
 import { connect } from 'react-redux';
 import SignIn from './Signin';
 import SignUp from './SignUp';
+import ForgotPassword from './ForgotPassword';
 
 class LandingPage extends Component {
-	constructor(props) {
-		super(props);
-	}
 	state = {
-		firstName: 'Kizza',
-		lastName: 'Thierry',
-		userName: 'Payne',
-		password: 'pass0123',
-		phoneNumber: '798756473',
-		email: 'payne@gmail.com',
-		token: '',
-		openModal: false,
-		closeModal: false
+		firstName: '',
+		lastName: '',
+		userName: '',
+		password: '',
+		phoneNumber: '',
+		email: ''
 	};
 
 	componentDidMount() {
-		console.log(this.props);
+		// console.log(this.props);
 	}
 
 	handleChange = (key, event) => this.setState({ [key]: event.target.value });
@@ -30,9 +25,14 @@ class LandingPage extends Component {
 		const { userLogin } = this.props;
 		const { userName, password } = this.state;
 		userLogin(userName, password, (response) => {
-			console.log('response log signin', response, this.props);
-			if (response.statusCode === 200 && response.data) return this.history.push('/overview');
-			return alert('Please enter correct details');
+			if ((response.token && response.statusCode === 200) || (201 && response.data)) {
+				// console.log('response log signin', response, this.props);
+				return this.props.history.push('/overview');
+			} else return alert('User Not Registered');
+			// if (response.token) {
+			// 	// console.log('we are in here.. can we see');
+			// 	return this.props.history.push('/overview');
+			// } else return;
 		});
 	};
 
@@ -43,24 +43,34 @@ class LandingPage extends Component {
 	};
 
 	render() {
-		const state = this.state;
+		const { loading, error } = this.props;
+
 		return (
 			<div>
 				<SignIn
 					loginHandler={this.loginHandler}
-					onchange={this.handleChange}
-					state={state}
-					close={() => !state.closeModal}
+					onChange={(key, value) => this.handleChange(key, value)}
+					{...this.state}
+					loading={loading}
+					error={error}
 				/>
 
-				<SignUp registerHandler={this.registerHandler} onchange={this.handleChange} state={state} />
+				<SignUp
+					registerHandler={this.registerHandler}
+					onChange={(key, value) => this.handleChange(key, value)}
+					{...this.state}
+					loading={loading}
+					error={error}
+				/>
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = (state) => ({
-	// loading: state.adminReducer.loading,
+	loading: state.adminReducer.loading,
+	error: state.adminReducer.error
+	// authenticated: state.adminReducer.token,
 	// token: state.adminReducer.token
 });
 

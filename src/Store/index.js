@@ -11,7 +11,7 @@ export default () => {
 	const logger = createLogger();
 
 	//Provide Middleware access to the store and devtools
-	const middleware = composeWithDevTools(applyMiddleware(sagaMiddleware), applyMiddleware(logger));
+	const middleware = composeWithDevTools(applyMiddleware(sagaMiddleware));
 
 	//Create the redux store
 	const store = createStore(AdminReducer, middleware);

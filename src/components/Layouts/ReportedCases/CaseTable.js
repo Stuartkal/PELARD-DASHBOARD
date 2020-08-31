@@ -1,24 +1,25 @@
 import React from 'react';
-import { createBrowserHistory } from 'history';
 
-const handleClick = () => {
-	const history = createBrowserHistory();
-	history.push('/case-details');
-};
+import './Cases.scss';
 
-const CaseTable = ({ caseHeaders, cases, data, toggleModal }) => {
+const CaseTable = ({ caseHeaders, data, toggleModal }) => {
+	// let date = new Date(dateTime).toDateString();
+	const convertDate = (date) => new Date(date).toDateString();
 	return (
 		<div className="table-container">
 			<table>
 				<tbody>
 					<tr className="table-header-row">{caseHeaders.map((caseHeader) => <td>{caseHeader.label}</td>)}</tr>
-					{cases.map((data) => {
+					{data.map((row_) => {
+						const row = row_.item ? row_.item : row_;
 						// console.log(row);
 						return (
-							<tr className="table-detail-row" onClick={handleClick}>
-								<td>{data.reporter}</td>
-								<td>{data.phone}</td>
-								<td>{data.date}</td>
+							<tr id={row._id} className="table-detail-row" onClick={() => toggleModal(row)}>
+								<td>{row.reporter.name}</td>
+								<td>{row.location.name}</td>
+								<td>{row.type}</td>
+								<td>{row.reporter.contact}</td>
+								<td>{convertDate(row.reportedDateAndTime)}</td>
 							</tr>
 						);
 					})}

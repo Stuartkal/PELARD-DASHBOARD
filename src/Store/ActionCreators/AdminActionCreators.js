@@ -44,9 +44,9 @@ export const userLoginFail = (error) => ({
 });
 
 //ALL REPORTED CASES
-export const allReportedCases = (userId, callback) => ({
+export const allReportedCases = (_id, callback) => ({
 	type: AdminActions.ALL_REPORTED_CASES_ACTION,
-	userId,
+	_id,
 	callback
 });
 
@@ -59,3 +59,23 @@ export const allReportedCasesFail = (error) => ({
 	type: AdminActions.ALL_REPORTED_CASES_FAIL,
 	error
 });
+
+//RESET PASSWORD
+export const resetPasswordAction = (identifier, callback) => ({
+	type: AdminActions.RESET_PASSWORD_ACTION,
+	identifier,
+	callback
+});
+
+export const resetPasswordSuccess = (payload) => ({
+	type: AdminActions.RESET_PASSWORD_SUCCESS,
+	payload
+});
+
+export const resetPasswordFail = (error) => ({
+	type: AdminActions.RESET_PASSWORD_FAIL,
+	error
+});
+
+//UPDATE VIOLATION
+
