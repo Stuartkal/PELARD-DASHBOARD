@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 //Create access to the store
 export default () => {
 	const sagaMiddleware = createSagaMiddleware();
-	const logger = createLogger();
+	// const logger = createLogger();
 
 	//Provide Middleware access to the store and devtools
 	const middleware = composeWithDevTools(applyMiddleware(sagaMiddleware));
