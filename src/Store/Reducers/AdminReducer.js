@@ -33,14 +33,14 @@ export default function(state = initialState, { type, payload, error }) {
 			localStorage.setItem('adminToken', payload.token);
 			return {
 				...state,
-				loading: true,
+				loading: false,
 				token: payload.token,
 				userId: payload.data.user._id,
 				userName: payload.data.user.userName,
 				email: payload.data.user.emailS
 			};
 		case AdminActions.USER_LOGIN_FAIL:
-			return { ...state, loading: true, error: error.message };
+			return { ...state, loading: false, error: error.message };
 
 		//GET ALL REPORTED CASES
 		case AdminActions.ALL_REPORTED_CASES_ACTION:
