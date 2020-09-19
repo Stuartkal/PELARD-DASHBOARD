@@ -4,6 +4,7 @@ import './Cases.scss';
 
 const CaseTable = ({ caseHeaders, data, toggleModal }) => {
 	// let date = new Date(dateTime).toDateString();
+
 	const convertDate = (date) => new Date(date).toDateString();
 	return (
 		<div className="table-container">
