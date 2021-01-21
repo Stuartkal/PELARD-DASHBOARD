@@ -62,7 +62,7 @@ const Casechart = () => {
 	return (
 		<div>
 			<h3>
-				Reported cases in 2020-<strong> {monthlyCases.total}</strong>
+				Reported cases in 2021-<strong> {monthlyCases.total}</strong>
 			</h3>
 			<Bar
 				width={100}
