@@ -18,14 +18,19 @@ class Cases extends Component {
 		showBtn: true
 	};
 
+	
+
 	async componentDidMount() {
 		const { getAllReportedCases } = this.props;
 		const { userId } = this.props;
 		getAllReportedCases(userId, (response) => {
 			// console.log(response);
 			this.setState({ filteredCases: this.props.allCases, searchFilter: this.props.allCases });
+			
 		});
 	}
+
+	
 
 	toggleModal = (data) => {
 		// console.log('logged data', data);
@@ -93,6 +98,7 @@ class Cases extends Component {
 	};
 
 	render() {
+		// console.log(this.state.filteredCases.length)
 		const { loading } = this.props;
 		// console.log(this.props);
 		const caseHeader = [

@@ -5,6 +5,7 @@ import { AdminRequest } from '../../../Store/API';
 
 const Casechart = () => {
 	const [ monthlyCases, setMonthlyCases ] = useState({});
+	// console.log(monthlyCases)
 
 	useEffect(() => {
 		setMonthlyCases(getMonthlyTotalCases());
@@ -36,7 +37,7 @@ const Casechart = () => {
 		]
 	};
 
-	const getMonthlyTotalCases = async (_id) => {
+	const getMonthlyTotalCases = async () => {
 		const baseUrl = 'https://pelard-n.herokuapp.com';
 		const secret = '2cfb9e9a-34a9-4843-961f-6e2639c41856-b10445eb-a0e8-4fa2-b636-015b2f1e3660';
 		const token = await AdminRequest.getToken({ secret });
@@ -62,7 +63,7 @@ const Casechart = () => {
 	return (
 		<div>
 			<h3>
-				Reported cases in 2021-<strong> {monthlyCases.total}</strong>
+				Reported cases in {monthlyCases.year}-<strong> {monthlyCases.total}</strong>
 			</h3>
 			<Bar
 				width={100}
