@@ -1,0 +1,248 @@
+
+.case-detail-main {
+    margin: 70px 300px;
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 1px 5px 10px rgba(0,0,0,0.1);
+
+    img {
+        width: 250px;
+        height: 200px;
+    }
+}
+ 
+.case-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    border-bottom: 1px solid #01579b;
+
+    h2 {
+        color: #01579b;
+    }
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+     
+    i {
+        font-size: 30px;
+        color: #01579b;
+    }
+
+    h4 {
+        color: #01579b;
+    }
+}
+
+.icons i:hover{
+    cursor: pointer;
+}
+
+.case-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+}
+
+.case-detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+}
+
+.label {
+    width: 40%;
+
+    h4 {
+        color: rgba(0,0,0,0.6);
+    }
+}
+
+.detail {
+    width: 60%;
+
+    input {
+        width: 70%;
+        height: 40px;
+        outline: none;
+        border-radius: 2px;
+        border: 1px solid rgba(0,0,0,0.2);
+        padding-left: 5px;
+        transition: 0.5s ease-in-out;
+        margin: 0.5rem;
+    }
+}
+
+.detail input:focus {
+    border-color: #6055a5;
+    box-shadow: 1px 1px 10px #6055a5 ;
+}
+
+.detail-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    flex-direction: column;
+    padding: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.relative-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+
+    h4 {
+        color: rgba(0,0,0,0.6);
+    }
+}
+
+.relative-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    input {
+        width: 70%;
+        height: 40px;
+        outline: none;
+        border-radius: 2px;
+        border: 1px solid rgba(0,0,0,0.2);
+        padding-left: 5px;
+        transition: 0.5s ease-in-out;
+        margin: 0.5rem;
+    }
+}
+
+.relative-row input:focus {
+    border-color: #6055a5;
+    box-shadow: 1px 1px 10px #6055a5 ;
+}
+
+
+// .detail-column:hover {
+//     background-color: #fff;
+//     box-sizing: border-box;
+//     box-shadow: 1px 5px 10px rgba(0,0,0,0.1);
+// }
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    // flex-wrap: wrap;
+    
+    width: 100%;
+
+    h3 {
+        color: #01579b;
+    }
+}
+
+.row-label {
+    width: 20%;
+    h5 {
+        color: rgba(0,0,0,0.6);
+    }
+}
+
+.row-text {
+    width: 80%;
+
+    input {
+        width: 70%;
+        height: 40px;
+        outline: none;
+        border-radius: 2px;
+        border: 1px solid rgba(0,0,0,0.2);
+        padding-left: 5px;
+        transition: 0.5s ease-in-out;
+        margin: 0.5rem;
+    }
+}
+
+.row-text input:focus {
+    border-color: #6055a5;
+    box-shadow: 1px 1px 10px #6055a5 ;
+}
+
+.detail-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.back-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        color: #01579b;
+        margin-right: 0.2rem;
+    }
+    h4 {
+        color: #01579b;
+    }
+}
+
+.back-icon:hover {
+    cursor: pointer;
+}
+
+.button-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+
+    button {
+        width: 40%;
+        height: 40px;
+        border: none;
+        outline: none;
+        background-color: #6055a5;
+        color: #fff;
+        border-radius: 2px;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        transition: 0.5s ease-in-out;
+     }
+
+}
+
+.button-div button:focus {
+    box-shadow: 1px 1px 10px #6055a5 ;
+    background-color: #3d3380;
+}
+
+
+
+
+
+ 

@@ -1,16 +1,11 @@
 import React from 'react';
-import './App.css';
-import Routes from './components/Routes/Routes';
-import { Provider } from 'react-redux';
-
-import storeCreator from './Store';
+import Navigation from './Components/Navigation'
 function App() {
-	const store = storeCreator();
 
 	return (
-		<Provider store={store}>
-			<Routes />
-		</Provider>
+		<div>
+			<Navigation/>
+		</div>
 	);
 }
 
