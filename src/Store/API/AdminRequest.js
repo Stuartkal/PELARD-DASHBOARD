@@ -64,7 +64,7 @@ export const getReportedCases = async (_id) => {
 	// console.log('my request', JSON.stringify(_id));
 	const token = await getToken({ secret, _id });
 
-	const response = await fetch(`${baseUrl}/violations`, {
+	const response = await fetch(`${baseUrl}/violations?limit=100`, {
 		method: 'GET',
 		headers: {
 			Authorization: token
