@@ -1,52 +1,67 @@
-import React,{useState} from 'react'
-import {useDispatch} from 'react-redux'
-import * as actionCreators from '../../../Store/ActionCreators'
+import React, { useEffect, useState } from "react";
+import { connect, useStore } from "react-redux";
+import { withRouter } from "react-router";
+import { ActionCreators } from "../../../Store/ActionCreators";
+import "./Styles.scss";
 
-import './Styles.scss'
-const Login = (props) => {
+const mapState = ({ loggedIn, loading }) => ({ loggedIn, loading });
+const mapDispatch = (dispatch) => ({
+  logIn: (userName, password) =>
+    dispatch(ActionCreators.logIn({ userName, password })),
+});
 
-    const [state,setState] = useState({
-        userName:'stuwie',
-        password:'pass0123'
-    })
+const connector = connect(mapState, mapDispatch);
 
-    const dispatch = useDispatch()
+const selectLoggedIn = ({ loggedIn }) => loggedIn;
 
-    // useEffect(()=> {
-    //     dispatch(actionCreators.login())
-    // },[])
+const Login = ({ loading, logIn, history }) => {
+  const [userName, setUserName] = useState("stuwie");
+  const [password, setPassword] = useState("pass0123");
+  const store = useStore();
 
-    const loginHandler = (e) => {
-        e.preventDefault()
-        dispatch(actionCreators.login(state.userName,state.password,(res)=>{
-            if(res.success === true){
-                props.history.push('./overview')
-            }
-        }))
-    }
+  const loginHandler = (e) => {
+    e.preventDefault();
+    logIn(userName, password);
+  };
 
-    return (
-        <div className="auth-main">
-            <div className="auth-container">
-                <h2>PELARD-N</h2>
-                <h4>Login</h4>
-                <input
-                    value={state.userName}
-                    onChange={(e)=> setState({...state, userName: e.target.value})}
-                    type="text"
-                    placeholder="Username"
-                />
-                <input
-                    value={state.password}
-                    onChange={(e)=> setState({...state, password: e.target.value})}
-                    type="password"
-                    placeholder="Password"
-                />
-                <button onClick={loginHandler}>Login</button>
-                <a href="#">Forgot password? </a>
-            </div>
-        </div>
-    )
-}
+  useEffect(() => {
+    const handler = () => {
+      const state = store.getState();
+      console.log(state, selectLoggedIn(state));
+      if (selectLoggedIn(store.getState())) {
+        history.push("./overview");
+      }
+    };
 
-export default Login
+    const unsubscribe = store.subscribe(handler);
+
+    return () => {
+      unsubscribe();
+    };
+  }, [history, store]);
+
+  return (
+    <div className="auth-main">
+      <div className="auth-container">
+        <h2>PELARD-N</h2>
+        <h4>Login</h4>
+        <input
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          type="text"
+          placeholder="Username"
+        />
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          placeholder="Password"
+        />
+        <button onClick={loginHandler}>Login</button>
+        <a href="#">Forgot password? </a>
+      </div>
+    </div>
+  );
+};
+
+export default withRouter(connector(Login));
