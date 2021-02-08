@@ -74,7 +74,7 @@ export const getCases = () => {
         // const token = token
         axios.get(`${baseUrl}/violations`,{
             headers:{
-                Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIxNDYzZTRlMDAyNzAwMDRkNGE2MDEiLCJpYXQiOjE2MTI3MzQ1NzQsImV4cCI6MTYxMjczODE3NH0.sloM87PG_eIfg2xDFIeGua6QhdAZ461mWGlz33hLVPc"
+                Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIxNDYzZTRlMDAyNzAwMDRkNGE2MDEiLCJpYXQiOjE2MTI4MDQ0NTQsImV4cCI6MTYxMjgwODA1NH0.a5b6qoT-KF13g_LAkZEBhGBWS024TqU-AAAujxojCls"
             }
         })
         .then(res => {
@@ -95,7 +95,7 @@ export const getSingleCase = (id, callback) => {
         console.log('my token',token)
         axios.get(`${baseUrl}/violations/${id}`,{
             headers:{
-                Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIxNDYzZTRlMDAyNzAwMDRkNGE2MDEiLCJpYXQiOjE2MTI3MzQ1NzQsImV4cCI6MTYxMjczODE3NH0.sloM87PG_eIfg2xDFIeGua6QhdAZ461mWGlz33hLVPc"
+                Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWIxNDYzZTRlMDAyNzAwMDRkNGE2MDEiLCJpYXQiOjE2MTI4MDQ0NTQsImV4cCI6MTYxMjgwODA1NH0.a5b6qoT-KF13g_LAkZEBhGBWS024TqU-AAAujxojCls"
             }
         })
         .then(res => {
@@ -111,17 +111,7 @@ export const getSingleCase = (id, callback) => {
     }
 }
 
-// export const deleteCaseAction = () => {
-//     return {
-//         type: actionTypes.DELETE_CASE_ACTION
-//     }
-// }
 
-// export const updateCaseAction = () => {
-//     return {
-//         type: actionTypes.UPDATE_CASE_ACTION
-//     }
-// }
 
 export const deleteCase = (id,callback) => {
     return (dispatch,getState) => {
