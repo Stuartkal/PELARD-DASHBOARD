@@ -1,69 +1,75 @@
-import React,{useEffect} from 'react'
-import {useSelector,useDispatch} from 'react-redux'
 import Chart from "chart.js";
-import * as actionCreators from '../../../Store/ActionCreators'
+import React, { useEffect, useState } from "react";
+import { connect, useStore } from "react-redux";
+import { ActionCreators } from "../../../Store/ActionCreators";
+import "./Styles.scss";
 
-import './Styles.scss'
+const pieRef = React.createRef();
 
-const pieRef = React.createRef()
+const mapState = ({ districtReport, user }) => ({ districtReport, user });
 
-const DistrictCase = () => {
+const mapProps = (dispatch) => ({
+  getDistrictReport: (_id) => dispatch(ActionCreators.getDistrict(_id)),
+});
 
-    const month = useSelector(state => state.report.monthly)
-    console.log(month)
+const connector = connect(mapState, mapProps);
 
-    const months = parseInt(month.feb)
+const selectDistrictReport = ({ districtReport }) => districtReport;
 
-    // const jan = month.jan
-    // const feb = month && month.feb
-    // const mar = month.mar
-    // const apr = month.apr
-    // const may = month.may
-    // const jun = month.jun
-    // const jul = month.jul
-    // const aug = month.aug
-    // const sep = month.sep
-    // const oct = month.oct
-    // const nov = month.nov
-    // const dec = month.dec
+const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
+  const [report, setReport] = useState(districtReport);
+  const store = useStore();
 
-    const dispatch = useDispatch()
-    
-    useEffect(()=>{
+  if (report.total) delete report.total;
+  const labels = Object.keys(report);
+  const data = Object.values(report);
 
-        dispatch(actionCreators.monthlyReport())
+  useEffect(() => {
+    getDistrictReport(user._id);
+  }, [getDistrictReport, user._id]);
 
-        const myPieRef = pieRef.current.getContext("2d");
+  useEffect(() => {
+    const handleChangeMonthly = () => {
+      const currentDistrictReport = selectDistrictReport(store.getState());
+      if (report !== currentDistrictReport) {
+        setReport(currentDistrictReport);
+      }
+    };
 
-         new Chart(myPieRef ,  {
-        type: "pie",
-        data: {
-            //Bring in data
-            labels: ["Gulu","Lamwo","Kitgum","Amuru","Nwoya","Agogo","Pader"],
-            datasets: [
-                {
-                    label: "Case Reported",
-                    data: [20,30,10],
-                    backgroundColor: '#5f4fc579',
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-        }
-    })
-    },[])
+    const unsubscribe = store.subscribe(handleChangeMonthly);
 
-    return (
-        <div className="pie-main">
-            <canvas
-                id="myChart"
-                ref={pieRef}
-            />
-        </div>
-    )
-}
+    return () => {
+      unsubscribe();
+    };
+  }, [report, store]);
 
-export default DistrictCase
+  useEffect(() => {
+    const myPieRef = pieRef.current.getContext("2d");
 
+    new Chart(myPieRef, {
+      type: "pie",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Case Reported",
+            data,
+            backgroundColor: "#5f4fc579",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    });
+  }, [data, labels]);
+
+  return (
+    <div className="pie-main">
+      <canvas id="myChart" ref={pieRef} />
+    </div>
+  );
+};
+
+export default connector(DistrictCase);
