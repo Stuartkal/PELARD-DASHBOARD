@@ -12,6 +12,7 @@ const Overview = () => {
 		profileDOM.classList.add('sidebar-main-slide');
 	};
 
+
 	const [ districtCases, setDistrictCases ] = useState({});
 
 	useEffect(() => {
@@ -32,7 +33,8 @@ const Overview = () => {
 				</div>
 				<div className="chart-main">
 					<div className="chart-container">
-						<Casechart />
+						
+						<Casechart  />
 					</div>
 					<div className="chart-main-row">
 						<h2>CASE DISTRIBUTION IN DISTRICTS</h2>

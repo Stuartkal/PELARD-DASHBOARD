@@ -3,12 +3,14 @@ import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
 import { AdminRequest } from '../../../Store/API';
 
+
 const Casechart = () => {
 	const [ monthlyCases, setMonthlyCases ] = useState({});
+	const [year, setYear] = useState()
 	// console.log(monthlyCases)
 
 	useEffect(() => {
-		setMonthlyCases(getMonthlyTotalCases());
+		setMonthlyCases(getMonthlyTotalCases(year));
 	}, []);
 
 	const jan = monthlyCases.jan;
@@ -37,13 +39,13 @@ const Casechart = () => {
 		]
 	};
 
-	const getMonthlyTotalCases = async () => {
+	const getMonthlyTotalCases = async (year) => {
 		const baseUrl = 'https://pelard-n.herokuapp.com';
 		const secret = '2cfb9e9a-34a9-4843-961f-6e2639c41856-b10445eb-a0e8-4fa2-b636-015b2f1e3660';
 		const token = await AdminRequest.getToken({ secret });
-
+		let url  = `${baseUrl}/reports/monthly?year=${year}`
 		axios
-			.get(`${baseUrl}/reports/monthly`, {
+			.get(url,{
 				method: 'GET',
 				headers: {
 					'content-Type': 'application/json',
@@ -65,6 +67,8 @@ const Casechart = () => {
 			<h3>
 				Reported cases in {monthlyCases.year}-<strong> {monthlyCases.total}</strong>
 			</h3>
+			<input placeholder="Enter Year" value={year} onChange={(e) => setYear(e.target.value)} />
+						<button onClick={getMonthlyTotalCases(year)}>Search</button>
 			<Bar
 				width={100}
 				height={300}
