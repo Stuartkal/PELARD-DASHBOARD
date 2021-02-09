@@ -1,70 +1,88 @@
-import React,{useEffect} from 'react'
-import {useSelector,useDispatch} from 'react-redux'
 import Chart from "chart.js";
-import * as actionCreators from '../../../Store/ActionCreators'
+import React, { useEffect, useState } from "react";
+import { connect, useStore } from "react-redux";
+import { ActionCreators } from "../../../Store/ActionCreators";
+import "./Styles.scss";
 
-import './Styles.scss'
+const chartRef = React.createRef();
 
-const chartRef = React.createRef()
+const mapState = ({ monthlyReport, user }) => ({ monthlyReport, user });
 
-const CaseChart = () => {
+const mapProps = (dispatch) => ({
+  getMonthlyReport: (_id) => dispatch(ActionCreators.getMonthly(_id)),
+});
 
-    const month = useSelector(state => state.report.monthly)
-    console.log(month)
+const connector = connect(mapState, mapProps);
 
-    const months = parseInt(month.jul)
+const selectMonthlyReport = ({ monthlyReport }) => monthlyReport;
 
-    // const jan = month.jan
-    // const feb = month && month.feb
-    // const mar = month.mar
-    // const apr = month.apr
-    // const may = month.may
-    // const jun = month.jun
-    // const jul = month.jul
-    // const aug = month.aug
-    // const sep = month.sep
-    // const oct = month.oct
-    // const nov = month.nov
-    // const dec = month.dec
+const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
+  const [months, setMonths] = useState(monthlyReport);
+  const store = useStore();
+  const labels = [
+    "Jan",
+    "Feb",
+    "March",
+    " April",
+    " May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const data = Object.values(months);
+  data.splice(12, 2);
 
-    const dispatch = useDispatch()
-    
-    useEffect(()=>{
+  useEffect(() => {
+    getMonthlyReport(user._id);
+  }, [getMonthlyReport, user._id]);
 
-        dispatch(actionCreators.monthlyReport())
+  useEffect(() => {
+    const handleChangeMonthly = () => {
+      const currentMonthlyReport = selectMonthlyReport(store.getState());
+      if (months !== currentMonthlyReport) {
+        setMonths(currentMonthlyReport);
+      }
+    };
 
-        const myChartRef = chartRef.current.getContext("2d");
+    const unsubscribe = store.subscribe(handleChangeMonthly);
 
-         new Chart(myChartRef ,  {
-        type: "line",
-        data: {
-            //Bring in data
-            labels: ["Jan", "Feb", "March"," April"," May", "June", "July","August","September","October","November","December"],
-            datasets: [
-                {
-                    label: "Case Reported",
-                    data: [months],
-                    backgroundColor: '#5f4fc579',
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-        }
-    })
-    },[])
+    return () => {
+      unsubscribe();
+    };
+  }, [months, setMonths, store]);
 
-    return (
-        <div className="chart-main">
-            <h3>{month.year} Monthly Reported Cases</h3>
-            <canvas
-                id="myChart"
-                ref={chartRef}
-            />
-        </div>
-    )
-}
+  useEffect(() => {
+    const myChartRef = chartRef.current.getContext("2d");
 
-export default CaseChart
+    new Chart(myChartRef, {
+      type: "line",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Case Reported",
+            data,
+            backgroundColor: "#5f4fc579",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    });
+  }, [data, labels]);
 
+  return (
+    <div className="chart-main">
+      <h3>{months.year} Monthly Reported Cases</h3>
+      <canvas id="myChart" ref={chartRef} />
+    </div>
+  );
+};
+
+export default connector(CaseChart);
