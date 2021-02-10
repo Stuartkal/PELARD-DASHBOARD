@@ -1,9 +1,8 @@
 import * as React from "react";
 import {withRouter} from 'react-router-dom'
-import {useDispatch } from "react-redux";
 import { usePagination, useTable } from "react-table";
 import Pagination from "../Pagination/Pagination";
-import { ActionCreators } from "../../../Store/ActionCreators"
+
 
 import "./NewTable.css";
 
@@ -14,12 +13,10 @@ const NewTable = ({
   loading,
   pageCount,
   numCases,
-  history,
+  getCaseHandler,
+  history
 }) => {
 
-  const dispatch = useDispatch()
-  // ()=> history.push("/case-details")
-  // console.log(data)
   const {
     getTableProps,
     getTableBodyProps,
@@ -75,9 +72,10 @@ const NewTable = ({
           </thead>
           <tbody {...getTableBodyProps()}>
             {page.map((row, i) => {
+              // console.log(row.original._id)
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className="table-detail-row" onClick={() => alert('gg')}>
+                <tr {...row.getRowProps()} className="table-detail-row" onClick={()=> getCaseHandler(row.original._id)} >
                   {row.cells.map((cell) => {
                     return (
                       <td {...cell.getCellProps()}>{cell.render("Cell")}</td>

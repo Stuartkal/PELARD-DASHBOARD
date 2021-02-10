@@ -6,7 +6,7 @@ import Sidebar from '../../Navigation/Sidebar'
 import './Styles.scss'
 const EditCase = (props) => {
 
-    const violation = useSelector(state => state.get.case)
+    const violation = useSelector((state) => state.singleCase);
 
     const dispatch = useDispatch()
 

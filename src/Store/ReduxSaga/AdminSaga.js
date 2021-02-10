@@ -104,12 +104,13 @@ function* getDistrict({ _id, year }) {
   } catch (error) {}
 }
 
-function* singleCase({_id, id}){
+function* singleCase({_id, id, callback}){
   try{
     yield put(ActionCreators.loading());
-    const response = yield call(getSingleCase,_id, id);
+    const response = yield call(getSingleCase, _id, id);
     yield all([
-      put(ActionCreators.setCase(response.data)),
+      put(ActionCreators.setSingleCase(response.data)),
+      callback({success: true, res:response.data}),
       put(ActionCreators.stopLoading())
     ]);
     yield put(ActionCreators.stopLoading());

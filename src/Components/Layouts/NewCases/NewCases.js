@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect, useStore } from "react-redux";
+import {withRouter} from 'react-router-dom'
 import { ActionCreators } from "../../../Store/ActionCreators";
 import Filters from "../Filters/Filters";
 import "./NewCases.css";
@@ -11,7 +12,6 @@ const mapState = (state) => ({
   cases: state.cases,
   user: state.user,
   numCases: state.numCases,
-  singleCase: state.singleCase
 });
 
 const mapProps = (dispatch) => ({
@@ -19,7 +19,7 @@ const mapProps = (dispatch) => ({
     dispatch(
       ActionCreators.gettingCases({ _id, pageIndex, pageSize, filter, range })
     ),
-  getSingleCase: (_id, id) => dispatch(ActionCreators.gettingCase({_id, id}))
+  getSingleCase:(_id,id,callback) => dispatch(ActionCreators.gettingCase({_id, id,callback}))
 });
 
 const connector = connect(mapState, mapProps);
@@ -30,7 +30,7 @@ const selectCases = (state) => {
 
 const selectLoading = (state) => state.loading;
 
-const NewCases = ({ getCases, getSingleCase, cases, singleCase, user, loading, numCases }) => {
+const NewCases = ({ getCases, cases, getSingleCase, user, loading, numCases, history }) => {
   const store = useStore();
 
   const [violations, setViolations] = useState(cases);
@@ -90,10 +90,7 @@ const NewCases = ({ getCases, getSingleCase, cases, singleCase, user, loading, n
 
   useEffect(() => {
     getCases(user._id, 10, 1);
-    getSingleCase(user._id,"5fd72e90194a44000473910f")
-  }, [getCases, user._id,getSingleCase]);
-
-  console.log(singleCase, 'rrr')
+  }, [getCases, user._id]);
 
   const fetchData = React.useCallback(
     ({ pageIndex, pageSize }) => {
@@ -138,8 +135,13 @@ const NewCases = ({ getCases, getSingleCase, cases, singleCase, user, loading, n
     }
   };
 
-  const getCaseHandler = () => {
-
+  const getCaseHandler = (id) => {
+    getSingleCase(user._id,id, (res) =>{
+      console.log(res)
+      if(res.success === true){
+        history.push('./case-details',{res})
+      }
+    })
   }
 
   return (
@@ -162,9 +164,10 @@ const NewCases = ({ getCases, getSingleCase, cases, singleCase, user, loading, n
         loading={loading}
         numCases={numCases}
         userId = {user._id}
+        getCaseHandler={getCaseHandler}
       />
     </div>
   );
 };
 
-export default connector(NewCases);
+export default withRouter(connector(NewCases));

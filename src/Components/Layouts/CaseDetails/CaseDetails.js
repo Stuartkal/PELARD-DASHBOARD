@@ -8,7 +8,7 @@ import logo from "../../../assets/images/pelard.png";
 import "./Styles.scss";
 const CaseDetails = (props) => {
   const violation = useSelector((state) => state.singleCase);
-
+  console.log(props)
   // const dispatch = useDispatch();
 
   // useEffect(()=>{

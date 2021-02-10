@@ -118,7 +118,7 @@ const loggedIn = (state = false, { type }) => {
 
 const singleCase = (state = [], {type, payload}) => {
   switch (type) {
-    case actions.SET_CASE:
+    case actions.SET_SINGLE_CASE:
       return payload
     case actions.REMOVE_CASES:
       return []
