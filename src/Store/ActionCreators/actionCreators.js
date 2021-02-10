@@ -81,3 +81,15 @@ export const getDistrict = (_id) => ({
   type: actions.GET_DISTRICT,
   _id,
 });
+
+export const setCase = (payload) => ({
+  type: actions.SET_CASE,
+  payload
+})
+
+export const gettingCase = ({_id, id}) => ({
+  type: actions.GETTING_CASE,
+  _id,
+  id
+})
+

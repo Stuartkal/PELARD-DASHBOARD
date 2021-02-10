@@ -1,18 +1,19 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React,{useEffect} from "react";
+import { useSelector} from "react-redux";
 import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
-import Modal from "../UI/Modal";
-import EditCase from "./EditCase";
 import logo from "../../../assets/images/pelard.png";
-// import { ActionCreators } from "../../../Store/ActionCreators";
+
 
 import "./Styles.scss";
 const CaseDetails = (props) => {
-  const violation = useSelector((state) => state.get.case);
-  // console.log(violation && violation.involved,'here')
+  const violation = useSelector((state) => state.singleCase);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+  // useEffect(()=>{
+  //   dispatch(ActionCreators.deleteCase())
+  // },[])
 
   const updateRedirect = () => {
     props.history.push("/edit-details");

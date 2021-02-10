@@ -60,6 +60,8 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
   useEffect(() => {
     const myChartRef = chartRef.current.getContext("2d");
 
+  
+    
     new Chart(myChartRef, {
       type: "line",
       data: {
@@ -68,21 +70,30 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
           {
             label: "Case Reported",
             data,
-            backgroundColor: "#5f4fc579",
+            backgroundColor: "#059ca183",
           },
         ],
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        // maintainAspectRatio: false,
       },
     });
   }, [data, labels]);
 
+  const height = '100'
+
   return (
     <div className="chart-main">
+      <div className="search">
+        <input
+          placeholder="Enter year"
+          value={year}
+          onChange={(e)=> setYear(e.target.value)}
+        />
+      </div>
       <h3>{months.year} Monthly Reported Cases</h3>
-      <canvas id="myChart" ref={chartRef} />
+      <canvas height={height} id="myChart" ref={chartRef} />
     </div>
   );
 };

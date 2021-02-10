@@ -5,11 +5,13 @@ import Filters from "../Filters/Filters";
 import "./NewCases.css";
 import NewTable from "./NewTable";
 
+
 const mapState = (state) => ({
   loading: state.loading,
   cases: state.cases,
   user: state.user,
   numCases: state.numCases,
+  singleCase: state.singleCase
 });
 
 const mapProps = (dispatch) => ({
@@ -17,6 +19,7 @@ const mapProps = (dispatch) => ({
     dispatch(
       ActionCreators.gettingCases({ _id, pageIndex, pageSize, filter, range })
     ),
+  getSingleCase: (_id, id) => dispatch(ActionCreators.gettingCase({_id, id}))
 });
 
 const connector = connect(mapState, mapProps);
@@ -27,7 +30,7 @@ const selectCases = (state) => {
 
 const selectLoading = (state) => state.loading;
 
-const NewCases = ({ getCases, cases, user, loading, numCases }) => {
+const NewCases = ({ getCases, getSingleCase, cases, singleCase, user, loading, numCases }) => {
   const store = useStore();
 
   const [violations, setViolations] = useState(cases);
@@ -87,7 +90,10 @@ const NewCases = ({ getCases, cases, user, loading, numCases }) => {
 
   useEffect(() => {
     getCases(user._id, 10, 1);
-  }, [getCases, user._id]);
+    getSingleCase(user._id,"5fd72e90194a44000473910f")
+  }, [getCases, user._id,getSingleCase]);
+
+  console.log(singleCase, 'rrr')
 
   const fetchData = React.useCallback(
     ({ pageIndex, pageSize }) => {
@@ -132,8 +138,12 @@ const NewCases = ({ getCases, cases, user, loading, numCases }) => {
     }
   };
 
+  const getCaseHandler = () => {
+
+  }
+
   return (
-    <div style={{ width: "85%" }}>
+    <div className="table">
       <Filters
         toggleFilter={toggleFilter}
         showReporterFilter={showReporterFilter}
@@ -151,6 +161,7 @@ const NewCases = ({ getCases, cases, user, loading, numCases }) => {
         pageCount={numCases}
         loading={loading}
         numCases={numCases}
+        userId = {user._id}
       />
     </div>
   );

@@ -20,6 +20,8 @@ const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
   const [report, setReport] = useState(districtReport);
   const store = useStore();
 
+  console.log(report)
+
   if (report.total) delete report.total;
   const labels = Object.keys(report);
   const data = Object.values(report);
@@ -47,27 +49,95 @@ const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
     const myPieRef = pieRef.current.getContext("2d");
 
     new Chart(myPieRef, {
-      type: "pie",
+      type: "line",
       data: {
         labels,
         datasets: [
           {
-            label: "Case Reported",
+            label: "Case Total in Districts",
             data,
-            backgroundColor: "#5f4fc579",
+            backgroundColor: "#059ca183",
           },
         ],
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        // maintainAspectRatio: false,
       },
     });
   }, [data, labels]);
 
+  const height = '100'
+
   return (
-    <div className="pie-main">
-      <canvas id="myChart" ref={pieRef} />
+    <div className="chart-main">
+      <h3>Total Cases Reported in Districts</h3>
+      <canvas height={height} id="myChart" ref={pieRef} />
+      <div className="districts">
+          <div className="card">
+              <div className="label-txt">
+                <h4>Gulu</h4>
+              </div>
+              <div className="case-txt">
+                <h6>Cases</h6>
+                <h4>{report.Gulu}</h4>
+              </div>
+          </div>
+          <div className="card">
+              <div className="label-txt">
+                <h4>Lamwo</h4>
+              </div>
+              <div className="case-txt">
+                <h6>Cases</h6>
+                <h4>{report.Lamwo}</h4>
+              </div>
+          </div>
+          <div className="card">
+              <div className="label-txt">
+                <h4>Kitgum</h4>
+              </div>
+              <div className="case-txt">
+                <h6>Cases</h6>
+                <h4>{report.Kitgum}</h4>
+              </div>
+          </div>
+          <div className="card">
+              <div className="label-txt">
+                <h4>Amuru</h4>
+              </div>
+              <div className="case-txt">
+                <h6>Cases</h6>
+                <h4>{report.Amuru}</h4>
+              </div>
+          </div>
+          <div className="card">
+              <div className="label-txt">
+                <h4>Nwoya</h4>
+              </div>
+              <div className="case-txt">
+                <h6>Cases</h6>
+                <h4>{report.Nwoya}</h4>
+              </div>
+          </div>
+          <div className="card">
+              <div className="label-txt">
+                <h4>Agogo</h4>
+              </div>
+              <div className="case-txt">
+                <h6>Cases</h6>
+                <h4>{report.Agogo}</h4>
+              </div>
+          </div>
+          <div className="card">
+              <div className="label-txt">
+                <h4>Pader</h4>
+              </div>
+              <div className="case-txt">
+                <h6>Cases</h6>
+                <h4>{report.Pader}</h4>
+              </div>
+          </div>
+      </div>
     </div>
   );
 };

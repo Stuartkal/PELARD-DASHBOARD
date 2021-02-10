@@ -1,6 +1,11 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { login, register } from "../../Requests/auth";
-import { getReportedCases } from "../../Requests/cases";
+import { 
+  getReportedCases,
+  getSingleCase,
+  updateCase,
+  deleteCase 
+} from "../../Requests/cases";
 import {
   districtReport,
   monthlyReport as getMonthlyReport,
@@ -99,6 +104,19 @@ function* getDistrict({ _id, year }) {
   } catch (error) {}
 }
 
+function* singleCase({_id, id}){
+  try{
+    yield put(ActionCreators.loading());
+    const response = yield call(getSingleCase,_id, id);
+    yield all([
+      put(ActionCreators.setCase(response.data)),
+      put(ActionCreators.stopLoading())
+    ]);
+    yield put(ActionCreators.stopLoading());
+  }
+  catch(error){}
+}
+
 function* watchUserLogin() {
   yield takeLatest(actions.LOG_IN, loginUser);
 }
@@ -119,10 +137,15 @@ function* watchDistrict() {
   yield takeLatest(actions.GET_DISTRICT, getDistrict);
 }
 
+function* watchGetSingleCase() {
+  yield takeLatest(actions.GETTING_CASE,singleCase)
+}
+
 export {
   watchUserRegistration,
   watchUserLogin,
   watchAllReportedCases,
+  watchGetSingleCase,
   watchDistrict,
   watchMonthly,
 };

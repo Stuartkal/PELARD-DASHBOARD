@@ -14,22 +14,78 @@
     background-color: #fff;
     flex-direction: column;
     padding: 10px;
+    margin-bottom: 1rem;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    background-color: #f7f7f7;
     
+    input {
+        border: none;
+        outline: none;
+        height: 40px;
+        padding-left: 5px;
+        background: none;
+        width: 100%;
+    }
+
+    i{
+        color: rgba(0,0,0,0.3);
+    }
+}
+
+.search:hover {
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
 }
 
 .districts {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 75%;
+    width: 100%;
     margin-top: 1rem;
 }
 
-.pie-main {
+.card {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
-    width: 40%;
-    
+    width: 13%;
+    height: 60px;
+    border-radius: 5px;
+    background-color: #059ca1; 
+}
+
+.label-txt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #fff;
+    padding: 5px;
+    height: 100%;
+
+    h4 {
+        color: #19579b;
+    }
+}
+
+.case-txt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    h4 {
+        color: #fff;
+        margin: 0;
+    }
+    h6 {
+        color: rgba(248, 242, 242, 0.575);
+        margin: 0;
+    }
 }

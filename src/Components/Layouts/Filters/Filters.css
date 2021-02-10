@@ -6,6 +6,14 @@
 
 input {
   font-size: medium;
+  background: #f7f7f7;
+  outline: none;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+input:focus {
+  border: none;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
 .button-close {

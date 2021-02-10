@@ -16,10 +16,7 @@ const Home = () => {
             <Sidebar/>
             <div className="home-main">
                 <CaseChart/>
-                <div className="districts">
-                    <DistrictCase/>
-                    <DistrictCase/>
-                </div>
+                <DistrictCase/>
             </div>
         </div>
     )

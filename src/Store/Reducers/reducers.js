@@ -116,6 +116,17 @@ const loggedIn = (state = false, { type }) => {
   }
 };
 
+const singleCase = (state = [], {type, payload}) => {
+  switch (type) {
+    case actions.SET_CASE:
+      return payload
+    case actions.REMOVE_CASES:
+      return []
+    default:
+      return state
+  }
+}
+
 export default {
   modalShowing,
   cases,
@@ -128,4 +139,5 @@ export default {
   monthlyReport,
   districtReport,
   loggedIn,
+  singleCase
 };

@@ -18,6 +18,10 @@
   background-color: #ddd;
 }
 
+#table {
+  width: 100%;
+}
+
 #violations th {
   padding-top: 12px;
   padding-bottom: 12px;
