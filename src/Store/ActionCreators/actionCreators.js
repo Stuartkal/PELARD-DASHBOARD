@@ -71,6 +71,13 @@ export const setMonthly = (report) => ({ type: actions.SET_MONTHLY, report });
 
 export const setDistrict = (report) => ({ type: actions.SET_DISTRICT, report });
 
-export const getMonthly = (_id) => ({ type: actions.GET_MONTHLY, _id });
+export const getMonthly = (_id, year) => ({
+  type: actions.GET_MONTHLY,
+  _id,
+  year,
+});
 
-export const getDistrict = (_id) => ({ type: actions.GET_DISTRICT, _id });
+export const getDistrict = (_id) => ({
+  type: actions.GET_DISTRICT,
+  _id,
+});

@@ -1,9 +1,10 @@
 import { getToken } from "./auth";
 import { baseUrl } from "./config";
 
-export const monthlyReport = async (_id) => {
+export const monthlyReport = async (_id, year) => {
   const Authorization = await getToken(_id);
-  const response = await fetch(`${baseUrl}/reports/monthly`, {
+  const url = `${baseUrl}/reports/monthly?year=${year}`;
+  const response = await fetch(url, {
     method: "GET",
     headers: {
       Authorization,
@@ -16,7 +17,8 @@ export const monthlyReport = async (_id) => {
 
 export const districtReport = async (_id) => {
   const Authorization = await getToken(_id);
-  const response = await fetch(`${baseUrl}/reports/districts`, {
+  const url = `${baseUrl}/reports/districts`;
+  const response = await fetch(url, {
     method: "GET",
     headers: {
       Authorization,

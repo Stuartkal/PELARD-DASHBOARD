@@ -76,10 +76,10 @@ function* reportedCases({ _id, pageSize, pageIndex, filter, range }) {
   }
 }
 
-function* montlyReport({ _id }) {
+function* montlyReport({ _id, year }) {
   try {
     yield put(ActionCreators.loading());
-    const response = yield call(getMonthlyReport, _id);
+    const response = yield call(getMonthlyReport, _id, year);
     yield all([
       put(ActionCreators.setMonthly(response.data)),
       put(ActionCreators.stopLoading()),
@@ -87,11 +87,14 @@ function* montlyReport({ _id }) {
   } catch (error) {}
 }
 
-function* getDistrict({ _id }) {
+function* getDistrict({ _id, year }) {
   try {
     yield put(ActionCreators.loading());
     const response = yield call(districtReport, _id);
-    console.log(response);
+    yield all([
+      put(ActionCreators.setDistrict(response.data)),
+      put(ActionCreators.stopLoading()),
+    ]);
     yield put(ActionCreators.stopLoading());
   } catch (error) {}
 }
