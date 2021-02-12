@@ -6,7 +6,7 @@ import { AdminRequest } from '../../../Store/API';
 
 const Casechart = () => {
 	const [ monthlyCases, setMonthlyCases ] = useState({});
-	const [year, setYear] = useState()
+	const [year, setYear] = useState(new Date().getFullYear())
 	// console.log(monthlyCases)
 
 	useEffect(() => {
@@ -67,8 +67,11 @@ const Casechart = () => {
 			<h3>
 				Reported cases in {monthlyCases.year}-<strong> {monthlyCases.total}</strong>
 			</h3>
+			<div className="search">
+				<p>Enter Year</p>
 			<input placeholder="Enter Year" value={year} onChange={(e) => setYear(e.target.value)} />
-						<button onClick={getMonthlyTotalCases(year)}>Search</button>
+						<i class="material-icons" onClick={getMonthlyTotalCases(year)}>search</i>
+			</div>
 			<Bar
 				width={100}
 				height={300}
