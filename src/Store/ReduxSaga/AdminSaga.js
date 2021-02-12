@@ -1,10 +1,12 @@
+import { TodayRounded } from "@material-ui/icons";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { login, register } from "../../Requests/auth";
 import { 
   getReportedCases,
   getSingleCase,
   updateCase,
-  deleteCase 
+  deleteCase,
+  generatePdf
 } from "../../Requests/cases";
 import {
   districtReport,
@@ -118,6 +120,28 @@ function* singleCase({_id, id, callback}){
   catch(error){}
 }
 
+function* removeCase({_id, id, callback}){
+  try{
+      yield put(ActionCreators.loading());
+      const response = yield call(deleteCase, _id, id);
+      yield all([
+        callback({success: true, res:response.data}),
+        put(ActionCreators.stopLoading())
+      ])
+      yield put(ActionCreators.stopLoading());
+  }
+  catch(error){}
+}
+
+function* downloadPdf({_id}){
+  try{
+      yield put(ActionCreators.loading());
+      const response = yield call(generatePdf,_id);
+      yield put(ActionCreators.stopLoading());
+  }
+  catch(error){}
+}
+
 function* watchUserLogin() {
   yield takeLatest(actions.LOG_IN, loginUser);
 }
@@ -142,6 +166,14 @@ function* watchGetSingleCase() {
   yield takeLatest(actions.GETTING_CASE,singleCase)
 }
 
+function* watchDeleteCase() {
+  yield takeLatest(actions.DELETING_CASE,removeCase)
+}
+
+function* watchGeneratePdf() {
+  yield takeLatest(actions.GENERATING_PDF,downloadPdf)
+}
+
 export {
   watchUserRegistration,
   watchUserLogin,
@@ -149,4 +181,6 @@ export {
   watchGetSingleCase,
   watchDistrict,
   watchMonthly,
+  watchDeleteCase,
+  watchGeneratePdf
 };

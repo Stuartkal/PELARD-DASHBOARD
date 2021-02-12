@@ -15,7 +15,7 @@ const connector = connect(mapState, mapDispatch);
 const selectLoggedIn = ({ loggedIn }) => loggedIn;
 
 const Login = ({ loading, logIn, history }) => {
-  const [userName, setUserName] = useState("stuwie");
+  const [userName, setUserName] = useState("eddy");
   const [password, setPassword] = useState("pass0123");
   const store = useStore();
 

@@ -58,7 +58,7 @@
     width: 13%;
     height: 60px;
     border-radius: 5px;
-    background-color: #059ca1; 
+    background-color: #6055a5; 
 }
 
 .label-txt {
@@ -70,7 +70,7 @@
     height: 100%;
 
     h4 {
-        color: #19579b;
+        color: rgba(248, 242, 242, 0.842);
     }
 }
 
@@ -87,5 +87,66 @@
     h6 {
         color: rgba(248, 242, 242, 0.575);
         margin: 0;
+    }
+}
+
+//role
+
+.role-main {
+    margin: 150px 300px;
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.request-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    transition: 0.5s ease-in-out;
+    flex-direction: column;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    
+
+    select {
+        width: 60%;
+        height: 40px;
+        background-color: #F7F7F7;
+        border: none;
+        outline: none;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        outline: none;
+        transition: 0.5s ease-in-out;
+        background-color: #059ca1;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+}
+
+.request-modal button:hover {
+    cursor: pointer;
+}
+
+.note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin-top: 1rem;
+
+    h4 {
+        text-align: center;
     }
 }

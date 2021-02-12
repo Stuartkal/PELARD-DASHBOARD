@@ -5,6 +5,7 @@ import Home from '../Layouts/Home/Home'
 import Case from '../Layouts/Cases/Cases'
 import CaseDetails from '../Layouts/CaseDetails/CaseDetails'
 import EditCase from '../Layouts/CaseDetails/EditCase'
+import RequestRole from '../Layouts/Home/RoleRequest'
 
 const index = () => {
     return (
@@ -15,6 +16,7 @@ const index = () => {
                 <Route path="/cases" component={Case}/>
                 <Route path="/case-details" component={CaseDetails}/>
                 <Route path="/edit-details" component={EditCase}/>
+                <Route path="/role" component={RequestRole}/>
             </Switch>
         </BrowserRouter>
     )

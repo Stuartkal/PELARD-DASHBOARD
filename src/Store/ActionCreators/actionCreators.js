@@ -94,3 +94,23 @@ export const gettingCase = ({_id, id, callback}) => ({
   callback
 })
 
+export const deletingCase = (_id, id,callback )=> ({
+  type: actions.DELETING_CASE,
+  _id,
+  id,
+  callback
+})
+
+export const updatingCase = ({_id, id, body, callback })=> ({
+  type: actions.UPDATING_CASE,
+  _id,
+  id,
+  body,
+  callback
+})
+
+export const generatingPdf = (_id)=> ({
+  type: actions.GENERATING_PDF,
+  _id,
+})
+

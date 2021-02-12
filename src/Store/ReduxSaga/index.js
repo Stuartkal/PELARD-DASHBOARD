@@ -5,7 +5,9 @@ import {
   watchMonthly,
   watchUserLogin,
   watchUserRegistration,
-  watchGetSingleCase
+  watchGetSingleCase,
+  watchDeleteCase,
+  watchGeneratePdf
 } from "./AdminSaga";
 
 export default function* rootSaga() {
@@ -15,6 +17,8 @@ export default function* rootSaga() {
     watchAllReportedCases(),
     watchDistrict(),
     watchMonthly(),
-    watchGetSingleCase()
+    watchGetSingleCase(),
+    watchDeleteCase(),
+    watchGeneratePdf()
   ]);
 }

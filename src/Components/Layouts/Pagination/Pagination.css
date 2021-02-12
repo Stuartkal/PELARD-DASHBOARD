@@ -15,7 +15,7 @@
 .awesome {
   color: white;
   padding: 10px 25px;
-  background-color: #059ca1;
+  background-color: #6055a5;
 }
 
 button {
@@ -27,7 +27,7 @@ button {
 }
 
 button:hover {
-  background-color: #03d9e0;
+  background-color: #6055a5;
 }
 
 .input {

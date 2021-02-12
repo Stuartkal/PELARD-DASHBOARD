@@ -1,19 +1,26 @@
 import React,{useEffect} from "react";
-import { useSelector} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 import logo from "../../../assets/images/pelard.png";
+import {ActionCreators} from "../../../Store/ActionCreators"
 
 
 import "./Styles.scss";
 const CaseDetails = (props) => {
-  const violation = useSelector((state) => state.singleCase);
-  console.log(props)
-  // const dispatch = useDispatch();
 
-  // useEffect(()=>{
-  //   dispatch(ActionCreators.deleteCase())
-  // },[])
+  const violation = useSelector((state) => state.singleCase);
+  const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+  
+ const deleteViolationHandler = () => {
+   dispatch(ActionCreators.deletingCase(user._id,violation._id,(res)=>{
+     if(res.success === true){
+       props.history.push('/cases')
+     }
+   }))
+ }
 
   const updateRedirect = () => {
     props.history.push("/edit-details");
@@ -38,15 +45,14 @@ const CaseDetails = (props) => {
               <h4>{convertDate(violation.reportedDateAndTime)}</h4>
               <i
                 class="material-icons"
-                onClick={() => {}}
-                //   dispatch(actionCreators.generatePdf(violation._id))
+                onClick={() => dispatch(ActionCreators.generatingPdf(violation._id))}
               >
                 download
               </i>
               <i class="material-icons" onClick={updateRedirect}>
                 edit
               </i>
-              <i class="material-icons">delete</i>
+              <i class="material-icons" onClick={deleteViolationHandler}>delete</i>
             </div>
           </div>
           <div className="case-detail">
@@ -194,7 +200,7 @@ const CaseDetails = (props) => {
                           <h5>Link: </h5>
                         </div>
                         <div className="row-text">
-                          <h5>{injure.link}</h5>
+                          <img src={injure.link} alt="injury photo"/>
                         </div>
                       </div>
                     </div>
