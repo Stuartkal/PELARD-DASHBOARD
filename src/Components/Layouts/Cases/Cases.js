@@ -8,10 +8,13 @@ const Cases = (props) => {
   return (
     <div>
       <Navbar />
-      <Sidebar />
-
       <div className="case-main">
-        <NewCases />
+        <div className="left-column">
+          <Sidebar />
+        </div>
+        <div className="right-column">
+          <NewCases />
+        </div>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
-import { TodayRounded } from "@material-ui/icons";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { login, register } from "../../Requests/auth";
 import { 
   getReportedCases,
   getSingleCase,
   updateCase,
+  updateUserRole,
   deleteCase,
   generatePdf
 } from "../../Requests/cases";
@@ -12,6 +12,14 @@ import {
   districtReport,
   monthlyReport as getMonthlyReport,
 } from "../../Requests/reports";
+import {
+  getUsers,
+  getApplications,
+  getApplication,
+  updateUser,
+  deleteUser
+}
+from "../../Requests/admin"
 import { ActionCreators } from "../ActionCreators";
 import actions from "../Actions";
 
@@ -42,7 +50,7 @@ function* registerUser({
   }
 }
 
-function* loginUser({ userName, password }) {
+function* loginUser({ userName, password, callback }) {
   try {
     yield put(ActionCreators.loading());
     const response = yield call(login, userName, password);
@@ -50,11 +58,14 @@ function* loginUser({ userName, password }) {
     yield all([
       put(ActionCreators.setUser(response.data.user)),
       put(ActionCreators.setToken(response.token)),
+      callback({success: true, res:response.data}),
       put(ActionCreators.loggedIn()),
       put(ActionCreators.stopLoading()),
     ]);
   } catch (error) {
-    yield put(ActionCreators.setError(error));
+    yield all([
+      put(ActionCreators.setError(error)),
+    ]);
   }
 }
 
@@ -133,6 +144,9 @@ function* removeCase({_id, id, callback}){
   catch(error){}
 }
 
+//UpdateCase
+
+
 function* downloadPdf({_id}){
   try{
       yield put(ActionCreators.loading());
@@ -141,6 +155,33 @@ function* downloadPdf({_id}){
   }
   catch(error){}
 }
+
+function* updateRole({_id,role}){
+  try{
+    const response = yield call(updateUserRole, _id,role)
+    yield put(ActionCreators.setSuccessMessage(response.message))
+  }
+  catch(error){}
+}
+
+//admin sagaz
+
+function* getAllUsers({_id}){
+  try{
+    const response = yield call(getUsers, _id)
+    yield put(ActionCreators.setUsers(response.data))
+  }
+  catch(error){}
+}
+
+function* getAllApplications({_id}){
+  try{
+    const response = yield call(getApplications,_id)
+    yield put(ActionCreators.setApplications(response.data))
+  }
+  catch(error){}
+}
+
 
 function* watchUserLogin() {
   yield takeLatest(actions.LOG_IN, loginUser);
@@ -174,6 +215,18 @@ function* watchGeneratePdf() {
   yield takeLatest(actions.GENERATING_PDF,downloadPdf)
 }
 
+function* watchUpdateRole() {
+  yield takeLatest(actions.UPDATE_USER_ROLE, updateRole)
+}
+
+function* watchGetAllUsers() {
+  yield takeLatest(actions.GET_ALL_USERS,getAllUsers)
+}
+
+function* watchGetAllApplications() {
+  yield takeLatest(actions.GET_ALL_APPLICATIONS,getAllApplications)
+}
+
 export {
   watchUserRegistration,
   watchUserLogin,
@@ -182,5 +235,8 @@ export {
   watchDistrict,
   watchMonthly,
   watchDeleteCase,
-  watchGeneratePdf
+  watchGeneratePdf,
+  watchUpdateRole,
+  watchGetAllUsers,
+  watchGetAllApplications
 };

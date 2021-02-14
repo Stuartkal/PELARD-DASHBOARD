@@ -64,6 +64,15 @@ const modalShowing = (state = false, { type }) => {
   }
 };
 
+const success = (state = "", { type, payload }) => {
+  switch (type) {
+    case actions.SET_SUCCESS_MESSAGE:
+      return payload;
+      default:
+      return state;
+  }
+};
+
 const error = (state = "", { type, payload }) => {
   switch (type) {
     case actions.SET_ERROR:
@@ -127,12 +136,33 @@ const singleCase = (state = [], {type, payload}) => {
   }
 }
 
+const users = (state = {}, { type, payload }) => {
+  switch (type) {
+    case actions.SET_USERS:
+      return payload;
+    default:
+      return state;
+  }
+};
+
+const applications = (state = {}, { type, payload }) => {
+  switch (type) {
+    case actions.SET_APPLICATIONS:
+      return payload;
+    default:
+      return state;
+  }
+};
+
 export default {
   modalShowing,
   cases,
   user,
+  users,
+  applications,
   loading,
   token,
+  success,
   error,
   registering,
   numCases,

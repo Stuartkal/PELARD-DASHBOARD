@@ -1,9 +1,21 @@
 
 .case-detail-main {
-    margin: 70px 300px;
-    width: 75%;
+    margin: 70px auto;
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.left-column{
+    width: 20%;
+}
+
+.right-column {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .detail-container {
@@ -11,7 +23,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: 95%;
     padding: 10px;
     background-color: #fff;
     box-sizing: border-box;

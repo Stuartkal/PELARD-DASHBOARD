@@ -1,44 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { connect, useStore } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { withRouter } from "react-router";
 import { ActionCreators } from "../../../Store/ActionCreators";
 import "./Styles.scss";
 
 const mapState = ({ loggedIn, loading }) => ({ loggedIn, loading });
 const mapDispatch = (dispatch) => ({
-  logIn: (userName, password) =>
-    dispatch(ActionCreators.logIn({ userName, password })),
+  logIn: (userName, password, callback) =>
+    dispatch(ActionCreators.logIn({ userName, password, callback })),
 });
 
 const connector = connect(mapState, mapDispatch);
 
-const selectLoggedIn = ({ loggedIn }) => loggedIn;
 
-const Login = ({ loading, logIn, history }) => {
-  const [userName, setUserName] = useState("eddy");
-  const [password, setPassword] = useState("pass0123");
-  const store = useStore();
+
+const Login = ({  logIn, history }) => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const error = useSelector(state => state.error)
+
 
   const loginHandler = (e) => {
     e.preventDefault();
-    logIn(userName, password);
+    logIn(userName, password,(res)=>{
+      if(res.success === true){
+        history.push('./overview')
+      }
+    });
   };
 
-  useEffect(() => {
-    const handler = () => {
-      const state = store.getState();
-      console.log(state, selectLoggedIn(state));
-      if (selectLoggedIn(store.getState())) {
-        history.push("./overview");
-      }
-    };
 
-    const unsubscribe = store.subscribe(handler);
 
-    return () => {
-      unsubscribe();
-    };
-  }, [history, store]);
+
 
   return (
     <div className="auth-main">
@@ -59,6 +54,7 @@ const Login = ({ loading, logIn, history }) => {
         />
         <button onClick={loginHandler}>Login</button>
         <a href="#">Forgot password? </a>
+        <p style={{color:'red', fontWeight:'bold'}}>{error.message}</p>
       </div>
     </div>
   );

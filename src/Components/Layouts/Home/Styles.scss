@@ -1,9 +1,21 @@
 
 .home-main {
-    margin: 70px 300px;
-    width: 75%;
+    margin: 70px auto;
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.left-column{
+    width: 20%;
+}
+
+.right-column {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -13,24 +25,35 @@
     justify-content: center;
     background-color: #fff;
     flex-direction: column;
+    width: 95%;
     padding: 10px;
     margin-bottom: 1rem;
+    
 }
 
 .search{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20%;
-    background-color: #f7f7f7;
+    width: 35%;
+
+    p {
+        color:#7fcccf;
+        margin-right: 0.5rem;
+    }
     
     input {
         border: none;
         outline: none;
-        height: 40px;
-        padding-left: 5px;
+        height: 30px;
+        text-align: center;
         background: none;
-        width: 100%;
+        padding-left: 5px;
+        width: 30%;
+        color: #fff;
+        background-color: #7fcccf;
+        // border: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
     }
 
     i{
@@ -38,9 +61,35 @@
     }
 }
 
-.search:hover {
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-    cursor: pointer;
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 50px;
+    background-color: #6055a5;
+    border-radius: 5px;
+    margin-top: 1rem;
+
+    h5 {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.856);
+    }
+}
+
+.total-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-left: 1px solid #fff;
+    width: 30%;
+    margin-left: 0.5rem;
+    h1 {
+        text-align: center;
+        margin: 0;
+        color: #fff;
+    }
 }
 
 .districts {
@@ -93,12 +142,11 @@
 //role
 
 .role-main {
-    margin: 150px 300px;
-    width: 75%;
+    margin: 100px auto;
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    display: flex;
 }
 
 .request-modal {
@@ -143,8 +191,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 60%;
     margin-top: 1rem;
+
+    h5 {
+        color: #059ca1;
+    }
 
     h4 {
         text-align: center;

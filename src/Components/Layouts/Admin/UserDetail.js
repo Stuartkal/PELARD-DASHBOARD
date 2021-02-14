@@ -1,29 +1,23 @@
 import React from 'react'
-// import {useDispatch} from 'react-redux'
 import Navbar from '../../Navigation/Navbar'
 import Sidebar from '../../Navigation/Sidebar'
-import CaseChart from './CaseChart'
-import DistrictCase from './DistrictCase'
-// import * as actionCreators from '../../../Store/ActionCreators'
 
 import './Styles.scss'
-const Home = () => {
-
-
+const UserDetail = () => {
     return (
         <div>
             <Navbar/>
-            <div className="home-main">
+            <Sidebar/>
+            <div className="user-detail-main">
                 <div className="left-column">
-                     <Sidebar/>
+                    <Sidebar/>
                 </div>
                 <div className="right-column">
-                    <CaseChart/>
-                    <DistrictCase/>
+                    <h1>User Details</h1>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Home
+export default UserDetail

@@ -6,6 +6,9 @@ import Case from '../Layouts/Cases/Cases'
 import CaseDetails from '../Layouts/CaseDetails/CaseDetails'
 import EditCase from '../Layouts/CaseDetails/EditCase'
 import RequestRole from '../Layouts/Home/RoleRequest'
+import Users from '../Layouts/Admin/Users'
+import UserDetail from '../Layouts/Admin/UserDetail'
+import Applications from '../Layouts/Admin/Applications'
 
 const index = () => {
     return (
@@ -17,6 +20,9 @@ const index = () => {
                 <Route path="/case-details" component={CaseDetails}/>
                 <Route path="/edit-details" component={EditCase}/>
                 <Route path="/role" component={RequestRole}/>
+                <Route path="/users" component={Users}/>
+                <Route path="/users-details" component={UserDetail}/>
+                <Route path="/applications" component={Applications}/>
             </Switch>
         </BrowserRouter>
     )

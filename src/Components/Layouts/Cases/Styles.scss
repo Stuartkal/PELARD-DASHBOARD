@@ -1,15 +1,27 @@
 
 .case-main {
-    margin: 70px 300px;
-    width: 75%;
+    margin: 70px auto;
+    width: 95%;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.left-column{
+    width: 20%;
+}
+
+.right-column {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .table-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 95%;
     justify-content: center;
     align-items: center;
     background-color: #fff;
@@ -18,7 +30,7 @@
     box-shadow: 1px 5px 10px rgba(0,0,0,0.1);
 
     table {
-		width: 100%;
+		width: 95%;
 	}
 }
 

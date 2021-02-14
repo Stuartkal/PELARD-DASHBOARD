@@ -76,6 +76,24 @@ export const updateCase = async (_id, id, body) => {
   return json;
 };
 
+export const updateUserRole = async (_id ,role) => {
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/user/${_id}/apply`
+
+  const response = await fetch(url,{
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization
+    },
+    body: JSON.stringify({role}),
+  })
+
+  const json = await response.json()
+ 
+  return json
+}
+
 export const generatePdf = (id) => {
   window.open(
     `https://pelard-n.herokuapp.com/documents/${id}/generate-pdf`,

@@ -20,6 +20,15 @@ const Sidebar = (props) => {
     props.history.push("./overview");
   };
 
+  const onclickUserHandler = () => {
+    props.history.push("./users");
+  };
+
+
+  const onclickRequestsHandler = () => {
+    props.history.push("./applications");
+  };
+
   let cases_link = (
     <div onClick={onclickCaseHandler} className="icon-hover">
           <div className="icon-column">
@@ -43,6 +52,18 @@ const Sidebar = (props) => {
           </div>
         </div>
         {cases_link}
+        <div onClick={onclickUserHandler} className="icon-hover">
+          <div className="icon-column">
+            <i className="material-icons">groups</i>
+            <h4>Users</h4>
+          </div>
+        </div>
+        <div onClick={onclickRequestsHandler} className="icon-hover">
+          <div className="icon-column">
+            <i className="material-icons">feed</i>
+            <h4>Applications</h4>
+          </div>
+        </div>
         <div className="icon-hover">
           <div className="icon-column">
             <i className="material-icons">report_problem</i>
