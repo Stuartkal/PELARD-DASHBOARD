@@ -14,9 +14,9 @@ const connector = connect(mapState, mapDispatch);
 
 
 
-const Login = ({  logIn, history }) => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+const Login = ({ logIn, history }) => {
+  const [userName, setUserName] = useState("stuwie");
+  const [password, setPassword] = useState("pass0123");
 
 
   const error = useSelector(state => state.error)
@@ -24,8 +24,8 @@ const Login = ({  logIn, history }) => {
 
   const loginHandler = (e) => {
     e.preventDefault();
-    logIn(userName, password,(res)=>{
-      if(res.success === true){
+    logIn(userName, password, (res) => {
+      if (res.success === true) {
         history.push('./overview')
       }
     });
@@ -54,7 +54,7 @@ const Login = ({  logIn, history }) => {
         />
         <button onClick={loginHandler}>Login</button>
         <a href="#">Forgot password? </a>
-        <p style={{color:'red', fontWeight:'bold'}}>{error.message}</p>
+        <p style={{ color: 'red', fontWeight: 'bold' }}>{error.message}</p>
       </div>
     </div>
   );

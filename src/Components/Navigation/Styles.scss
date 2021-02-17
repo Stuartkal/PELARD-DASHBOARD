@@ -1,6 +1,6 @@
 
 .nav-bar {
-    position:fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -10,85 +10,97 @@
     justify-content: center;
     height: 50px;
     background-color: #fff;
-}
-
-.nav-container {
+  }
+  
+  .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 95%;
-
+  
     h3 {
-        color: #01579b;
-        margin-right: 0.5rem;
+      color: #01579b;
+      margin-right: 0.5rem;
     }
-}
-
-.profile {
+  }
+  
+  .profile {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
-
+    width: 40%;
+  
     h4 {
-        color: #01579b; 
+      color: #01579b;
     }
-
+  
     button {
-        border: none;
-        height: 30px;
-        border-radius: 5px;
-        outline: none;
-        transition: 0.5s ease-in-out;
-        background-color: #059ca1;
-        color: #fff;
+      border: none;
+      height: 30px;
+      border-radius: 5px;
+      outline: none;
+      transition: 0.5s ease-in-out;
+      background-color: #059ca1;
+      color: #fff;
     }
-}
-
-.profile button:hover {
+  }
+  
+  .profile button:hover {
     cursor: pointer;
-}
-
-.sidebar {
+  }
+  
+  .logout {
+    margin-left: 2rem;
+  
+    h4 {
+      color: #059ca1;
+    }
+  
+    & h4:hover {
+      cursor: pointer;
+    }
+  }
+  
+  .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 20%;
     height: 100vh;
-    z-index: 50  ;
+    z-index: 50;
     display: flex;
     justify-content: center;
     background-color: #01579b;
-}
-
-.sidebar-container {
+  }
+  
+  .sidebar-container {
     justify-content: center;
     margin-top: 100px;
     width: 100%;
-}
-
-.icon-column {
+  }
+  
+  .icon-column {
     margin-left: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     i {
-        color: #fff;
-        font-size: 30px;
-        margin-right: 0.5rem;
+      color: #fff;
+      font-size: 30px;
+      margin-right: 0.5rem;
     }
     h4 {
-        color: #fff;
+      color: #fff;
     }
-}
-
-.icon-hover {
+  }
+  
+  .icon-hover {
     display: flex;
     align-items: center;
     width: 100%;
-}
-
-.icon-hover:hover {
+  }
+  
+  .icon-hover:hover {
     cursor: pointer;
     background-color: #01365eea;
-}
+  }

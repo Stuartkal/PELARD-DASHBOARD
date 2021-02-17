@@ -1,15 +1,16 @@
 import React from "react";
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { withRouter } from "react-router-dom";
 import "./Styles.scss";
 
 const Sidebar = (props) => {
 
   const user = useSelector((state) => state.user);
-  
+
 
   const role = user.role
-  const comfirm_role = 'contributor'
+  const contributor = 'contributor'
+  const admin = 'admin'
 
 
   const onclickCaseHandler = () => {
@@ -31,15 +32,38 @@ const Sidebar = (props) => {
 
   let cases_link = (
     <div onClick={onclickCaseHandler} className="icon-hover">
-          <div className="icon-column">
-            <i className="material-icons">view_list</i>
-            <h4>Cases</h4>
-          </div>
-        </div>
+      <div className="icon-column">
+        <i className="material-icons">view_list</i>
+        <h4>Cases</h4>
+      </div>
+    </div>
   )
 
-  if( JSON.stringify(role) !== JSON.stringify(comfirm_role) ){
+  let users = (
+    <div onClick={onclickUserHandler} className="icon-hover">
+      <div className="icon-column">
+        <i className="material-icons">groups</i>
+        <h4>Users</h4>
+      </div>
+    </div>
+  )
+
+  let applications = (
+    <div onClick={onclickRequestsHandler} className="icon-hover">
+      <div className="icon-column">
+        <i className="material-icons">feed</i>
+        <h4>Applications</h4>
+      </div>
+    </div>
+  )
+
+  if (JSON.stringify(role) !== JSON.stringify(contributor) && JSON.stringify(role) !== JSON.stringify(admin)) {
     cases_link = null
+  }
+
+  if (JSON.stringify(role) !== JSON.stringify(admin)) {
+    users = null
+    applications = null
   }
 
   return (
@@ -52,18 +76,8 @@ const Sidebar = (props) => {
           </div>
         </div>
         {cases_link}
-        <div onClick={onclickUserHandler} className="icon-hover">
-          <div className="icon-column">
-            <i className="material-icons">groups</i>
-            <h4>Users</h4>
-          </div>
-        </div>
-        <div onClick={onclickRequestsHandler} className="icon-hover">
-          <div className="icon-column">
-            <i className="material-icons">feed</i>
-            <h4>Applications</h4>
-          </div>
-        </div>
+        {users}
+        {applications}
         <div className="icon-hover">
           <div className="icon-column">
             <i className="material-icons">report_problem</i>

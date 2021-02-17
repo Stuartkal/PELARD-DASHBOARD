@@ -5,7 +5,7 @@ const token = (state = "", { type, payload }) => {
     case actions.SET_TOKEN:
       return payload;
     case actions.REMOVE_TOKEN:
-      return "";
+      return state;
     default:
       return state;
   }
@@ -24,7 +24,7 @@ const loading = (state = false, { type }) => {
 
 const user = (state = {}, { type, payload, error }) => {
   switch (type) {
-    case actions.SET_USER:
+    case actions.SET_LOGGEDIN_USER:
       return payload;
     case actions.REMOVE_USER:
       return {};
@@ -68,7 +68,7 @@ const success = (state = "", { type, payload }) => {
   switch (type) {
     case actions.SET_SUCCESS_MESSAGE:
       return payload;
-      default:
+    default:
       return state;
   }
 };
@@ -125,7 +125,7 @@ const loggedIn = (state = false, { type }) => {
   }
 };
 
-const singleCase = (state = [], {type, payload}) => {
+const singleCase = (state = [], { type, payload }) => {
   switch (type) {
     case actions.SET_SINGLE_CASE:
       return payload
