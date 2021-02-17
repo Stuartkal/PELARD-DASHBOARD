@@ -13,7 +13,7 @@ const Overview = () => {
 	};
 
 
-	const [ districtCases, setDistrictCases ] = useState({});
+	const [districtCases, setDistrictCases] = useState({});
 
 	useEffect(() => {
 		ViolationRequest.getDistrictTotalCases((response) => {
@@ -33,8 +33,8 @@ const Overview = () => {
 				</div>
 				<div className="chart-main">
 					<div className="chart-container">
-						
-						<Casechart  />
+
+						<Casechart />
 					</div>
 					<div className="chart-main-row">
 						<h2>CASE DISTRIBUTION IN DISTRICTS</h2>

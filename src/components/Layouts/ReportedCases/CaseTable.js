@@ -17,7 +17,7 @@ const CaseTable = ({ caseHeaders, data, toggleModal }) => {
 						return (
 							<tr id={row._id} className="table-detail-row" onClick={() => toggleModal(row)}>
 								<td>{row.reporter.name}</td>
-								<td>{row.location.name}</td>
+								<td>{row.location.district}</td>
 								<td>{row.type}</td>
 								<td>{row.reporter.contact}</td>
 								<td>{convertDate(row.reportedDateAndTime)}</td>
