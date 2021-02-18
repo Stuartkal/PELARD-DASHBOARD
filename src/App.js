@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Routes from './components/Routes/Routes';
+import Routes from '../src/Components/Routes/Routes';
 import { Provider } from 'react-redux';
 
 import storeCreator from './Store';

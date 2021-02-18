@@ -44,7 +44,7 @@ const Overview = () => {
 							<DistrictCases district="KITGUM" value={districtCases.Kitgum} text={districtCases.Kitgum} />
 							<DistrictCases district="AMURU" value={districtCases.Amuru} text={districtCases.Amuru} />
 							<DistrictCases district="NWOYA" value={districtCases.Nwoya} text={districtCases.Nwoya} />
-							<DistrictCases district="AGAGO" value={districtCases.Agogo} text={districtCases.Agogo} />
+							<DistrictCases district="AGAGO" value={districtCases.Agago} text={districtCases.Agago} />
 							<DistrictCases district="PADER" value={districtCases.Pader} text={districtCases.Pader} />
 						</div>
 					</div>
