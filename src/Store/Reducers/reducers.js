@@ -145,6 +145,15 @@ const users = (state = {}, { type, payload }) => {
   }
 };
 
+const numUsers = (state = 0, { type, number }) => {
+  switch (type) {
+    case actions.SET_NUM_USERS:
+      return number;
+    default:
+      return state;
+  }
+};
+
 const applications = (state = {}, { type, payload }) => {
   switch (type) {
     case actions.SET_APPLICATIONS:
@@ -166,6 +175,7 @@ export default {
   error,
   registering,
   numCases,
+  numUsers,
   monthlyReport,
   districtReport,
   loggedIn,

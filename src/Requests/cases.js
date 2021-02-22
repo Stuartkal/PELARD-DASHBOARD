@@ -63,23 +63,22 @@ export const updateCase = async (
   id,
   reporterName,
   reporterContact,
-  dateTime,
   violationType,
   violationDescription,
   village,
   districtOfViolation,
-  victimName,
-  otherVictim,
-  suspectName,
-  otherSuspect,
-  witnessName,
-  otherWitness,
-  injuries,
-  secure_url,
-  contactAuthority,
-  authorityResponse,
-  otherViolation,
-  fileDescription
+  // victimName,
+  // otherVictim,
+  // suspectName,
+  // otherSuspect,
+  // witnessName,
+  // otherWitness,
+  // injuries,
+  // secure_url,
+  // contactAuthority,
+  // authorityResponse,
+  // otherViolation,
+  // fileDescription
 ) => {
   const Authorization = await getToken(_id);
   const url = `${baseUrl}/violations/${id}`;
@@ -87,76 +86,74 @@ export const updateCase = async (
   const response = await fetch(url, {
     method: "PUT",
     headers: {
+      "Content-Type": "application/json",
       Authorization,
     },
     body: JSON.stringify({
-
-      reporter: {
-        name: reporterName,
-        contact: reporterContact,
-      },
-      dateTime: dateTime,
       type: violationType,
       description: violationDescription,
+      reporter: {
+        name: reporterName,
+        contact: reporterContact
+      },
       location: {
         name: village,
         district: districtOfViolation
       },
+      // involved: [
+      //   {
+      //     type: "victim", name: victimName,
+      //     relevantLinks: [
+      //       {
+      //         description: otherVictim,
+      //         link: 'string'
+      //       }
+      //     ]
+      //   },
 
-      involved: [
-        {
-          type: "victim", name: victimName,
-          relevantLinks: [
-            {
-              description: otherVictim,
-              link: 'string'
-            }
-          ]
-        },
+      //   {
+      //     type: "suspect", name: suspectName,
+      //     relevantLinks: [
+      //       {
+      //         description: otherSuspect,
+      //         link: 'string'
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     type: "witness", name: witnessName,
+      //     relevantLinks: [
+      //       {
+      //         description: otherWitness,
+      //         link: 'string'
+      //       }
+      //     ]
+      //   },
+      // ],
+      // injuries: [
+      //   {
+      //     description: injuries,
+      //     link: secure_url
+      //   }
+      // ],
+      // authorityResponse: [
+      //   {
+      //     name: contactAuthority, response: authorityResponse,
+      //     relevantLinks: [
+      //       {
+      //         description: otherViolation,
+      //         link: fileDescription
+      //       }
+      //     ]
+      //   },
 
-        {
-          type: "suspect", name: suspectName,
-          relevantLinks: [
-            {
-              description: otherSuspect,
-              link: 'string'
-            }
-          ]
-        },
-        {
-          type: "witness", name: witnessName,
-          relevantLinks: [
-            {
-              description: otherWitness,
-              link: 'string'
-            }
-          ]
-        },
-      ],
-      injuries: [
-        {
-          description: injuries,
-          link: secure_url
-        }
-      ],
-      authorityResponse: [
-        {
-          name: contactAuthority, response: authorityResponse,
-          relevantLinks: [
-            {
-              description: otherViolation,
-              link: fileDescription
-            }
-          ]
-        },
-
-      ],
-      otherInfo: [
-        {
-          description: "string",
-          link: secure_url
-        }
-      ]
+      // ],
+      // otherInfo: [
+      //   {
+      //     description: "string",
+      //     link: secure_url
+      //   }
+      // ]
     }),
   });
 

@@ -1,0 +1,31 @@
+#violations {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#violations td,
+#violations th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#violations tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#violations tr:hover {
+  background-color: #ddd;
+}
+
+#table {
+  width: 100%;
+}
+
+#violations th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #6055a5;
+  color: white;
+}

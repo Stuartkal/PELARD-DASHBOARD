@@ -73,69 +73,69 @@ const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
       <h3>Total Cases Reported in Districts</h3>
       <canvas height={height} id="myChart" ref={pieRef} />
       <div className="districts">
-          <div className="card">
-              <div className="label-txt">
-                <h4>Gulu</h4>
-              </div>
-              <div className="case-txt">
-                <h6>Cases</h6>
-                <h4>{report.Gulu}</h4>
-              </div>
+        <div className="card">
+          <div className="label-txt">
+            <h4>Gulu</h4>
           </div>
-          <div className="card">
-              <div className="label-txt">
-                <h4>Lamwo</h4>
-              </div>
-              <div className="case-txt">
-                <h6>Cases</h6>
-                <h4>{report.Lamwo}</h4>
-              </div>
+          <div className="case-txt">
+            <h6>Cases</h6>
+            <h4>{report.Gulu}</h4>
           </div>
-          <div className="card">
-              <div className="label-txt">
-                <h4>Kitgum</h4>
-              </div>
-              <div className="case-txt">
-                <h6>Cases</h6>
-                <h4>{report.Kitgum}</h4>
-              </div>
+        </div>
+        <div className="card">
+          <div className="label-txt">
+            <h4>Lamwo</h4>
           </div>
-          <div className="card">
-              <div className="label-txt">
-                <h4>Amuru</h4>
-              </div>
-              <div className="case-txt">
-                <h6>Cases</h6>
-                <h4>{report.Amuru}</h4>
-              </div>
+          <div className="case-txt">
+            <h6>Cases</h6>
+            <h4>{report.Lamwo}</h4>
           </div>
-          <div className="card">
-              <div className="label-txt">
-                <h4>Nwoya</h4>
-              </div>
-              <div className="case-txt">
-                <h6>Cases</h6>
-                <h4>{report.Nwoya}</h4>
-              </div>
+        </div>
+        <div className="card">
+          <div className="label-txt">
+            <h4>Kitgum</h4>
           </div>
-          <div className="card">
-              <div className="label-txt">
-                <h4>Agogo</h4>
-              </div>
-              <div className="case-txt">
-                <h6>Cases</h6>
-                <h4>{report.Agogo}</h4>
-              </div>
+          <div className="case-txt">
+            <h6>Cases</h6>
+            <h4>{report.Kitgum}</h4>
           </div>
-          <div className="card">
-              <div className="label-txt">
-                <h4>Pader</h4>
-              </div>
-              <div className="case-txt">
-                <h6>Cases</h6>
-                <h4>{report.Pader}</h4>
-              </div>
+        </div>
+        <div className="card">
+          <div className="label-txt">
+            <h4>Amuru</h4>
           </div>
+          <div className="case-txt">
+            <h6>Cases</h6>
+            <h4>{report.Amuru}</h4>
+          </div>
+        </div>
+        <div className="card">
+          <div className="label-txt">
+            <h4>Nwoya</h4>
+          </div>
+          <div className="case-txt">
+            <h6>Cases</h6>
+            <h4>{report.Nwoya}</h4>
+          </div>
+        </div>
+        <div className="card">
+          <div className="label-txt">
+            <h4>Agago</h4>
+          </div>
+          <div className="case-txt">
+            <h6>Cases</h6>
+            <h4>{report.Agago}</h4>
+          </div>
+        </div>
+        <div className="card">
+          <div className="label-txt">
+            <h4>Pader</h4>
+          </div>
+          <div className="case-txt">
+            <h6>Cases</h6>
+            <h4>{report.Pader}</h4>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -333,7 +333,7 @@ const EditCase = (props) => {
                             </div>
                         </div>
                         <div className="button-div">
-                            <button>Cancel</button>
+                            <button onClick={goBackRedirect}>Cancel</button>
                             <button onClick={handleUpdate}>Update Report</button>
                         </div>
                     </div>

@@ -1,30 +1,24 @@
-import React,{useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Navbar from '../../Navigation/Navbar'
 import Sidebar from '../../Navigation/Sidebar'
-import {ActionCreators} from '../../../Store/ActionCreators'
+import { ActionCreators } from '../../../Store/ActionCreators'
+import NewUsers from '../NewUsers/NewUsers'
 
 import './Styles.scss'
 const Users = () => {
 
-    const user = useSelector(state => state.user)
-    const users = useSelector(state => state.users)
-    console.log(users)
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(ActionCreators.gettingUsers(user._id))
-    },[dispatch])
 
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="user-main">
                 <div className="left-column">
-                    <Sidebar/>
+                    <Sidebar />
                 </div>
                 <div className="right-column">
-                    <h1>User</h1>
+
+                    {/* <NewUsers /> */}
                 </div>
             </div>
         </div>

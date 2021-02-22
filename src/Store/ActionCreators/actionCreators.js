@@ -71,7 +71,7 @@ export const gettingCase = ({ _id, id, callback }) => ({ type: actions.GETTING_C
 
 export const deletingCase = (_id, id, callback) => ({ type: actions.DELETING_CASE, _id, id, callback });
 
-export const updatingCase = ({
+export const updatingCase = (
     _id,
     id,
     reporterName,
@@ -81,20 +81,20 @@ export const updatingCase = ({
     violationDescription,
     village,
     districtOfViolation,
-    victimName,
-    otherVictim,
-    suspectName,
-    otherSuspect,
-    witnessName,
-    otherWitness,
-    injuries,
-    secure_url,
-    contactAuthority,
-    authorityResponse,
-    otherViolation,
-    fileDescription,
-    callback
-}) => ({
+    // victimName,
+    // otherVictim,
+    // suspectName,
+    // otherSuspect,
+    // witnessName,
+    // otherWitness,
+    // injuries,
+    // secure_url,
+    // contactAuthority,
+    // authorityResponse,
+    // otherViolation,
+    // fileDescription,
+    // callback
+) => ({
     type: actions.UPDATING_CASE,
     _id,
     id,
@@ -105,19 +105,19 @@ export const updatingCase = ({
     violationDescription,
     village,
     districtOfViolation,
-    victimName,
-    otherVictim,
-    suspectName,
-    otherSuspect,
-    witnessName,
-    otherWitness,
-    injuries,
-    secure_url,
-    contactAuthority,
-    authorityResponse,
-    otherViolation,
-    fileDescription,
-    callback
+    // victimName,
+    // otherVictim,
+    // suspectName,
+    // otherSuspect,
+    // witnessName,
+    // otherWitness,
+    // injuries,
+    // secure_url,
+    // contactAuthority,
+    // authorityResponse,
+    // otherViolation,
+    // fileDescription,
+    // callback
 });
 
 export const generatingPdf = (_id) => ({ type: actions.GENERATING_PDF, _id });
@@ -126,9 +126,24 @@ export const updatingRole = (_id, role) => ({ type: actions.UPDATE_USER_ROLE, _i
 
 export const setUsers = (payload) => ({ type: actions.SET_USERS, payload });
 
+export const setNumUsers = (number) => ({ type: actions.SET_NUM_USERS, number });
+
 export const setApplications = (payload) => ({ type: actions.SET_APPLICATIONS, payload });
 
-export const gettingUsers = (_id) => ({ type: actions.GET_ALL_USERS, _id });
+export const gettingUsers = (
+    _id,
+    pageIndex,
+    pageSize,
+    filter,
+    range
+) => ({
+    type: actions.GET_ALL_USERS,
+    _id,
+    pageIndex,
+    pageSize,
+    filter,
+    range
+});
 
 export const gettingApplications = (_id) => ({ type: actions.GET_ALL_APPLICATIONS, _id });
 

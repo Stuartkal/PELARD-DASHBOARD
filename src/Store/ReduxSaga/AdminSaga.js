@@ -160,23 +160,23 @@ function* updateSingleCase({
   village,
   districtOfViolation,
   victimName,
-  otherVictim,
-  suspectName,
-  otherSuspect,
-  witnessName,
-  otherWitness,
-  injuries,
-  secure_url,
-  contactAuthority,
-  authorityResponse,
-  otherViolation,
-  fileDescription,
-  callback
+  // otherVictim,
+  // suspectName,
+  // otherSuspect,
+  // witnessName,
+  // otherWitness,
+  // injuries,
+  // secure_url,
+  // contactAuthority,
+  // authorityResponse,
+  // otherViolation,
+  // fileDescription,
+  // callback
 }) {
   try {
     const response = yield call(updateCase,
-      '5eb1463e4e00270004d4a601',
-      '602bdfc1f4d2360004eea0c2',
+      _id,
+      id,
       reporterName,
       reporterContact,
       dateTime,
@@ -185,18 +185,18 @@ function* updateSingleCase({
       village,
       districtOfViolation,
       victimName,
-      otherVictim,
-      suspectName,
-      otherSuspect,
-      witnessName,
-      otherWitness,
-      injuries,
-      secure_url,
-      contactAuthority,
-      authorityResponse,
-      otherViolation,
-      fileDescription,
-      callback
+      // otherVictim,
+      // suspectName,
+      // otherSuspect,
+      // witnessName,
+      // otherWitness,
+      // injuries,
+      // secure_url,
+      // contactAuthority,
+      // authorityResponse,
+      // otherViolation,
+      // fileDescription,
+      // callback
     )
   }
   catch (error) { }
@@ -220,12 +220,27 @@ function* updateRole({ _id, role }) {
 }
 
 
-function* getAllUsers({ _id }) {
+function* getAllUsers({ _id, pageSize, pageIndex, filter, range }) {
   try {
-    const response = yield call(getUsers, _id)
-    yield put(ActionCreators.setUsers(response.data))
+    const response = yield call(getUsers,
+      _id,
+      pageIndex,
+      pageSize,
+      filter,
+      range
+    )
+    if (response.statusCode === 401) {
+      yield put(ActionCreators.setError(response.message));
+    } else {
+      yield put(ActionCreators.setUsers(response.data.users));
+      yield put(ActionCreators.setNumUsers(response.data.pages));
+      yield put(ActionCreators.stopLoading());
+    }
   }
-  catch (error) { }
+  catch (error) {
+    yield put(ActionCreators.setError(error));
+    yield put(ActionCreators.stopLoading());
+  }
 }
 
 function* getAllApplications({ _id }) {

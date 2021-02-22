@@ -1,5 +1,5 @@
 import * as React from "react";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { usePagination, useTable } from "react-table";
 import Pagination from "../Pagination/Pagination";
 
@@ -72,10 +72,9 @@ const NewTable = ({
           </thead>
           <tbody {...getTableBodyProps()}>
             {page.map((row, i) => {
-              // console.log(row.original._id)
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className="table-detail-row" onClick={()=> getCaseHandler(row.original._id)} >
+                <tr {...row.getRowProps()} className="table-detail-row" onClick={() => getCaseHandler(row.original._id)} >
                   {row.cells.map((cell) => {
                     return (
                       <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -89,10 +88,10 @@ const NewTable = ({
                 // Use our custom loading state to show a loading indicator
                 <td colSpan="10000">Loading...</td>
               ) : (
-                <td colSpan="10000">
-                  Showing {page.length} of ~{pageCount * pageSize} results
-                </td>
-              )}
+                  <td colSpan="10000">
+                    Showing {page.length} of ~{pageCount * pageSize} results
+                  </td>
+                )}
             </tr>
           </tbody>
         </table>
