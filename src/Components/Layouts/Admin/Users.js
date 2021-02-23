@@ -5,19 +5,19 @@ import NewUsers from "../NewUsers/NewUsers";
 import "./Styles.scss";
 
 const Users = () => {
-  return (
-    <div>
-      <Navbar />
-      <div className="user-main">
-        <div className="left-column">
-          <Sidebar />
+    return (
+        <div>
+            <Navbar />
+            <div className="user-main">
+                <div className="left-column">
+                    <Sidebar />
+                </div>
+                <div className="right-column">
+                    {/* <NewUsers /> */}
+                </div>
+            </div>
         </div>
-        <div className="right-column">
-          <NewUsers />
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Users;
