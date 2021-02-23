@@ -4,7 +4,6 @@ import {
   watchDistrict,
   watchMonthly,
   watchUserLogin,
-  watchUserLogout,
   watchUserRegistration,
   watchGetSingleCase,
   watchDeleteCase,
@@ -12,14 +11,13 @@ import {
   watchGeneratePdf,
   watchUpdateRole,
   watchGetAllUsers,
-  watchGetAllApplications
+  watchGetAllApplications,
 } from "./AdminSaga";
 
 export default function* rootSaga() {
   yield all([
     watchUserRegistration(),
     watchUserLogin(),
-    watchUserLogout(),
     watchAllReportedCases(),
     watchDistrict(),
     watchMonthly(),
@@ -29,6 +27,6 @@ export default function* rootSaga() {
     watchGeneratePdf(),
     watchUpdateRole(),
     watchGetAllUsers(),
-    watchGetAllApplications()
+    watchGetAllApplications(),
   ]);
 }

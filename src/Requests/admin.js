@@ -1,121 +1,121 @@
 import { baseUrl, secret } from "./config";
 
 export const getToken = async (_id) => {
-    const response = await fetch(`${baseUrl}/token/generate`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ secret, _id }),
-    });
+  const response = await fetch(`${baseUrl}/token/generate`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ secret, _id }),
+  });
 
-    const json = await response.json();
+  const json = await response.json();
 
-    return json.data.token;
+  return json.data.token;
 };
 
-export const getUsers = async (
-    _id,
-    pageIndex,
-    pageSize = 10,
-    filter,
-    range
-) => {
-    const Authorization = await getToken(_id)
-    const url = `${baseUrl}/admin/users?page=${pageIndex + 1
-        }&limit=${pageSize}&filter=${JSON.stringify(filter)}`
+export const getUsers = async ({
+  _id,
+  pageIndex,
+  pageSize = 10,
+  filter,
+  range,
+}) => {
+  const Authorization = await getToken(_id);
+  let url = `${baseUrl}/admin/users?page=${
+    pageIndex + 1
+  }&limit=${pageSize}&filter=${JSON.stringify(filter)}`;
 
-    if (range.start && range.end) {
-        url = `${url}&range=${JSON.stringify(range)}`;
-    }
+  if (range.start && range.end) {
+    url = `${url}&range=${JSON.stringify(range)}`;
+  }
 
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            Authorization
-        }
-    })
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization,
+    },
+  });
 
-    const json = await response.json()
-    return json
-}
+  const json = await response.json();
+  return json;
+};
 
 export const getApplications = async (_id) => {
-    const Authorization = await getToken(_id)
-    const url = `${baseUrl}/admin/applications`
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/admin/applications`;
 
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            Authorization
-        }
-    })
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization,
+    },
+  });
 
-    const json = await response.json()
-    return json
-}
+  const json = await response.json();
+  return json;
+};
 
 export const deleteUser = async (_id) => {
-    const Authorization = await getToken(_id)
-    const url = `${baseUrl}/admin/users/${_id}`
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/admin/users/${_id}`;
 
-    const response = await fetch(url, {
-        method: 'DELETE',
-        headers: {
-            Authorization
-        }
-    })
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization,
+    },
+  });
 
-    const json = await response.json()
-    return json
-}
+  const json = await response.json();
+  return json;
+};
 
 export const updateUser = async (_id, body) => {
-    const Authorization = await getToken(_id)
-    const url = `${baseUrl}/admin/users/${_id}`
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/admin/users/${_id}`;
 
-    const response = await fetch(url, {
-        method: 'PUT',
-        headers: {
-            "Content-Type": "application/json",
-            Authorization
-        },
-        body: JSON.stringify(body),
-    })
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization,
+    },
+    body: JSON.stringify(body),
+  });
 
-    const json = await response.json()
-    return json
-}
+  const json = await response.json();
+  return json;
+};
 
 export const updateUserRole = async (_id, applicationId) => {
-    const Authorization = await getToken(_id)
-    const url = `${baseUrl}/admin/users/${_id}/update-role`
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/admin/users/${_id}/update-role`;
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            Authorization
-        },
-        body: JSON.stringify({ applicationId }),
-    })
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization,
+    },
+    body: JSON.stringify({ applicationId }),
+  });
 
-    const json = await response.json()
-    return json
-}
+  const json = await response.json();
+  return json;
+};
 
 export const getApplication = async (_id, applicationId) => {
-    const Authorization = await getToken(_id)
-    const url = `${baseUrl}/admin/applications${applicationId}`
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/admin/applications${applicationId}`;
 
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            Authorization
-        }
-    })
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization,
+    },
+  });
 
-    const json = await response.json()
-    return json
-}
-
+  const json = await response.json();
+  return json;
+};
