@@ -128,13 +128,13 @@ const loggedIn = (state = false, { type }) => {
 const singleCase = (state = [], { type, payload }) => {
   switch (type) {
     case actions.SET_SINGLE_CASE:
-      return payload
+      return payload;
     case actions.REMOVE_CASES:
-      return []
+      return [];
     default:
-      return state
+      return state;
   }
-}
+};
 
 const users = (state = {}, { type, payload }) => {
   switch (type) {
@@ -163,6 +163,15 @@ const applications = (state = {}, { type, payload }) => {
   }
 };
 
+const numApplications = (state = 0, { type, number }) => {
+  switch (type) {
+    case actions.SET_NUM_APPLICATIONS:
+      return number;
+    default:
+      return state;
+  }
+};
+
 export default {
   modalShowing,
   cases,
@@ -179,5 +188,6 @@ export default {
   monthlyReport,
   districtReport,
   loggedIn,
-  singleCase
+  singleCase,
+  numApplications,
 };

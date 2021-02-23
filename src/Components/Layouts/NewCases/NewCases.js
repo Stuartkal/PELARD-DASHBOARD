@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect, useStore } from "react-redux";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 import { ActionCreators } from "../../../Store/ActionCreators";
 import Filters from "../Filters/Filters";
 import "./NewCases.css";
 import NewTable from "./NewTable";
-
 
 const mapState = (state) => ({
   loading: state.loading,
@@ -19,7 +18,8 @@ const mapProps = (dispatch) => ({
     dispatch(
       ActionCreators.gettingCases({ _id, pageIndex, pageSize, filter, range })
     ),
-  getSingleCase: (_id, id, callback) => dispatch(ActionCreators.gettingCase({ _id, id, callback }))
+  getSingleCase: (_id, id, callback) =>
+    dispatch(ActionCreators.gettingCase({ _id, id, callback })),
 });
 
 const connector = connect(mapState, mapProps);
@@ -30,7 +30,15 @@ const selectCases = (state) => {
 
 const selectLoading = (state) => state.loading;
 
-const NewCases = ({ getCases, cases, getSingleCase, user, loading, numCases, history }) => {
+const NewCases = ({
+  getCases,
+  cases,
+  getSingleCase,
+  user,
+  loading,
+  numCases,
+  history,
+}) => {
   const store = useStore();
 
   const [violations, setViolations] = useState(cases);
@@ -137,12 +145,12 @@ const NewCases = ({ getCases, cases, getSingleCase, user, loading, numCases, his
 
   const getCaseHandler = (id) => {
     getSingleCase(user._id, id, (res) => {
-      console.log(res)
+      console.log(res);
       if (res.success === true) {
-        history.push('./case-details', { res })
+        history.push("./case-details", { res });
       }
-    })
-  }
+    });
+  };
 
   return (
     <div className="table">

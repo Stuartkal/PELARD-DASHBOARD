@@ -41,9 +41,16 @@ export const getUsers = async ({
   return json;
 };
 
-export const getApplications = async (_id) => {
+export const getApplications = async (
+  _id,
+  pageIndex,
+  pageSize = 10,
+  filter
+) => {
   const Authorization = await getToken(_id);
-  const url = `${baseUrl}/admin/applications`;
+  const url = `${baseUrl}/admin/applications?page=${
+    pageIndex + 1
+  }&limit=${pageSize}&filter=${JSON.stringify(filter)}`;
 
   const response = await fetch(url, {
     method: "GET",

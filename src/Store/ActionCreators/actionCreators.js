@@ -165,6 +165,11 @@ export const setApplications = (payload) => ({
   payload,
 });
 
+export const setNumApplications = (number) => ({
+  type: actions.SET_NUM_APPLICATIONS,
+  number,
+});
+
 export const gettingUsers = (_id, pageIndex, pageSize, filter, range) => ({
   type: actions.GET_ALL_USERS,
   _id,
@@ -174,7 +179,17 @@ export const gettingUsers = (_id, pageIndex, pageSize, filter, range) => ({
   range,
 });
 
-export const gettingApplications = (_id) => ({
+export const gettingApplications = (
+  _id,
+  pageIndex,
+  pageSize,
+  filter,
+  range
+) => ({
   type: actions.GET_ALL_APPLICATIONS,
   _id,
+  pageIndex,
+  pageSize,
+  filter,
+  range,
 });

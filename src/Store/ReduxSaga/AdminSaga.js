@@ -223,22 +223,38 @@ function* getAllUsers({ _id, pageSize, pageIndex, filter, range }) {
     if (response.statusCode === 401) {
       yield put(ActionCreators.setError(response.message));
     } else {
-      yield put(ActionCreators.setUsers(response.data.users));
-      yield put(ActionCreators.setNumUsers(response.data.pages));
-      yield put(ActionCreators.stopLoading());
+      yield all([
+        put(ActionCreators.setUsers(response.data.users)),
+        put(ActionCreators.setNumUsers(response.data.pages)),
+        put(ActionCreators.stopLoading()),
+      ]);
     }
   } catch (error) {
-    yield put(ActionCreators.setError(error));
-    yield put(ActionCreators.stopLoading());
+    yield all([
+      put(ActionCreators.setError(error)),
+      put(ActionCreators.stopLoading()),
+    ]);
   }
 }
 
-function* getAllApplications({ _id }) {
+function* getAllApplications({ _id, pageSize, pageIndex, filter }) {
+  console.log("id", _id);
   try {
     yield put(ActionCreators.loading());
-    const response = yield call(getApplications, _id);
-    yield put(ActionCreators.setApplications(response.data));
-    yield put(ActionCreators.stopLoading());
+    const response = yield call(
+      getApplications,
+      _id,
+      pageIndex,
+      pageSize,
+      filter
+    );
+    console.log("response");
+    console.log(response);
+    yield all([
+      put(ActionCreators.setApplications(response.data.applications)),
+      put(ActionCreators.setNumApplications(response.data.pages)),
+      put(ActionCreators.stopLoading()),
+    ]);
   } catch (error) {}
 }
 
