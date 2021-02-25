@@ -66,7 +66,7 @@ const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
     });
   }, [data, labels]);
 
-  const height = '100'
+  const height = '150'
 
   return (
     <div className="chart-main">

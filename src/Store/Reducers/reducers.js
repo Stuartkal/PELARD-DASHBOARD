@@ -136,7 +136,7 @@ const singleCase = (state = [], { type, payload }) => {
   }
 };
 
-const users = (state = {}, { type, payload }) => {
+const users = (state = [], { type, payload }) => {
   switch (type) {
     case actions.SET_USERS:
       return payload;
@@ -154,7 +154,7 @@ const numUsers = (state = 0, { type, number }) => {
   }
 };
 
-const applications = (state = {}, { type, payload }) => {
+const applications = (state = [], { type, payload }) => {
   switch (type) {
     case actions.SET_APPLICATIONS:
       return payload;

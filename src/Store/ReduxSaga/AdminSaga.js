@@ -99,7 +99,7 @@ function* montlyReport({ _id, year }) {
       put(ActionCreators.setMonthly(response.data)),
       put(ActionCreators.stopLoading()),
     ]);
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* getDistrict({ _id, year }) {
@@ -111,7 +111,7 @@ function* getDistrict({ _id, year }) {
       put(ActionCreators.stopLoading()),
     ]);
     yield put(ActionCreators.stopLoading());
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* singleCase({ _id, id, callback }) {
@@ -124,7 +124,7 @@ function* singleCase({ _id, id, callback }) {
       put(ActionCreators.stopLoading()),
     ]);
     yield put(ActionCreators.stopLoading());
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* removeCase({ _id, id, callback }) {
@@ -136,7 +136,7 @@ function* removeCase({ _id, id, callback }) {
       put(ActionCreators.stopLoading()),
     ]);
     yield put(ActionCreators.stopLoading());
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* updateSingleCase({
@@ -189,7 +189,7 @@ function* updateSingleCase({
       // fileDescription,
       // callback
     );
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* downloadPdf({ _id }) {
@@ -197,7 +197,7 @@ function* downloadPdf({ _id }) {
     yield put(ActionCreators.loading());
     const response = yield call(generatePdf, _id);
     yield put(ActionCreators.stopLoading());
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* updateRole({ _id, role }) {
@@ -206,7 +206,7 @@ function* updateRole({ _id, role }) {
     const response = yield call(updateUserRole, _id, role);
     yield put(ActionCreators.setSuccessMessage(response.message));
     yield put(ActionCreators.stopLoading());
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* getAllUsers({ _id, pageSize, pageIndex, filter, range }) {
@@ -255,7 +255,7 @@ function* getAllApplications({ _id, pageSize, pageIndex, filter }) {
       put(ActionCreators.setNumApplications(response.data.pages)),
       put(ActionCreators.stopLoading()),
     ]);
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function* watchUserLogin() {

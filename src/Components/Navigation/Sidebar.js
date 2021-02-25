@@ -81,7 +81,7 @@ const Sidebar = (props) => {
         <div className="icon-hover">
           <div className="icon-column">
             <i className="material-icons">report_problem</i>
-            <h4>Report Case</h4>
+            <a href="https://www.report.pelard-n.org/" target="_blank">Report Case</a>
           </div>
         </div>
       </div>

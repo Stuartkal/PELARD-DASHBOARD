@@ -4,7 +4,7 @@ import Sidebar from "../../Navigation/Sidebar";
 import NewCases from "../NewCases/NewCases";
 import "./Styles.scss";
 
-const Cases = (props) => {
+const Cases = () => {
   return (
     <div>
       <Navbar />

@@ -61,8 +61,8 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
   useEffect(() => {
     const myChartRef = chartRef.current.getContext("2d");
 
-  
-    
+
+
     new Chart(myChartRef, {
       type: "line",
       data: {
@@ -82,7 +82,7 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
     });
   }, [data, labels]);
 
-  const height = '100'
+  const height = '150'
 
   return (
     <div className="chart-main">
@@ -91,16 +91,16 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
         <input
           placeholder="Enter year"
           value={year}
-          onChange={(e)=> setYear(e.target.value)}
+          onChange={(e) => setYear(e.target.value)}
         />
       </div>
       <h3>{months.year} Monthly Reported Cases</h3>
       <canvas height={height} id="myChart" ref={chartRef} />
       <div className="total">
-            <h5>Total cases</h5>
-            <div className="total-div">
-            <h1>{months.total}</h1>
-            </div>
+        <h5>Total cases</h5>
+        <div className="total-div">
+          <h1>{months.total}</h1>
+        </div>
       </div>
     </div>
   );

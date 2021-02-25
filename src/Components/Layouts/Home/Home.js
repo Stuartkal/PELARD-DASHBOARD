@@ -9,17 +9,16 @@ import DistrictCase from './DistrictCase'
 import './Styles.scss'
 const Home = () => {
 
-
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="home-main">
                 <div className="left-column">
-                     <Sidebar/>
+                    <Sidebar />
                 </div>
                 <div className="right-column">
-                    <CaseChart/>
-                    <DistrictCase/>
+                    <CaseChart />
+                    <DistrictCase />
                 </div>
             </div>
         </div>

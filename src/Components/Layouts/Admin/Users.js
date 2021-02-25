@@ -13,7 +13,7 @@ const Users = () => {
                     <Sidebar />
                 </div>
                 <div className="right-column">
-                    {/* <NewUsers /> */}
+                    <NewUsers />
                 </div>
             </div>
         </div>

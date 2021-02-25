@@ -1,106 +1,180 @@
-
 .nav-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #fff;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+
+  h3 {
+    color: #01579b;
+    margin-right: 0.5rem;
   }
-  
-  .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 95%;
-  
-    h3 {
-      color: #01579b;
-      margin-right: 0.5rem;
-    }
+}
+
+.hambuger-toggle {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 1s ease-in-out;
+  width: 40%;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+
+  h5 {
+    color: #059ca1;
+    margin: 10px;
   }
-  
+
+  h6 {
+    margin: 10px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  a {
+    text-decoration: none;
+    color: #059ca1;
+  }
+}
+
+.separator {
+  width: 70%;
+  height: 1px;
+  background-color: #059ca1;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+
+  h4 {
+    color: #01579b;
+  }
+
+  button {
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.5s ease-in-out;
+    background-color: #059ca1;
+    color: #fff;
+  }
+}
+
+.profile button:hover {
+  cursor: pointer;
+}
+
+.logout {
+  margin-left: 2rem;
+
+  h4 {
+    color: #059ca1;
+  }
+
+  & h4:hover {
+    cursor: pointer;
+  }
+}
+
+.hambuger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  i {
+    color: #059ca1;
+  }
+  display: none;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  background-color: #01579b;
+  transition: 0.5s ease-in-out;
+}
+
+.sidebar-container {
+  justify-content: center;
+  margin-top: 100px;
+  width: 100%;
+}
+
+.icon-column {
+  margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  i {
+    color: #fff;
+    font-size: 30px;
+    margin-right: 0.5rem;
+  }
+  h4 {
+    color: #fff;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.icon-hover {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.icon-hover:hover {
+  cursor: pointer;
+  background-color: #01365eea;
+}
+
+@media screen and (max-width: 768px) {
   .profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-  
-    h4 {
-      color: #01579b;
-    }
-  
-    button {
-      border: none;
-      height: 30px;
-      border-radius: 5px;
-      outline: none;
-      transition: 0.5s ease-in-out;
-      background-color: #059ca1;
-      color: #fff;
+    h3 {
+      display: none;
     }
   }
-  
-  .profile button:hover {
-    cursor: pointer;
-  }
-  
-  .logout {
-    margin-left: 2rem;
-  
-    h4 {
-      color: #059ca1;
-    }
-  
-    & h4:hover {
-      cursor: pointer;
-    }
-  }
-  
+
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20%;
-    height: 100vh;
-    z-index: 50;
-    display: flex;
-    justify-content: center;
-    background-color: #01579b;
+    display: none;
   }
-  
-  .sidebar-container {
-    justify-content: center;
-    margin-top: 100px;
-    width: 100%;
+
+  .logout {
+    display: none;
   }
-  
-  .icon-column {
-    margin-left: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    i {
-      color: #fff;
-      font-size: 30px;
-      margin-right: 0.5rem;
-    }
-    h4 {
-      color: #fff;
-    }
+
+  .profile {
+    align-items: flex-end;
+    justify-content: flex-end;
   }
-  
-  .icon-hover {
-    display: flex;
-    align-items: center;
-    width: 100%;
+  .hambuger {
+    display: inherit;
   }
-  
-  .icon-hover:hover {
-    cursor: pointer;
-    background-color: #01365eea;
-  }
+}
