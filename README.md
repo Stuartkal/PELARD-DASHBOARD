@@ -1,4 +1,8 @@
 # PELARD-Dashboard
+PELARD-N
+Protection and Empowerment of Land Rights Defenders in Northern Uganda
+FINANCED BY: European Commission: European Instrument for Democracy and Human Rights (EIDHR)
+
 * MDR web based Software 
 * A Mornitoring , Documenting and Reporting (MDR) platform for Human Rights Defenders of Land Rights in Acholi Sub Region. 
 
