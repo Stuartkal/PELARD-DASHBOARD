@@ -15,8 +15,8 @@ const connector = connect(mapState, mapDispatch);
 
 
 const Login = ({ logIn, history }) => {
-  const [userName, setUserName] = useState("stuwie");
-  const [password, setPassword] = useState("pass0123");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
 
   const error = useSelector(state => state.error)
@@ -54,10 +54,13 @@ const Login = ({ logIn, history }) => {
         />
         <button onClick={loginHandler}>Login</button>
         <a onClick={resetPasswordNavigation}>Forgot password? </a>
-        <p style={{ color: 'red', fontWeight: 'bold' }}>{error.message}</p>
+        {/* <p style={{ color: 'red', fontWeight: 'bold' }}>{error.message}</p> */}
       </div>
     </div>
   );
 };
 
 export default withRouter(connector(Login));
+
+
+

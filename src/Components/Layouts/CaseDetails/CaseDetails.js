@@ -21,10 +21,22 @@ const CaseDetails = (props) => {
       }
     }))
   }
-
   const updateRedirect = () => {
     props.history.push("/edit-details");
   };
+
+  const role = user.role
+  const admin = 'admin'
+
+  let update_link = (<i class="material-icons" onClick={updateRedirect}>
+    edit
+  </i>)
+
+  if (JSON.stringify(role) !== JSON.stringify(admin)) {
+    update_link = null
+  }
+
+
 
   const convertDate = (date) => new Date(date).toDateString();
   const involved = violation.involved;
@@ -52,9 +64,7 @@ const CaseDetails = (props) => {
                 >
                   download
                   </i>
-                <i class="material-icons" onClick={updateRedirect}>
-                  edit
-                  </i>
+                {update_link}
                 <i class="material-icons" onClick={deleteViolationHandler}>delete</i>
               </div>
             </div>
