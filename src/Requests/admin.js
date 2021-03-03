@@ -61,9 +61,9 @@ export const getApplications = async (
     return json;
 };
 
-export const deleteUser = async (_id) => {
+export const deleteUser = async (_id, userId) => {
     const Authorization = await getToken(_id);
-    const url = `${baseUrl}/admin/users/${_id}`;
+    const url = `${baseUrl}/admin/users/${userId}`;
 
     const response = await fetch(url, {
         method: "DELETE",
@@ -76,9 +76,17 @@ export const deleteUser = async (_id) => {
     return json;
 };
 
-export const updateUser = async (_id, body) => {
+export const updateUser = async (
+    _id,
+    userId,
+    firstName,
+    lastName,
+    phoneNumber,
+    email,
+    userName
+) => {
     const Authorization = await getToken(_id);
-    const url = `${baseUrl}/admin/users/${_id}`;
+    const url = `${baseUrl}/admin/users/${userId}`;
 
     const response = await fetch(url, {
         method: "PUT",
@@ -86,16 +94,21 @@ export const updateUser = async (_id, body) => {
             "Content-Type": "application/json",
             Authorization,
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            email: email,
+            userName: userName,
+        }),
     });
-
     const json = await response.json();
     return json;
 };
 
-export const updateUserRole = async (_id, applicationId) => {
+export const updateUserRoleAdmin = async (_id, userId, applicationId) => {
     const Authorization = await getToken(_id);
-    const url = `${baseUrl}/admin/users/${_id}/update-role`;
+    const url = `${baseUrl}/admin/users/${userId}/update-role`;
 
     const response = await fetch(url, {
         method: "POST",
@@ -103,7 +116,7 @@ export const updateUserRole = async (_id, applicationId) => {
             "Content-Type": "application/json",
             Authorization,
         },
-        body: JSON.stringify({ applicationId }),
+        body: JSON.stringify({ applicationId: applicationId }),
     });
 
     const json = await response.json();
@@ -112,7 +125,7 @@ export const updateUserRole = async (_id, applicationId) => {
 
 export const getApplication = async (_id, applicationId) => {
     const Authorization = await getToken(_id);
-    const url = `${baseUrl}/admin/applications${applicationId}`;
+    const url = `${baseUrl}/admin/applications/${applicationId}`;
 
     const response = await fetch(url, {
         method: "GET",

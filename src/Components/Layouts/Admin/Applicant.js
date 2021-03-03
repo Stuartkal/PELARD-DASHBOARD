@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from 'react'
 import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
-import NewUsers from "../NewUsers/NewUsers";
 
 import "./Styles.scss";
-const Users = () => {
+const Applicant = (props) => {
 
+    const applicant = props.location.state.res
+    console.log(applicant, 'll')
     return (
         <div>
             <Navbar />
@@ -14,13 +15,12 @@ const Users = () => {
                     <Sidebar />
                 </div>
                 <div className="right-column">
-                    <h1>Users</h1>
-                    <NewUsers />
-                </div>
+                    <h1>Applicant</h1>
 
+                </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Users;
+export default Applicant

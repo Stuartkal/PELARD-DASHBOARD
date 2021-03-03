@@ -193,3 +193,56 @@ export const gettingApplications = (
   filter,
   range,
 });
+
+export const setApplication = (payload) => ({
+  type: actions.SET_APPLICATION,
+  payload
+})
+
+export const gettingApplication = (_id, applicationId, callback) => ({
+  type: actions.GET_SINGLE_APPLICATION,
+  _id,
+  applicationId,
+  callback
+})
+
+export const updatingUserRole = (_id, userId, applicationId, callback) => ({
+  type: actions.UPDATE_USER_ROLE_ADMIN,
+  _id,
+  userId,
+  applicationId,
+  callback
+})
+
+export const updatingUser = (
+  _id,
+  userId,
+  firstName,
+  lastName,
+  phoneNumber,
+  email,
+  userName,
+  callback
+) => ({
+  type: actions.UPDATE_USER,
+  _id,
+  userId,
+  firstName,
+  lastName,
+  phoneNumber,
+  email,
+  userName,
+  callback
+})
+
+export const deletingUser = (_id, userId, callback) => ({
+  type: actions.DELETE_USER,
+  _id,
+  userId,
+  callback
+})
+
+export const passwordResetting = (identifier) => ({
+  type: actions.FOGOT_PASSWORD,
+  identifier
+})

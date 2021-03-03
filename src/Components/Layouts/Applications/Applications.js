@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect, useStore } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { ActionCreators } from "../../../Store/ActionCreators";
-import UsersTable from "../NewUsers/UsersTable";
+import ApplicationTable from "../NewUsers/ApplicationTable";
 
 const mapState = ({ loading, applications, user, numApplications }) => ({
   loading,
@@ -22,6 +22,7 @@ const mapProps = (dispatch) => ({
         range
       )
     ),
+  getApplication: (_id, applicationId, callback) => dispatch(ActionCreators.gettingApplication(_id, applicationId, callback))
 });
 
 const connector = connect(mapState, mapProps);
@@ -32,10 +33,12 @@ const selectLoading = ({ loading }) => loading;
 
 const Applications = ({
   getApplications,
+  getApplication,
   applications,
   loading,
   user,
   numApplications,
+  open
 }) => {
   const store = useStore();
 
@@ -43,7 +46,7 @@ const Applications = ({
   const [isLoading, setIsLoading] = useState(loading);
   const [filter, setFilter] = useState({});
   const [range, setRange] = useState({});
-
+  // console.log(applications)
   const data = React.useMemo(() => applicationList, [applicationList]);
   const convertDate = ({ value }) =>
     `${new Date(value).toDateString()} at ${new Date(value)
@@ -118,14 +121,23 @@ const Applications = ({
     setRange(newRange);
   };
 
+  const getSingleApplicationHandler = (applicationId) => {
+    getApplication(user._id, applicationId, (res) => {
+      if (res.success === true) {
+        open(true)
+      }
+    })
+  }
+
   return (
     <div className="table">
-      <UsersTable
+      <ApplicationTable
         data={data}
         columns={columns}
         fetchData={fetchData}
         pageCount={numApplications}
         loading={isLoading}
+        singleApplication={getSingleApplicationHandler}
       />
     </div>
   );

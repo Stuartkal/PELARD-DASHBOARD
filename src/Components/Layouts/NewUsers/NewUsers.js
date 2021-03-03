@@ -17,7 +17,7 @@ const mapProps = (dispatch) => ({
   getUsers: (_id, pageSize, pageIndex, filter = {}, range = {}) =>
     dispatch(
       ActionCreators.gettingUsers({ _id, pageIndex, pageSize, filter, range })
-    ),
+    )
 });
 
 const connector = connect(mapState, mapProps);
@@ -28,7 +28,7 @@ const selectUsers = (state) => {
 
 const selectLoading = ({ loading }) => loading;
 
-const NewUsers = ({ getUsers, users, user, loading, numUsers, history }) => {
+const NewUsers = ({ getUsers, users, user, loading, numUsers }) => {
   const store = useStore();
 
   const [usersDoc, setUsersDoc] = useState(users);
@@ -41,7 +41,6 @@ const NewUsers = ({ getUsers, users, user, loading, numUsers, history }) => {
   const [showEndFilter, setShowEndFilter] = useState(false);
 
   const data = React.useMemo(() => usersDoc, [usersDoc]);
-  console.log(data, "users");
   const columns = React.useMemo(
     () => [
       { Header: "Email", accessor: "email" },

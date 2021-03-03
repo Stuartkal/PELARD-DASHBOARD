@@ -145,7 +145,6 @@ const NewCases = ({
 
   const getCaseHandler = (id) => {
     getSingleCase(user._id, id, (res) => {
-      console.log(res);
       if (res.success === true) {
         history.push("./case-details", { res });
       }

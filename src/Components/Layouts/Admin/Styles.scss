@@ -1,37 +1,214 @@
-
 .user-main {
-    margin: 70px auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 70px auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.left-column{
-    width: 20%;
+.left-column {
+  width: 20%;
 }
 
 .right-column {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-
-.user-detail-main {
-    margin: 70px auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 .request-main {
-    margin: 70px auto;
+  margin: 70px auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.applicant-card {
+  position: absolute;
+  z-index: 100;
+  top: 150px;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+  height: 100px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
+
+  button {
+    background-color: #6055a5;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 5px;
+    color: #fff;
+  }
+}
+
+.applicant-card button:hover {
+  cursor: pointer;
+}
+
+.applicant-card button:focus {
+  background-color: #584da5;
+}
+
+.application-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  i {
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  & i:hover {
+    cursor: pointer;
+  }
+}
+
+.applicant-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.applicant-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h5 {
+    color: rgba(0, 0, 0, 0.3);
+    margin-right: 0.5rem;
+  }
+}
+
+.edit-card {
+  position: absolute;
+  z-index: 100;
+  top: 90px;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
+
+  button {
+    background-color: #6055a5;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 5px;
+    color: #fff;
+    width: 30%;
+  }
+
+  h5 {
+    color: #584da5;
+  }
+}
+
+.edit-card button:hover {
+  cursor: pointer;
+}
+
+.edit-card button:focus {
+  background-color: #584da5;
+}
+
+.edit-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  input {
+    width: 40%;
+    height: 40px;
+    outline: none;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding-left: 5px;
+    transition: 0.5s ease-in-out;
+    margin: 0.5rem;
+  }
+}
+
+.edit-input {
+  opacity: 0;
+}
+
+.edit-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 1rem;
+}
+
+.edit-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.edit-text-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 30%;
+  margin: 0;
+
+  h4 {
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .applicant-card {
+    width: 70%;
+    top: 300px;
+    height: 300px;
+  }
+  .applicant-main-row {
+    flex-direction: column;
+  }
+
+  .edit-card {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    button {
+      width: 40%;
+    }
+  }
+  .edit-row {
+    flex-direction: column;
+  }
+  .edit-text-row {
+    width: 70%;
+    h4 {
+      font-size: 12px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+  }
 }

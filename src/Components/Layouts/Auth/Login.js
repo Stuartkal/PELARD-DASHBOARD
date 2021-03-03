@@ -26,14 +26,14 @@ const Login = ({ logIn, history }) => {
     e.preventDefault();
     logIn(userName, password, (res) => {
       if (res.success === true) {
-        history.push('./overview')
+        history.push('/overview')
       }
     });
   };
 
-
-
-
+  const resetPasswordNavigation = () => {
+    history.push('/password-reset')
+  }
 
   return (
     <div className="auth-main">
@@ -53,7 +53,7 @@ const Login = ({ logIn, history }) => {
           placeholder="Password"
         />
         <button onClick={loginHandler}>Login</button>
-        <a href="#">Forgot password? </a>
+        <a onClick={resetPasswordNavigation}>Forgot password? </a>
         <p style={{ color: 'red', fontWeight: 'bold' }}>{error.message}</p>
       </div>
     </div>

@@ -163,6 +163,15 @@ const applications = (state = [], { type, payload }) => {
   }
 };
 
+const application = (state = [], { type, payload }) => {
+  switch (type) {
+    case actions.SET_APPLICATION:
+      return payload;
+    default:
+      return state;
+  }
+};
+
 const numApplications = (state = 0, { type, number }) => {
   switch (type) {
     case actions.SET_NUM_APPLICATIONS:
@@ -178,6 +187,7 @@ export default {
   user,
   users,
   applications,
+  application,
   loading,
   token,
   success,

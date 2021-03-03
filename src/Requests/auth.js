@@ -26,7 +26,7 @@ export const login = async (userName, password) => {
   });
 
   const json = await response.json();
- 
+
   return json;
 };
 
@@ -43,3 +43,18 @@ export const register = async (body) => {
 
   return json.data.token;
 };
+
+export const resetPassword = async (identifier) => {
+  const Authorization = await getToken();
+  const response = await fetch(`${baseUrl}/email/request-password-reset`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization,
+    },
+    body: JSON.stringify({ identifier }),
+  });
+  const json = await response.json();
+
+  return json;
+}

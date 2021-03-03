@@ -6,14 +6,15 @@ import Pagination from "../Pagination/Pagination";
 
 import "./UsersTable.css";
 
-const UsersTable = ({
+const ApplicationTable = ({
     columns,
     data,
     fetchData,
     loading,
     pageCount,
     numCases,
-    history
+    history,
+    singleApplication
 }) => {
 
     const {
@@ -50,7 +51,6 @@ const UsersTable = ({
         fetchData({ pageIndex, pageSize });
     }, [fetchData, pageIndex, pageSize]);
 
-
     // Render the UI for your table
     return (
         <>
@@ -73,8 +73,9 @@ const UsersTable = ({
                     <tbody {...getTableBodyProps()}>
                         {page.map((row, i) => {
                             prepareRow(row);
+
                             return (
-                                <tr {...row.getRowProps()} className="table-detail-row" onClick={() => history.push({ pathname: '/edit-user', state: row.original })}>
+                                <tr {...row.getRowProps()} className="table-detail-row" onClick={() => singleApplication(row.original._id)}>
                                     {row.cells.map((cell) => {
                                         return (
                                             <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -112,4 +113,4 @@ const UsersTable = ({
     );
 };
 
-export default withRouter(UsersTable);
+export default withRouter(ApplicationTable);

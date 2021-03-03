@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { login, register } from "../../Requests/auth";
+import { login, register, resetPassword } from "../../Requests/auth";
 import {
   getReportedCases,
   getSingleCase,
@@ -16,6 +16,7 @@ import {
   getUsers,
   getApplications,
   getApplication,
+  updateUserRoleAdmin,
   updateUser,
   deleteUser,
 } from "../../Requests/admin";
@@ -64,6 +65,14 @@ function* loginUser({ userName, password, callback }) {
   } catch (error) {
     yield all([put(ActionCreators.setError(error))]);
   }
+}
+
+function* passwordReset({ identifier }) {
+  try {
+    const response = yield call(resetPassword, identifier)
+    // console.log(response, 'l')
+  }
+  catch (error) { }
 }
 
 function* reportedCases({ _id, pageSize, pageIndex, filter, range }) {
@@ -237,8 +246,45 @@ function* getAllUsers({ _id, pageSize, pageIndex, filter, range }) {
   }
 }
 
+function* userUpdate({
+  _id,
+  userId,
+  firstName,
+  lastName,
+  phoneNumber,
+  email,
+  userName,
+  callback
+}) {
+  try {
+    const response = yield call(updateUser,
+      _id,
+      userId,
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      userName
+    );
+    yield all([
+      callback({ success: true, res: response.message }),
+    ]);
+  }
+  catch (error) { }
+}
+
+function* userDelete({ _id, userId, callback }) {
+  try {
+    const response = yield call(deleteUser, _id, userId);
+    yield all([
+      callback({ success: true, res: response.message }),
+    ]);
+  }
+  catch (error) { }
+}
+
 function* getAllApplications({ _id, pageSize, pageIndex, filter }) {
-  console.log("id", _id);
+
   try {
     yield put(ActionCreators.loading());
     const response = yield call(
@@ -248,8 +294,8 @@ function* getAllApplications({ _id, pageSize, pageIndex, filter }) {
       pageSize,
       filter
     );
-    console.log("response");
-    console.log(response);
+    // console.log("response");
+    // console.log(response);
     yield all([
       put(ActionCreators.setApplications(response.data.applications)),
       put(ActionCreators.setNumApplications(response.data.pages)),
@@ -258,8 +304,35 @@ function* getAllApplications({ _id, pageSize, pageIndex, filter }) {
   } catch (error) { }
 }
 
+function* getApplicant({ _id, applicationId, callback }) {
+
+  try {
+    const response = yield call(getApplication, _id, applicationId)
+
+    yield all([
+      put(ActionCreators.setApplication(response.data)),
+      callback({ success: true, res: response.data })
+    ])
+  }
+  catch (error) { }
+}
+
+function* updateUserAdmin({ _id, userId, applicationId, callback }) {
+
+  try {
+    const response = yield call(updateUserRoleAdmin, '5eb1463e4e00270004d4a601', '602968cfe104680004353dde', '602b91c9bc8e370004bf5497')
+    console.log(response, 'dd')
+    callback({ success: true, res: response.data })
+  }
+  catch (error) { }
+}
+
 function* watchUserLogin() {
   yield takeLatest(actions.LOG_IN, loginUser);
+}
+
+function* watchPasswordReset() {
+  yield takeLatest(actions.FOGOT_PASSWORD, passwordReset)
 }
 
 function* watchUserRegistration() {
@@ -302,13 +375,30 @@ function* watchGetAllUsers() {
   yield takeLatest(actions.GET_ALL_USERS, getAllUsers);
 }
 
+function* watchUpdateUser() {
+  yield takeLatest(actions.UPDATE_USER, userUpdate);
+}
+
+function* watchDeleteUser() {
+  yield takeLatest(actions.DELETE_USER, userDelete);
+}
+
 function* watchGetAllApplications() {
   yield takeLatest(actions.GET_ALL_APPLICATIONS, getAllApplications);
+}
+
+function* watchGetApplication() {
+  yield takeLatest(actions.GET_SINGLE_APPLICATION, getApplicant);
+}
+
+function* watchUpdateRoleAdmin() {
+  yield takeLatest(actions.UPDATE_USER_ROLE_ADMIN, updateUserAdmin);
 }
 
 export {
   watchUserRegistration,
   watchUserLogin,
+  watchPasswordReset,
   watchAllReportedCases,
   watchGetSingleCase,
   watchDistrict,
@@ -318,5 +408,9 @@ export {
   watchGeneratePdf,
   watchUpdateRole,
   watchGetAllUsers,
+  watchUpdateUser,
+  watchDeleteUser,
   watchGetAllApplications,
+  watchGetApplication,
+  watchUpdateRoleAdmin
 };
