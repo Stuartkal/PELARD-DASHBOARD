@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Auth from "../Layouts/Auth/Login";
+import ForgotPassword from "../Layouts/Auth/ForgotPassword"
 import Home from "../Layouts/Home/Home";
 import Case from "../Layouts/Cases/Cases";
 import CaseDetails from "../Layouts/CaseDetails/CaseDetails";
@@ -18,6 +19,7 @@ const index = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Auth} />
+        <Route path="/password-reset" component={ForgotPassword} />
         <Route path="/overview" component={Home} />
         <Route path="/cases" component={Case} />
         <Route path="/case-details" component={CaseDetails} />
