@@ -130,7 +130,7 @@ const NewUsers = ({ getUsers, users, user, loading, numUsers }) => {
 
   return (
     <div className="table">
-      <Filters
+      {/* <Filters
         toggleFilter={toggleFilter}
         showReporterFilter={showReporterFilter}
         showTypeFilter={showTypeFilter}
@@ -138,7 +138,7 @@ const NewUsers = ({ getUsers, users, user, loading, numUsers }) => {
         showEndFilter={showEndFilter}
         updateFilter={updateFilter}
         updateRange={updateRange}
-      />
+      /> */}
 
       <UsersTable
         data={data}
