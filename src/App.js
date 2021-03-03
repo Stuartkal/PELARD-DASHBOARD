@@ -1,17 +1,19 @@
-import React from 'react';
-import './App.css';
-import Routes from '../src/Components/Routes/Routes';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import Navigation from "./Components/Navigation";
+import Store from "./Store";
 
-import storeCreator from './Store';
+const { store, persistor } = Store;
+
 function App() {
-	const store = storeCreator();
-
-	return (
-		<Provider store={store}>
-			<Routes />
-		</Provider>
-	);
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigation />
+      </PersistGate>
+    </Provider>
+  );
 }
 
 export default App;

@@ -1,3 +1,3 @@
-import * as ActionCreators from './AdminActionCreators';
+import * as ActionCreators from "./actionCreators";
 
 export { ActionCreators };

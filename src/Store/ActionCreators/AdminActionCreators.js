@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { AdminActions } from '../Actions';
 
 export const toggleModalAction = () => ({
@@ -81,3 +82,5 @@ export const resetPasswordFail = (error) => ({
 //UPDATE VIOLATION
 
 
+=======
+>>>>>>> update
