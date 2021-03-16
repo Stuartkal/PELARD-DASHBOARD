@@ -181,6 +181,17 @@ const numApplications = (state = 0, { type, number }) => {
   }
 };
 
+const violations = (state = [], { type, payload }) => {
+  switch (type) {
+    case actions.SET_VIOLATION:
+      return payload;
+    case actions.REMOVE_CASES:
+      return [];
+    default:
+      return state;
+  }
+};
+
 export default {
   modalShowing,
   cases,
@@ -200,4 +211,5 @@ export default {
   loggedIn,
   singleCase,
   numApplications,
+  violations
 };

@@ -28,7 +28,7 @@
 .applicant-card {
   position: absolute;
   z-index: 100;
-  top: 150px;
+  top: 300px;
   display: flex;
   background-color: #fff;
   align-items: center;
@@ -61,7 +61,7 @@
 .application-header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -69,6 +69,12 @@
     color: rgba(0, 0, 0, 0.5);
     margin-top: 0.5rem;
     margin-right: 0.5rem;
+  }
+
+  p {
+    color: #584da5;
+    margin-left: 2rem;
+    font-weight: bold;
   }
 
   & i:hover {

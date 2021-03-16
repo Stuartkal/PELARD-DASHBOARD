@@ -106,17 +106,17 @@ export const updateUser = async (
     return json;
 };
 
-export const updateUserRoleAdmin = async (_id, userId, applicationId) => {
+export const updateUserRoleAdmin = async (_id, applicationId) => {
     const Authorization = await getToken(_id);
-    const url = `${baseUrl}/admin/users/${userId}/update-role`;
+    const url = `${baseUrl}/admin/applications/${applicationId}`;
 
     const response = await fetch(url, {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json",
             Authorization,
         },
-        body: JSON.stringify({ applicationId: applicationId }),
+        body: JSON.stringify({ status: "Approved" }),
     });
 
     const json = await response.json();

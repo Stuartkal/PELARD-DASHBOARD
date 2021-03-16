@@ -206,10 +206,9 @@ export const gettingApplication = (_id, applicationId, callback) => ({
   callback
 })
 
-export const updatingUserRole = (_id, userId, applicationId, callback) => ({
+export const updatingUserRole = (_id, applicationId, callback) => ({
   type: actions.UPDATE_USER_ROLE_ADMIN,
   _id,
-  userId,
   applicationId,
   callback
 })
@@ -245,4 +244,15 @@ export const deletingUser = (_id, userId, callback) => ({
 export const passwordResetting = (identifier) => ({
   type: actions.FOGOT_PASSWORD,
   identifier
+})
+
+export const setViolation = (payload) => ({
+  type: actions.SET_VIOLATION,
+  payload
+})
+
+export const gettingViolation = (_id, limit) => ({
+  type: actions.GET_VIOLATIONS,
+  _id,
+  limit
 })

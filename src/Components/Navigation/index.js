@@ -12,6 +12,7 @@ import UserDetail from "../Layouts/Admin/UserDetail";
 import Applications from "../Layouts/Admin/Applications";
 import NewUsers from "../Layouts/NewUsers/NewUsers";
 import EditUser from "../Layouts/Admin/EditUser";
+import Activities from "../Layouts/Activities/Activities"
 
 
 const index = () => {
@@ -30,6 +31,7 @@ const index = () => {
         <Route path="/users-details" component={UserDetail} />
         <Route path="/applications" component={Applications} />
         <Route path="/edit-user" component={EditUser} />
+        <Route path="/activities" component={Activities} />
       </Switch>
     </BrowserRouter>
   );

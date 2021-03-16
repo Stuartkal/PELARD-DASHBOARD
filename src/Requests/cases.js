@@ -28,6 +28,21 @@ export const getReportedCases = async (
   return json;
 };
 
+export const getCaseAlleryAndAuthorities = async (_id, limit) => {
+  const Authorization = await getToken(_id);
+  let url = `${baseUrl}/violations?limit=${limit}`
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization
+    }
+  });
+  const json = await response.json();
+
+  return json;
+}
+
 export const getSingleCase = async (_id, id) => {
   const Authorization = await getToken(_id);
   const url = `${baseUrl}/violations/${id}`;

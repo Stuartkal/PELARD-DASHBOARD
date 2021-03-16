@@ -30,6 +30,10 @@ const Sidebar = (props) => {
     props.history.push("./applications");
   };
 
+  const onclickActivitiesHandler = () => {
+    props.history.push("./activities");
+  };
+
   let cases_link = (
     <div onClick={onclickCaseHandler} className="icon-hover">
       <div className="icon-column">
@@ -57,8 +61,18 @@ const Sidebar = (props) => {
     </div>
   )
 
+  let violations = (
+    <div onClick={onclickActivitiesHandler} className="icon-hover">
+      <div className="icon-column">
+        <i className="material-icons">highlight</i>
+        <h4>Insights </h4>
+      </div>
+    </div>
+  )
+
   if (JSON.stringify(role) !== JSON.stringify(contributor) && JSON.stringify(role) !== JSON.stringify(admin)) {
     cases_link = null
+    violations = null
   }
 
   if (JSON.stringify(role) !== JSON.stringify(admin)) {
@@ -78,6 +92,7 @@ const Sidebar = (props) => {
         {cases_link}
         {users}
         {applications}
+        {violations}
         <div className="icon-hover">
           <div className="icon-column">
             <i className="material-icons">report_problem</i>

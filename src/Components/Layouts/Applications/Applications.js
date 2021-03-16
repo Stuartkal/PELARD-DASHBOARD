@@ -97,7 +97,7 @@ const Applications = ({
 
   useEffect(() => {
     getApplications(user._id, 10, 1);
-    console.log("I am here");
+
   }, [getApplications, user._id]);
 
   const fetchData = React.useCallback(

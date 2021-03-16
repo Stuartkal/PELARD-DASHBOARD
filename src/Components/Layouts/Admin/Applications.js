@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment'
 import Navbar from "../../Navigation/Navbar";
@@ -7,21 +7,30 @@ import MyApplications from "../Applications/Applications";
 import { ActionCreators } from "../../../Store/ActionCreators"
 
 import "./Styles.scss";
-const Applications = () => {
+const Applications = (props) => {
 
   const [open, setopen] = useState(false)
+  const [message, setMessage] = useState(false)
 
   const application = useSelector(state => state.application)
   const user = useSelector(state => state.user)
-  console.log(application)
+  // console.log(application)
   const dispatch = useDispatch()
 
+
+
   const handleUpdateRole = () => {
-    dispatch(ActionCreators.updatingUserRole(user._id, application.userId, application._id, (res) => {
-      console.log(res)
+    dispatch(ActionCreators.updatingUserRole(user._id, application._id, (res) => {
+      if (res.success === true) {
+        setMessage(res.res.message)
+      }
     }))
   }
 
+  const closeModalHandler = () => {
+    setopen(false)
+    setMessage('')
+  }
 
   const date = moment(application.applicationDateAndTime, "YYYYMMDD").fromNow();
 
@@ -37,7 +46,8 @@ const Applications = () => {
           <MyApplications open={() => setopen(true)} />
           {open ? <div className="applicant-card">
             <div className="application-header">
-              <i onClick={() => setopen(false)} className="material-icons">close</i>
+              <p>{message}</p>
+              <i onClick={closeModalHandler} className="material-icons">close</i>
             </div>
             <div className="applicant-main-row">
               <div className="applicant-row">
@@ -52,7 +62,7 @@ const Applications = () => {
                 <h5>Sent: </h5>
                 <h3>{date}</h3>
               </div>
-              <button onClick={() => alert('In Development, Please Wait!')}>Update Role</button>
+              <button onClick={handleUpdateRole}>Update Role</button>
             </div>
           </div> : null}
         </div>

@@ -40,6 +40,10 @@ const Navbar = (props) => {
         props.history.push("./applications");
     };
 
+    const onclickActivitiesHandler = () => {
+        props.history.push("./activities");
+    };
+
     const UpgradeHandler = () => {
         props.history.push("./role");
     };
@@ -56,8 +60,13 @@ const Navbar = (props) => {
         <h5 onClick={onclickRequestsHandler}>Applications</h5>
     )
 
+    let violations = (
+        <h5 onClick={onclickActivitiesHandler}>Insights</h5>
+    )
+
     if (JSON.stringify(role) !== JSON.stringify(contributor) && JSON.stringify(role) !== JSON.stringify(admin)) {
         cases_link = null
+        violations = null
     }
 
     if (JSON.stringify(role) !== JSON.stringify(admin)) {
@@ -76,7 +85,7 @@ const Navbar = (props) => {
             <div className="nav-container">
                 <h3>PELARD-N</h3>
                 <div className="profile">
-                    <h3> Your Welcome</h3>
+                    <h3> You are Welcome</h3>
                     <h3>{user.userName}</h3>
                     {upgrade_button}
                     <div className="logout">
@@ -95,6 +104,8 @@ const Navbar = (props) => {
                         {users}
                         <div className="separator" />
                         {applications}
+                        <div className="separator" />
+                        {violations}
                         <div className="separator" />
                         <h5>
                             <a href="https://www.report.pelard-n.org/" target="_blank">Report Case</a>
