@@ -116,7 +116,6 @@ const districtReport = (state = {}, { type, report }) => {
 const loggedIn = (state = false, { type }) => {
   switch (type) {
     case actions.LOGGED_IN:
-      console.log("logged IN");
       return true;
     case actions.LOGGED_OUT:
       return false;

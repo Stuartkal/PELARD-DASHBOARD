@@ -57,7 +57,7 @@ const CaseDetails = (props) => {
             <div className="case-header">
               <h2>Case Deatils</h2>
               <div className="icons">
-                <h4>{convertDate(violation.reportedDateAndTime)}</h4>
+                <h4>{convertDate(violation.dateTime)}</h4>
                 <i
                   class="material-icons"
                   onClick={() => dispatch(ActionCreators.generatingPdf(violation._id))}

@@ -61,7 +61,7 @@ const NewCases = ({
       { Header: "Phone Number", accessor: "reporter.contact" },
       {
         Header: "Date",
-        accessor: "reportedDateAndTime",
+        accessor: "dateTime",
         Cell: convertDate,
       },
     ],
