@@ -5,7 +5,7 @@ import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 import { ActionCreators } from "../../../Store/ActionCreators"
 
-import "./Styles.scss";
+import "./Styles.css";
 const EditUser = (props) => {
 
     const user = props.location.state

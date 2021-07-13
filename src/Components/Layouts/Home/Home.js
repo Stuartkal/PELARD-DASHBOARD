@@ -6,7 +6,7 @@ import CaseChart from './CaseChart'
 import DistrictCase from './DistrictCase'
 // import * as actionCreators from '../../../Store/ActionCreators'
 
-import './Styles.scss'
+import './Styles.css'
 const Home = () => {
 
     return (

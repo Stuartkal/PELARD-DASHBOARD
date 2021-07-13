@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import storage from 'redux-persist/lib/storage'
 import { ActionCreators } from '../../Store/ActionCreators'
 
-import './Styles.scss'
+import './Styles.css'
 const Navbar = (props) => {
 
     const [toggleHumbuger, setToggleHumbuger] = useState(false)

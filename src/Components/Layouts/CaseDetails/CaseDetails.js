@@ -6,7 +6,7 @@ import logo from "../../../assets/images/pelard.png";
 import { ActionCreators } from "../../../Store/ActionCreators"
 
 
-import "./Styles.scss";
+import "./Styles.css";
 const CaseDetails = (props) => {
 
   const violation = useSelector((state) => state.singleCase);

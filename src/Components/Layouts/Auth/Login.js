@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
 import { withRouter } from "react-router";
 import { ActionCreators } from "../../../Store/ActionCreators";
-import "./Styles.scss";
+import "./Styles.css";
 
 const mapState = ({ loggedIn, loading }) => ({ loggedIn, loading });
 const mapDispatch = (dispatch) => ({

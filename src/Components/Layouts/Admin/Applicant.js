@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 
-import "./Styles.scss";
+import "./Styles.css";
 const Applicant = (props) => {
 
     const applicant = props.location.state.res

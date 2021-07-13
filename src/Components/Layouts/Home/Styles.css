@@ -34,14 +34,15 @@
   align-items: center;
   justify-content: center;
   width: 35%;
+}
 
-  p {
-    color: #7fcccf;
+.search p {
+color: #7fcccf;
     margin-right: 0.5rem;
-  }
+}
 
-  input {
-    border: none;
+.search input {
+  border: none;
     outline: none;
     height: 30px;
     text-align: center;
@@ -50,13 +51,12 @@
     width: 30%;
     color: #fff;
     background-color: #7fcccf;
-    // border: 1px solid rgba(0,0,0,0.1);
+    /* // border: 1px solid rgba(0,0,0,0.1); */
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  i {
-    color: rgba(0, 0, 0, 0.3);
-  }
+.search i {
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .total {
@@ -68,11 +68,11 @@
   background-color: #6055a5;
   border-radius: 5px;
   margin-top: 1rem;
+}
 
-  h5 {
-    margin: 0;
+.total h5 {
+margin: 0;
     color: rgba(255, 255, 255, 0.856);
-  }
 }
 
 .total-div {
@@ -83,11 +83,12 @@
   border-left: 1px solid #fff;
   width: 30%;
   margin-left: 0.5rem;
-  h1 {
-    text-align: center;
+}
+
+.total-div h1 {
+text-align: center;
     margin: 0;
     color: #fff;
-  }
 }
 
 .districts {
@@ -116,9 +117,10 @@
   padding: 5px;
   height: 100%;
 
-  h4 {
-    color: rgba(248, 242, 242, 0.842);
-  }
+}
+
+.label-txt h4 {
+color: rgba(248, 242, 242, 0.842);
 }
 
 .case-txt {
@@ -127,17 +129,20 @@
   justify-content: center;
   flex-direction: column;
   padding: 5px;
-  h4 {
+  
+}
+
+.case-txt h4 {
     color: #fff;
     margin: 0;
   }
-  h6 {
+  
+  .case-txt h6 {
     color: rgba(248, 242, 242, 0.575);
     margin: 0;
   }
-}
 
-//role
+
 
 .role-main {
   margin: 100px auto;
@@ -159,7 +164,9 @@
   box-sizing: border-box;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 
-  select {
+}
+
+.request-modal select {
     width: 60%;
     height: 40px;
     background-color: #f7f7f7;
@@ -168,7 +175,7 @@
     margin-bottom: 1rem;
   }
 
-  button {
+  .request-modal button {
     border: none;
     height: 30px;
     border-radius: 5px;
@@ -178,7 +185,6 @@
     color: #fff;
     margin-bottom: 1rem;
   }
-}
 
 .request-modal button:hover {
   cursor: pointer;
@@ -190,37 +196,39 @@
   justify-content: center;
   flex-direction: column;
   width: 60%;
-  margin-top: 1rem;
+  margin-top: 1rem; 
+}
 
-  h5 {
+.note h5 {
     color: #059ca1;
   }
 
-  h4 {
+.note h4 {
     text-align: center;
   }
-}
 
 @media screen and (max-width: 768px) {
   .left-column {
     position: absolute;
   }
-  // .right-column {
+  /* // .right-column {
   //   width: 100%;
-  // }
+  // } */
   .total {
     width: 60%;
   }
 
   .search {
     width: 70%;
-    p {
-      font-size: 12px;
-    }
-    input {
+  }
+
+  .search p {
+font-size: 12px;
+  }
+
+  .search input {
       width: 50%;
     }
-  }
 
   .districts {
     flex-direction: column;

@@ -2,7 +2,7 @@ import Chart from "chart.js";
 import React, { useEffect, useState } from "react";
 import { connect, useStore } from "react-redux";
 import { ActionCreators } from "../../../Store/ActionCreators";
-import "./Styles.scss";
+import "./Styles.css";
 
 const pieRef = React.createRef();
 

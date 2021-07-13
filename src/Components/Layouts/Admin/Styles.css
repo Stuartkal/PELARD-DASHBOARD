@@ -39,8 +39,9 @@
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
+}
 
-  button {
+.applicant-card button {
     background-color: #6055a5;
     border: none;
     outline: none;
@@ -48,7 +49,6 @@
     border-radius: 5px;
     color: #fff;
   }
-}
 
 .applicant-card button:hover {
   cursor: pointer;
@@ -64,16 +64,16 @@
   justify-content: flex-end;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
 
-  i {
+.application-header i {
     color: rgba(0, 0, 0, 0.5);
     margin-top: 0.5rem;
     margin-right: 0.5rem;
   }
 
-  & i:hover {
-    cursor: pointer;
-  }
+.application-header i:hover {
+cursor: pointer;
 }
 
 .applicant-main-row {
@@ -88,11 +88,13 @@
   align-items: center;
   justify-content: center;
 
-  h5 {
+  
+}
+
+.applicant-row h5 {
     color: rgba(0, 0, 0, 0.3);
     margin-right: 0.5rem;
   }
-}
 
 .edit-card {
   position: absolute;
@@ -108,7 +110,9 @@
   box-sizing: border-box;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
 
-  button {
+}
+
+.edit-card button {
     background-color: #6055a5;
     border: none;
     outline: none;
@@ -118,10 +122,9 @@
     width: 30%;
   }
 
-  h5 {
+  .edit-card h5 {
     color: #584da5;
   }
-}
 
 .edit-card button:hover {
   cursor: pointer;
@@ -138,7 +141,9 @@
   width: 100%;
   margin-bottom: 1rem;
 
-  input {
+}
+
+.edit-main-row input {
     width: 40%;
     height: 40px;
     outline: none;
@@ -148,7 +153,6 @@
     transition: 0.5s ease-in-out;
     margin: 0.5rem;
   }
-}
 
 .edit-input {
   opacity: 0;
@@ -174,13 +178,14 @@
   align-items: center;
   justify-content: flex-start;
   width: 30%;
-  margin: 0;
+  margin: 0
+ 
+}
 
-  h4 {
+.edit-text-row  h4 {
     color: rgba(0, 0, 0, 0.5);
     margin-right: 0.5rem;
   }
-}
 
 @media screen and (max-width: 768px) {
   .applicant-card {
@@ -195,20 +200,25 @@
   .edit-card {
     width: 100%;
 
-    button {
+    
+  }
+
+  .edit-card button {
       width: 40%;
     }
-  }
+
   .edit-row {
     flex-direction: column;
   }
   .edit-text-row {
     width: 70%;
-    h4 {
+  }
+
+  .edit-text-row h4 {
       font-size: 12px;
     }
-    h3 {
+
+  .edit-text-row h3 {
       font-size: 18px;
     }
-  }
 }

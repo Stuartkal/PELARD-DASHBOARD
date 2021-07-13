@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Styles.scss'
+import './Styles.css'
 const Modal = (props) => {
     return (
         <div className="modal-main">

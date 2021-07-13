@@ -6,7 +6,7 @@ import Sidebar from "../../Navigation/Sidebar";
 import MyApplications from "../Applications/Applications";
 import { ActionCreators } from "../../../Store/ActionCreators"
 
-import "./Styles.scss";
+import "./Styles.css";
 const Applications = () => {
 
   const [open, setopen] = useState(false)
