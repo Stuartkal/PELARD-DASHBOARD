@@ -97,7 +97,7 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
       <h3>{months.year} Monthly Reported Cases</h3>
       <canvas height={height} id="myChart" ref={chartRef} />
       <div className="total">
-        <h5>Total cases</h5>
+        <h5>{year} cases</h5>
         <div className="total-div">
           <h1>{months.total}</h1>
         </div>

@@ -88,10 +88,10 @@ const NewTable = ({
                 // Use our custom loading state to show a loading indicator
                 <td colSpan="10000">Loading...</td>
               ) : (
-                  <td colSpan="10000">
-                    Showing {page.length} of ~{pageCount * pageSize} results
-                  </td>
-                )}
+                <td colSpan="10000">
+                  Showing {page.length} of ~{pageCount * pageSize} results
+                </td>
+              )}
             </tr>
           </tbody>
         </table>

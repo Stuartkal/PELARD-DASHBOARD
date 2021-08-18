@@ -8,7 +8,7 @@ import "./Styles.css";
 const EditCase = (props) => {
   const violation = useSelector((state) => state.singleCase);
   const user = useSelector((state) => state.user);
-  console.log(violation._id, "kkk");
+  // console.log(violation._id, "kkk");
   const dispatch = useDispatch();
 
   const involved = violation.involved;
@@ -83,7 +83,7 @@ const EditCase = (props) => {
             <div className="case-header">
               <h2>Update Report</h2>
               <div className="back-icon" onClick={goBackRedirect}>
-                <i clasName="material-icons">arrow_back</i>
+                <i class="material-icons">arrow_back</i>
                 <h4>Go back</h4>
               </div>
             </div>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { connect, useStore } from "react-redux";
+import { connect, useStore, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { ActionCreators } from "../../../Store/ActionCreators";
 import Filters from "../Filters/Filters";
 import "./NewCases.css";
 import NewTable from "./NewTable";
+import exportFromJSON from 'export-from-json'
+import moment from 'moment'
 
 const mapState = (state) => ({
   loading: state.loading,
@@ -52,16 +54,17 @@ const NewCases = ({
 
   const data = React.useMemo(() => violations, [violations]);
   const convertDate = ({ value }) => new Date(value).toDateString();
-
+  
   const columns = React.useMemo(
     () => [
       { Header: "Reporter", accessor: "reporter.name" },
       { Header: "District", accessor: "location.district" },
       { Header: "Violation", accessor: "type" },
       { Header: "Phone Number", accessor: "reporter.contact" },
+      { Header: "Status", accessor: "status.value" },
       {
         Header: "Date",
-        accessor: "reportedDateAndTime",
+        accessor: "dateTime",
         Cell: convertDate,
       },
     ],
@@ -121,6 +124,14 @@ const NewCases = ({
     setRange(newRange);
   };
 
+  const fileName = 'Report'  
+  const exportType = exportFromJSON.types.csv
+
+
+  const exportToexcel = () => {
+    exportFromJSON({data, fileName,exportType})
+  }
+
   const toggleFilter = (name) => {
     switch (name) {
       case "type":
@@ -153,6 +164,7 @@ const NewCases = ({
 
   return (
     <div className="table">
+      <button className="case-btn" onClick={exportToexcel}> Download Excel </button>
       <Filters
         toggleFilter={toggleFilter}
         showReporterFilter={showReporterFilter}

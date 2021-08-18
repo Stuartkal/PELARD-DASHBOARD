@@ -16,7 +16,9 @@ import {
   watchDeleteUser,
   watchGetAllApplications,
   watchGetApplication,
-  watchUpdateRoleAdmin
+  watchUpdateRoleAdmin,
+  watchGetViolations,
+  watchFilterDistrict
 } from "./AdminSaga";
 
 export default function* rootSaga() {
@@ -37,6 +39,8 @@ export default function* rootSaga() {
     watchDeleteUser(),
     watchGetAllApplications(),
     watchGetApplication(),
-    watchUpdateRoleAdmin()
+    watchUpdateRoleAdmin(),
+    watchGetViolations(),
+    watchFilterDistrict()
   ]);
 }

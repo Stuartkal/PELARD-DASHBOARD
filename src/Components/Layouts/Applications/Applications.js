@@ -55,7 +55,7 @@ const Applications = ({
 
   const columns = React.useMemo(
     () => [
-      { Header: "User ID", accessor: "userId" },
+      { Header: "User Name", accessor: "firstName" },
       { Header: "Role", accessor: "role" },
       { Header: "Status", accessor: "status" },
       {
@@ -97,7 +97,7 @@ const Applications = ({
 
   useEffect(() => {
     getApplications(user._id, 10, 1);
-    console.log("I am here");
+
   }, [getApplications, user._id]);
 
   const fetchData = React.useCallback(

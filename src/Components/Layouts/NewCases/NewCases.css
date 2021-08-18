@@ -1,3 +1,17 @@
 .container {
   width: 100%;
 }
+
+.case-btn {
+  border: none;
+  background-color: #2d9ca1;
+  padding: 0.2rem;
+  width: 25%;
+  color: #fff;
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.case-btn:hover {
+  cursor: pointer;
+}

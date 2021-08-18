@@ -4,13 +4,15 @@ import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 import logo from "../../../assets/images/pelard.png";
 import { ActionCreators } from "../../../Store/ActionCreators"
-
+ 
 
 import "./Styles.css";
 const CaseDetails = (props) => {
 
   const violation = useSelector((state) => state.singleCase);
   const user = useSelector((state) => state.user);
+
+  // console.log(violation)
 
   const dispatch = useDispatch();
 
@@ -24,6 +26,7 @@ const CaseDetails = (props) => {
   const updateRedirect = () => {
     props.history.push("/edit-details");
   };
+
 
   const role = user.role
   const admin = 'admin'
@@ -57,7 +60,7 @@ const CaseDetails = (props) => {
             <div className="case-header">
               <h2>Case Deatils</h2>
               <div className="icons">
-                <h4>{convertDate(violation.reportedDateAndTime)}</h4>
+                <h4>{convertDate(violation.dateTime)}</h4>
                 <i
                   class="material-icons"
                   onClick={() => dispatch(ActionCreators.generatingPdf(violation._id))}

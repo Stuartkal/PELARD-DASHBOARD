@@ -13,6 +13,7 @@ const Cases = () => {
           <Sidebar />
         </div>
         <div className="right-column">
+          <h1>Cases</h1>
           <NewCases />
         </div>
       </div>

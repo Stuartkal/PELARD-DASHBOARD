@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Auth from "../Layouts/Auth/Login";
+import ForgotPassword from "../Layouts/Auth/ForgotPassword"
 import Home from "../Layouts/Home/Home";
 import Case from "../Layouts/Cases/Cases";
 import CaseDetails from "../Layouts/CaseDetails/CaseDetails";
@@ -11,6 +12,7 @@ import UserDetail from "../Layouts/Admin/UserDetail";
 import Applications from "../Layouts/Admin/Applications";
 import NewUsers from "../Layouts/NewUsers/NewUsers";
 import EditUser from "../Layouts/Admin/EditUser";
+import Activities from "../Layouts/Activities/Activities"
 
 
 const index = () => {
@@ -18,6 +20,7 @@ const index = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Auth} />
+        <Route path="/password-reset" component={ForgotPassword} />
         <Route path="/overview" component={Home} />
         <Route path="/cases" component={Case} />
         <Route path="/case-details" component={CaseDetails} />
@@ -28,6 +31,7 @@ const index = () => {
         <Route path="/users-details" component={UserDetail} />
         <Route path="/applications" component={Applications} />
         <Route path="/edit-user" component={EditUser} />
+        <Route path="/activities" component={Activities} />
       </Switch>
     </BrowserRouter>
   );

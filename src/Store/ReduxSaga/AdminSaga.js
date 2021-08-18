@@ -7,6 +7,8 @@ import {
   updateUserRole,
   deleteCase,
   generatePdf,
+  getCaseAlleryAndAuthorities,
+  filterDistrict
 } from "../../Requests/cases";
 import {
   districtReport,
@@ -92,6 +94,7 @@ function* reportedCases({ _id, pageSize, pageIndex, filter, range }) {
     } else {
       yield put(ActionCreators.setCases(response.data.violations));
       yield put(ActionCreators.setNumCases(response.data.pages));
+      yield put(ActionCreators.setTotalCases(response.data.total));
       yield put(ActionCreators.stopLoading());
     }
   } catch (error) {
@@ -317,14 +320,37 @@ function* getApplicant({ _id, applicationId, callback }) {
   catch (error) { }
 }
 
-function* updateUserAdmin({ _id, userId, applicationId, callback }) {
+function* updateUserAdmin({ _id, applicationId, callback }) {
 
   try {
-    const response = yield call(updateUserRoleAdmin, '5eb1463e4e00270004d4a601', '602968cfe104680004353dde', '602b91c9bc8e370004bf5497')
-    console.log(response, 'dd')
-    callback({ success: true, res: response.data })
+    const response = yield call(updateUserRoleAdmin, _id, applicationId)
+    callback({ success: true, res: response })
   }
   catch (error) { }
+}
+
+function* getViolations({ _id, limit }) {
+  try {
+    const response = yield call(getCaseAlleryAndAuthorities, _id, limit)
+    yield all([
+      put(ActionCreators.setViolation(response.data.violations)),
+    ]);
+
+  }
+  catch (error) { }
+
+}
+
+function* districtFilter({_id, district}) {
+  try {
+    const response = yield call(filterDistrict, _id, district)
+    yield all([
+      put(ActionCreators.setDistrictFilter(response.data))
+    ])
+  }
+  catch (error) {
+
+  }
 }
 
 function* watchUserLogin() {
@@ -395,6 +421,14 @@ function* watchUpdateRoleAdmin() {
   yield takeLatest(actions.UPDATE_USER_ROLE_ADMIN, updateUserAdmin);
 }
 
+function* watchGetViolations() {
+  yield takeLatest(actions.GET_VIOLATIONS, getViolations);
+}
+
+function* watchFilterDistrict() {
+  yield takeLatest(actions.GET_DISTRICT_FILTER, districtFilter);
+}
+
 export {
   watchUserRegistration,
   watchUserLogin,
@@ -412,5 +446,7 @@ export {
   watchDeleteUser,
   watchGetAllApplications,
   watchGetApplication,
-  watchUpdateRoleAdmin
+  watchUpdateRoleAdmin,
+  watchGetViolations,
+  watchFilterDistrict
 };

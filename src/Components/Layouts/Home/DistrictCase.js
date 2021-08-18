@@ -20,6 +20,8 @@ const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
   const [report, setReport] = useState(districtReport);
   const store = useStore();
 
+  // console.log(report,'kk')
+
 
   if (report.total) delete report.total;
   const labels = Object.keys(report);
