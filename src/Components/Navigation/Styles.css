@@ -156,6 +156,13 @@ color: #fff;
   width: 100%;
 }
 
+.icon-bg {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #01365eea;
+}
+
 .icon-hover:hover {
   cursor: pointer;
   background-color: #01365eea;
