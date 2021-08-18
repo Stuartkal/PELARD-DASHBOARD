@@ -6,7 +6,11 @@ import "./Styles.css";
 const Sidebar = (props) => {
 
   const user = useSelector((state) => state.user);
-
+  const [dashbgColor, setDashBgColor] = React.useState(false)
+  const [casebgColor, setCaseBgColor] = React.useState(false)
+  const [appbgColor, setAppBgColor] = React.useState(false)
+  const [insightbgColor, setInsightBgColor] = React.useState(false)
+  const [userbgColor, setUserBgColor] = React.useState(false)
 
   const role = user.role
   const contributor = 'contributor'
@@ -15,27 +19,32 @@ const Sidebar = (props) => {
 
   const onclickCaseHandler = () => {
     props.history.push("./cases");
+    setCaseBgColor(true)
   };
 
   const onclickOverviewHandler = () => {
     props.history.push("./overview");
+    setDashBgColor(true)
   };
 
   const onclickUserHandler = () => {
     props.history.push("./users");
+    setUserBgColor(true)
   };
 
 
   const onclickRequestsHandler = () => {
     props.history.push("./applications");
+    setAppBgColor(true)
   };
 
   const onclickActivitiesHandler = () => {
     props.history.push("./activities");
+    setInsightBgColor(true)
   };
 
   let cases_link = (
-    <div onClick={onclickCaseHandler} className="icon-hover">
+    <div onClick={onclickCaseHandler} className={casebgColor ? "icon-bg" : "icon-hover"}>
       <div className="icon-column">
         <i className="material-icons">view_list</i>
         <h4>Cases</h4>
@@ -44,7 +53,7 @@ const Sidebar = (props) => {
   )
 
   let users = (
-    <div onClick={onclickUserHandler} className="icon-hover">
+    <div onClick={onclickUserHandler} className={userbgColor ? "icon-bg" : "icon-hover"}>
       <div className="icon-column">
         <i className="material-icons">groups</i>
         <h4>Users</h4>
@@ -53,7 +62,7 @@ const Sidebar = (props) => {
   )
 
   let applications = (
-    <div onClick={onclickRequestsHandler} className="icon-hover">
+    <div onClick={onclickRequestsHandler} className={appbgColor ? "icon-bg" : "icon-hover"}>
       <div className="icon-column">
         <i className="material-icons">feed</i>
         <h4>Applications</h4>
@@ -62,7 +71,7 @@ const Sidebar = (props) => {
   )
 
   let violations = (
-    <div onClick={onclickActivitiesHandler} className="icon-hover">
+    <div onClick={onclickActivitiesHandler} className={insightbgColor ? "icon-bg" : "icon-hover"}>
       <div className="icon-column">
         <i className="material-icons">highlight</i>
         <h4>Insights </h4>
@@ -83,7 +92,7 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar">
       <div className="sidebar-container">
-        <div onClick={onclickOverviewHandler} className="icon-hover">
+        <div onClick={onclickOverviewHandler} className={dashbgColor ? "icon-bg" : "icon-hover"}>
           <div className="icon-column">
             <i className="material-icons">dashboard</i>
             <h4>Dashboard</h4>
