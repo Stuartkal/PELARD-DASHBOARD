@@ -65,6 +65,11 @@ export const setNumCases = (number) => ({
   number,
 });
 
+export const setTotalCases = (number) => ({
+  type: actions.SET_TOTAL_CASES,
+  number,
+});
+
 export const setMonthly = (report) => ({ type: actions.SET_MONTHLY, report });
 
 export const setDistrict = (report) => ({ type: actions.SET_DISTRICT, report });
@@ -255,4 +260,15 @@ export const gettingViolation = (_id, limit) => ({
   type: actions.GET_VIOLATIONS,
   _id,
   limit
+})
+
+export const setDistrictFilter = (payload) => ({
+  type: actions.SET_DISTRICT_FILTER,
+  payload
+})
+
+export const districtFilter = (_id, district) => ({
+  type: actions.GET_DISTRICT_FILTER,
+  _id,
+  district
 })

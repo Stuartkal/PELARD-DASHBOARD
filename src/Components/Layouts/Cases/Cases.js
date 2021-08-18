@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 import NewCases from "../NewCases/NewCases";
-import "./Styles.scss";
+import "./Styles.css";
 
 const Cases = () => {
   return (

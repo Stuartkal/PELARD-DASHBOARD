@@ -2,7 +2,7 @@ import Chart from "chart.js";
 import React, { useEffect, useState } from "react";
 import { connect, useStore } from "react-redux";
 import { ActionCreators } from "../../../Store/ActionCreators";
-import "./Styles.scss";
+import "./Styles.css";
 
 const pieRef = React.createRef();
 
@@ -19,6 +19,8 @@ const selectDistrictReport = ({ districtReport }) => districtReport;
 const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
   const [report, setReport] = useState(districtReport);
   const store = useStore();
+
+  // console.log(report,'kk')
 
 
   if (report.total) delete report.total;

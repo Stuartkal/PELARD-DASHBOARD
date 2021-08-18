@@ -55,7 +55,7 @@ const Applications = ({
 
   const columns = React.useMemo(
     () => [
-      { Header: "User ID", accessor: "userId" },
+      { Header: "User Name", accessor: "firstName" },
       { Header: "Role", accessor: "role" },
       { Header: "Status", accessor: "status" },
       {

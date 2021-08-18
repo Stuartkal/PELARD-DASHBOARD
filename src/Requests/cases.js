@@ -24,7 +24,6 @@ export const getReportedCases = async (
   });
 
   const json = await response.json();
-
   return json;
 };
 
@@ -39,7 +38,6 @@ export const getCaseAlleryAndAuthorities = async (_id, limit) => {
     }
   });
   const json = await response.json();
-
   return json;
 }
 
@@ -201,4 +199,20 @@ export const generatePdf = (id) => {
     "_blank"
   ) ||
     (window.location.href = `https://pelard-n.herokuapp.com/documents/${id}/generate-pdf`);
+};
+
+export const filterDistrict = async (_id, district) => {
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/violations?filter={"location":{"district": "Gulu"}}&limit=20`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization,
+    },
+  });
+
+  const json = await response.json();
+  // console.log(json,'kid')
+  return json;
 };

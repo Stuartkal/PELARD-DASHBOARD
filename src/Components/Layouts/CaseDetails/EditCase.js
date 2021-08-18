@@ -4,11 +4,11 @@ import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 import { ActionCreators } from "../../../Store/ActionCreators";
 
-import "./Styles.scss";
+import "./Styles.css";
 const EditCase = (props) => {
   const violation = useSelector((state) => state.singleCase);
   const user = useSelector((state) => state.user);
-  console.log(violation._id, "kkk");
+  // console.log(violation._id, "kkk");
   const dispatch = useDispatch();
 
   const involved = violation.involved;

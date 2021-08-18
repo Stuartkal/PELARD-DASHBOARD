@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux'
-import moment from 'moment'
+import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 import MyApplications from "../Applications/Applications";
-import { ActionCreators } from "../../../Store/ActionCreators"
+import { ActionCreators } from "../../../Store/ActionCreators";
 
-import "./Styles.scss";
+import "./Styles.css";
 const Applications = (props) => {
 
   const [open, setopen] = useState(false)
@@ -14,10 +14,10 @@ const Applications = (props) => {
 
   const application = useSelector(state => state.application)
   const user = useSelector(state => state.user)
-  // console.log(application)
+  // console.log(application,'jj')
   const dispatch = useDispatch()
 
-
+  // const username = application && application.user.firstName
 
   const handleUpdateRole = () => {
     dispatch(ActionCreators.updatingUserRole(user._id, application._id, (res) => {
@@ -46,7 +46,7 @@ const Applications = (props) => {
           <MyApplications open={() => setopen(true)} />
           {open ? <div className="applicant-card">
             <div className="application-header">
-              <p>{message}</p>
+              {/* <h2>{message ? message : username}</h2> */}
               <i onClick={closeModalHandler} className="material-icons">close</i>
             </div>
             <div className="applicant-main-row">

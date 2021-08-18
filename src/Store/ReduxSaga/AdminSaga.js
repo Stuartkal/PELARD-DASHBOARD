@@ -7,7 +7,8 @@ import {
   updateUserRole,
   deleteCase,
   generatePdf,
-  getCaseAlleryAndAuthorities
+  getCaseAlleryAndAuthorities,
+  filterDistrict
 } from "../../Requests/cases";
 import {
   districtReport,
@@ -93,6 +94,7 @@ function* reportedCases({ _id, pageSize, pageIndex, filter, range }) {
     } else {
       yield put(ActionCreators.setCases(response.data.violations));
       yield put(ActionCreators.setNumCases(response.data.pages));
+      yield put(ActionCreators.setTotalCases(response.data.total));
       yield put(ActionCreators.stopLoading());
     }
   } catch (error) {
@@ -339,6 +341,18 @@ function* getViolations({ _id, limit }) {
 
 }
 
+function* districtFilter({_id, district}) {
+  try {
+    const response = yield call(filterDistrict, _id, district)
+    yield all([
+      put(ActionCreators.setDistrictFilter(response.data))
+    ])
+  }
+  catch (error) {
+
+  }
+}
+
 function* watchUserLogin() {
   yield takeLatest(actions.LOG_IN, loginUser);
 }
@@ -411,6 +425,10 @@ function* watchGetViolations() {
   yield takeLatest(actions.GET_VIOLATIONS, getViolations);
 }
 
+function* watchFilterDistrict() {
+  yield takeLatest(actions.GET_DISTRICT_FILTER, districtFilter);
+}
+
 export {
   watchUserRegistration,
   watchUserLogin,
@@ -429,5 +447,6 @@ export {
   watchGetAllApplications,
   watchGetApplication,
   watchUpdateRoleAdmin,
-  watchGetViolations
+  watchGetViolations,
+  watchFilterDistrict
 };

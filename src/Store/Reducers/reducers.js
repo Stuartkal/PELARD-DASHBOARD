@@ -53,6 +53,15 @@ const numCases = (state = 0, { type, number }) => {
   }
 };
 
+const totalCases = (state = 0, { type, number }) => {
+  switch (type) {
+    case actions.SET_TOTAL_CASES:
+      return number;
+    default:
+      return state;
+  }
+};
+
 const modalShowing = (state = false, { type }) => {
   switch (type) {
     case actions.MODAL_SHOWING:
@@ -191,6 +200,15 @@ const violations = (state = [], { type, payload }) => {
   }
 };
 
+const districtFilter = (state = [], { type, payload }) => {
+  switch (type) {
+    case actions.SET_DISTRICT_FILTER:
+      return payload;
+    default:
+      return state;
+  }
+};
+
 export default {
   modalShowing,
   cases,
@@ -210,5 +228,7 @@ export default {
   loggedIn,
   singleCase,
   numApplications,
-  violations
+  violations,
+  districtFilter,
+  totalCases
 };

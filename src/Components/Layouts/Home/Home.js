@@ -1,13 +1,15 @@
 import React from 'react'
-// import {useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import Navbar from '../../Navigation/Navbar'
 import Sidebar from '../../Navigation/Sidebar'
 import CaseChart from './CaseChart'
 import DistrictCase from './DistrictCase'
 // import * as actionCreators from '../../../Store/ActionCreators'
 
-import './Styles.scss'
+import './Styles.css'
 const Home = () => {
+
+    const total = useSelector(state => state.totalCases)
 
     return (
         <div>
@@ -19,6 +21,12 @@ const Home = () => {
                 <div className="right-column">
                     <CaseChart />
                     <DistrictCase />
+                    <div className="total">
+                        <h5>0verall cases</h5>
+                        <div className="total-div">
+                        <h1>{total}</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

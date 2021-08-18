@@ -4,7 +4,7 @@ import Navbar from '../../Navigation/Navbar'
 import Sidebar from '../../Navigation/Sidebar'
 import { ActionCreators } from "../../../Store/ActionCreators"
 
-import './Styles.scss'
+import './Styles.css'
 const RoleRequest = () => {
 
     const [role, setRole] = useState('')

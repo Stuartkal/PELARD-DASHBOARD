@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ActionCreators } from "../../../Store/ActionCreators"
 
-import "./Styles.scss";
+import "./Styles.css";
 const ForgotPassword = (props) => {
 
     const [email, setEmail] = useState('')

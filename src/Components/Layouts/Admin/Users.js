@@ -3,7 +3,7 @@ import Navbar from "../../Navigation/Navbar";
 import Sidebar from "../../Navigation/Sidebar";
 import NewUsers from "../NewUsers/NewUsers";
 
-import "./Styles.scss";
+import "./Styles.css";
 const Users = () => {
 
     return (

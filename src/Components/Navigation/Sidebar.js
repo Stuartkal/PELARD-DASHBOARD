@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from 'react-redux'
 import { withRouter } from "react-router-dom";
-import "./Styles.scss";
+import "./Styles.css";
 
 const Sidebar = (props) => {
 

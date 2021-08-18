@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "export-from-json": "^1.4.0",
     "file-saver": "^2.0.2",
     "fuse.js": "^6.0.0",
     "history": "^4.10.1",
