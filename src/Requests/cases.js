@@ -119,7 +119,7 @@ export const updateCaseEvidence = async (_id, id, link, description, evidenceTyp
   });
 
   const json = await response.json();
-  console.log(json,'ll')
+  // console.log(json,'ll')
   return json;
 };
 

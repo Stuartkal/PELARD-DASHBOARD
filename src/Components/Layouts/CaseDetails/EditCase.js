@@ -38,7 +38,7 @@ const EditCase = (props) => {
     fileDescription: "",
   });
 
-  console.log(state.districtOfViolation);
+  // console.log(state.districtOfViolation);
 
   useEffect(() => {
     setState({

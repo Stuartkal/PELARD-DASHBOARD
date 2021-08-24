@@ -15,7 +15,7 @@ const EditUser = (props) => {
     const dispatch = useDispatch()
 
     const date = moment(user.registeredDateAndTime, "YYYYMMDD").fromNow()
-    console.log(user)
+    // console.log(user)
 
     const [state, setState] = useState({
         firstName: user.firstName || '',

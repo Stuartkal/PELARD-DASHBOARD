@@ -46,7 +46,7 @@ const Applications = ({
   const [isLoading, setIsLoading] = useState(loading);
   const [filter, setFilter] = useState({});
   const [range, setRange] = useState({});
-  console.log(applications,'apps')
+  // console.log(applications,'apps')
   const data = React.useMemo(() => applicationList, [applicationList]);
   const convertDate = ({ value }) =>
     `${new Date(value).toDateString()} at ${new Date(value)
