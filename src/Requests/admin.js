@@ -83,7 +83,8 @@ export const updateUser = async (
     lastName,
     phoneNumber,
     email,
-    userName
+    userName,
+    role
 ) => {
     const Authorization = await getToken(_id);
     const url = `${baseUrl}/admin/users/${userId}`;
@@ -100,6 +101,7 @@ export const updateUser = async (
             phoneNumber: phoneNumber,
             email: email,
             userName: userName,
+            role: role
         }),
     });
     const json = await response.json();

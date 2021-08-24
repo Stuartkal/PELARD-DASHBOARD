@@ -24,6 +24,7 @@ export const getReportedCases = async (
   });
 
   const json = await response.json();
+  // console.log(json)
   return json;
 };
 
@@ -71,6 +72,58 @@ export const deleteCase = async (_id, id) => {
   return json;
 };
 
+export const updateCaseStatus = async (_id, id, status, description, prevStatus, currStatus) => {
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/violations/${id}`;
+
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization,
+    },
+    body: JSON.stringify({
+      status: {
+        value: status
+      },
+      narratives: [{
+        description: description,
+        previousStatus: prevStatus,
+        currentStatus: currStatus,
+      }]
+})
+  });
+
+  const json = await response.json();
+  // console.log(json,'ll')
+  return json;
+};
+
+export const updateCaseEvidence = async (_id, id, link, description, evidenceType) => {
+  const Authorization = await getToken(_id);
+  const url = `${baseUrl}/violations/${id}`;
+
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization,
+    },
+    body: JSON.stringify({
+      evidence: [{
+        description: description,
+        link: link,
+        type: evidenceType,
+      }]
+})
+  });
+
+  const json = await response.json();
+  console.log(json,'ll')
+  return json;
+};
+
+
 export const updateCase = async (
   _id,
   id,
@@ -79,7 +132,7 @@ export const updateCase = async (
   violationType,
   violationDescription,
   village,
-  districtOfViolation,
+  districtOfViolation
   // victimName,
   // otherVictim,
   // suspectName,
@@ -112,7 +165,7 @@ export const updateCase = async (
       location: {
         name: village,
         district: districtOfViolation
-      },
+      }
       // involved: [
       //   {
       //     type: "victim", name: victimName,
@@ -171,7 +224,7 @@ export const updateCase = async (
   });
 
   const json = await response.json();
-  console.log(json)
+  // console.log(json)
   return json;
 };
 
