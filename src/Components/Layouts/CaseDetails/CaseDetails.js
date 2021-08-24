@@ -89,8 +89,8 @@ const CaseDetails = (props) => {
   }
 
 
-  const array = violation && violation.narratives.slice(-1).pop()
-
+  const array = violation.narratives && violation.narratives.slice(-1).pop()
+  console.log(violation.narratives)
 
   const deleteViolationHandler = () => {
     dispatch(ActionCreators.deletingCase(user._id, violation._id, (res) => {
