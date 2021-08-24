@@ -8,7 +8,10 @@ import {
   deleteCase,
   generatePdf,
   getCaseAlleryAndAuthorities,
-  filterDistrict
+  filterDistrict,
+  updateCaseStatus,
+  updateCaseEvidence,
+  dispatchTry
 } from "../../Requests/cases";
 import {
   districtReport,
@@ -151,6 +154,26 @@ function* removeCase({ _id, id, callback }) {
   } catch (error) { }
 }
 
+function* caseStatusUpdate({_id, id, status, description, prevStatus, currStatus, callback}) {
+  try{
+    const response = yield call(updateCaseStatus, _id, id, status, description, prevStatus, currStatus);
+    yield all([
+      callback({ success: true, res: response.data })
+    ]);
+  }
+  catch (error) {}
+}
+
+function* caseEvidenceUpdate({_id,id,link, description, evidenceType, callback}) {
+  try{
+    const response = yield call(updateCaseEvidence, _id,id,link,description,evidenceType)
+    yield all([
+        callback({ success: true, res: response.data })
+    ])
+  }
+  catch(error) {}
+}
+
 function* updateSingleCase({
   _id,
   id,
@@ -257,6 +280,7 @@ function* userUpdate({
   phoneNumber,
   email,
   userName,
+  role,
   callback
 }) {
   try {
@@ -267,7 +291,8 @@ function* userUpdate({
       lastName,
       phoneNumber,
       email,
-      userName
+      userName,
+      role
     );
     yield all([
       callback({ success: true, res: response.message }),
@@ -385,6 +410,15 @@ function* watchDeleteCase() {
   yield takeLatest(actions.DELETING_CASE, removeCase);
 }
 
+function* watchUpdateCaseStatus() {
+  yield takeLatest(actions.UPDATING_CASE_STATUS, caseStatusUpdate);
+}
+
+function* watchUpdateCaseEvidence() {
+  yield takeLatest(actions.UPDATING_CASE_EVIDENCE, caseEvidenceUpdate)
+}
+
+
 function* watchUpdateSingleCase() {
   yield takeLatest(actions.UPDATING_CASE, updateSingleCase);
 }
@@ -439,6 +473,8 @@ export {
   watchMonthly,
   watchDeleteCase,
   watchUpdateSingleCase,
+  watchUpdateCaseStatus,
+  watchUpdateCaseEvidence,
   watchGeneratePdf,
   watchUpdateRole,
   watchGetAllUsers,

@@ -15,6 +15,7 @@ const EditUser = (props) => {
     const dispatch = useDispatch()
 
     const date = moment(user.registeredDateAndTime, "YYYYMMDD").fromNow()
+    console.log(user)
 
     const [state, setState] = useState({
         firstName: user.firstName || '',
@@ -22,6 +23,7 @@ const EditUser = (props) => {
         phoneNumber: user.phoneNumber || '',
         email: user.email || '',
         userName: user.userName || '',
+        userRole: user.role || '',
         message: ''
     })
 
@@ -36,6 +38,7 @@ const EditUser = (props) => {
             state.phoneNumber,
             state.email,
             state.userName,
+            state.userRole,
             (res) => {
                 if (res.success === true) {
                     setState({
@@ -121,7 +124,11 @@ const EditUser = (props) => {
                                 }
                             />
                             <input
-                                className="edit-input"
+                                placeholder="User Role"
+                                value={state.userRole}
+                                onChange={(e) =>
+                                    setState({ ...state, userRole: e.target.value })
+                                }
                             />
                         </div>
                         <div className="edit-row">

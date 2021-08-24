@@ -164,7 +164,7 @@ const NewCases = ({
 
   return (
     <div className="table">
-      <button className="case-btn" onClick={exportToexcel}> Download Excel </button>
+      <button className="case-btn" onClick={exportToexcel}> Download Excel File </button>
       <Filters
         toggleFilter={toggleFilter}
         showReporterFilter={showReporterFilter}

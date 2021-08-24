@@ -101,6 +101,28 @@ export const deletingCase = (_id, id, callback) => ({
   callback,
 });
 
+export const updatingCaseStatus = (_id, id, status, description, prevStatus, currStatus,callback) => ({
+  type: actions.UPDATING_CASE_STATUS,
+  _id,
+  id,
+  status,
+  description,
+  prevStatus,
+  currStatus,
+  callback
+})
+
+export const updatingCaseEvidence = (_id, id, link, description, evidenceType,callback) => ({
+  type: actions.UPDATING_CASE_EVIDENCE,
+  _id,
+  id,
+  link,
+  description,
+  evidenceType,
+  callback
+})
+
+
 export const updatingCase = (
   _id,
   id,
@@ -226,6 +248,7 @@ export const updatingUser = (
   phoneNumber,
   email,
   userName,
+  role,
   callback
 ) => ({
   type: actions.UPDATE_USER,
@@ -236,6 +259,7 @@ export const updatingUser = (
   phoneNumber,
   email,
   userName,
+  role,
   callback
 })
 

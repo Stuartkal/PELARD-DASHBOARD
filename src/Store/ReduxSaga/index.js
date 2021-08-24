@@ -18,7 +18,9 @@ import {
   watchGetApplication,
   watchUpdateRoleAdmin,
   watchGetViolations,
-  watchFilterDistrict
+  watchFilterDistrict,
+  watchUpdateCaseStatus,
+  watchUpdateCaseEvidence
 } from "./AdminSaga";
 
 export default function* rootSaga() {
@@ -32,6 +34,8 @@ export default function* rootSaga() {
     watchGetSingleCase(),
     watchDeleteCase(),
     watchUpdateSingleCase(),
+    watchUpdateCaseStatus(),
+    watchUpdateCaseEvidence(),
     watchGeneratePdf(),
     watchUpdateRole(),
     watchGetAllUsers(),
