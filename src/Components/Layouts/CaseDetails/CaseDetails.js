@@ -28,7 +28,7 @@ const CaseDetails = (props) => {
   const user = useSelector((state) => state.user);
 
   // console.log(state.msg)
-  console.log(url)
+  // console.log(url)
   const dispatch = useDispatch();
 
   const updateCaseStatus = () => {
@@ -89,7 +89,7 @@ const CaseDetails = (props) => {
   }
 
 
-  const array = violation.narratives.slice(-1).pop()
+  const array = violation && violation.narratives.slice(-1).pop()
 
 
   const deleteViolationHandler = () => {
