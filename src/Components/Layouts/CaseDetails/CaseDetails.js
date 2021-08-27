@@ -28,7 +28,7 @@ const CaseDetails = (props) => {
   const user = useSelector((state) => state.user);
 
   // console.log(state.msg)
-  console.log(violation)
+  // console.log(violation)
   const dispatch = useDispatch();
 
   const updateCaseStatus = () => {
@@ -137,7 +137,7 @@ const CaseDetails = (props) => {
   const convertDate = (date) => new Date(date).toDateString();
   const involved = violation.involved;
   const responses = violation.authorityResponse;
-  const imageUrls = violation.injuries;
+  const evidence = violation.evidence;
   const information = violation.otherInfo;
 
   return (
@@ -268,7 +268,7 @@ const CaseDetails = (props) => {
                   <h4>Persons Involved: </h4>
                 </div>
                 <div className="detail-column">
-                  {violation.involved.map((person) => (
+                  {involved && violation.involved.map((person) => (
                       <div className="detail-column">
                         <div className="detail-row">
                           <div className="row-label">
@@ -315,7 +315,7 @@ const CaseDetails = (props) => {
                 <div className="label">
                   <h4>Authority Response: </h4>
                 </div>
-                {violation.authorityResponse.map((response) => (
+                {responses && violation.authorityResponse.map((response) => (
                     <div className="detail-column">
                       <div className="detail-row">
                         <div className="row-label">
@@ -341,7 +341,7 @@ const CaseDetails = (props) => {
                   <h4>Evidence: </h4>
                 </div>
                 <div className="detail-column">
-                  {violation.evidence.map((injure) => (
+                  {evidence && violation.evidence.map((injure) => (
                       <div className="detail-column">
                         <div className="detail-row">
                           <div className="row-label">
@@ -398,7 +398,7 @@ const CaseDetails = (props) => {
                   <h4>Other information: </h4>
                 </div>
                 <div className="detail-column">
-                  {violation.otherInfo.map((info) => (
+                  {information && violation.otherInfo.map((info) => (
                       <div className="detail-column">
                         <div className="detail-row">
                           <div className="row-label">

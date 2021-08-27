@@ -24,7 +24,7 @@ export const getReportedCases = async (
   });
 
   const json = await response.json();
-  console.log(json)
+  // console.log(json)
   return json;
 };
 
@@ -39,7 +39,6 @@ export const getCaseAlleryAndAuthorities = async (_id, limit) => {
     }
   });
   const json = await response.json();
-  console.log(json)
   return json;
 }
 
@@ -120,7 +119,7 @@ export const updateCaseEvidence = async (_id, id, link, description, evidenceTyp
   });
 
   const json = await response.json();
-  // console.log(json,'ll')
+  console.log(json,'ll')
   return json;
 };
 

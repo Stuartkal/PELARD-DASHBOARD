@@ -41,7 +41,7 @@ const Activities = () => {
   const violations = useSelector(state => state.violations)
   const total = useSelector(state => state.totalCases)
   // console.log(violations.filter(el => el.location.district === 'Agago'),'ff')
-  
+   
   const [limit, setLimit] = useState(total)
   
   const dispatch = useDispatch()
