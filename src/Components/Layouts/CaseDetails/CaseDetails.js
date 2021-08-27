@@ -28,7 +28,7 @@ const CaseDetails = (props) => {
   const user = useSelector((state) => state.user);
 
   // console.log(state.msg)
-  // console.log(url)
+  console.log(violation)
   const dispatch = useDispatch();
 
   const updateCaseStatus = () => {
