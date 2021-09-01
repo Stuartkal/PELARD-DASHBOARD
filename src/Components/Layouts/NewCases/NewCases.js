@@ -52,7 +52,8 @@ const NewCases = ({
   const [showStartFilter, setShowStartFilter] = useState(false);
   const [showEndFilter, setShowEndFilter] = useState(false);
 
-  const data = React.useMemo(() => violations, [violations]);
+  const violation_data = React.useMemo(() => violations, [violations]);
+  // console.log(violation_data,'data')
   const convertDate = ({ value }) => new Date(value).toDateString();
   
   const columns = React.useMemo(
@@ -126,10 +127,28 @@ const NewCases = ({
 
   const fileName = 'Report'  
   const exportType = exportFromJSON.types.csv
-
-
+  let data = [...violation_data.map(r => 
+    ({...r, 
+      status: r.status.value, 
+      status: r.status.value, 
+      location: `${r.location.district} - ${r.location.name}`,
+      reporter: `${r.reporter.name} - ${r.reporter.contact}`, 
+      authorities: r.authorityResponse.map(a => a.name).join(), 
+      authorityResponse: r.authorityResponse.map(a => a.response).join(), 
+      injuries: r.injuries.map(j => j.description).join(), 
+      otherInfo: r.otherInfo.map(o => o.description).join(), 
+      actions: r.actions.map(a => a.description).join(), 
+      evidence: r.evidence.map(e => e.link).join(), 
+      narratives: r.narratives.map(n => n.description).join(), 
+      involved: r.involved.map(i => i.name).join()
+    })
+    )]
+  
+  // console.log(data)
+  
+  
   const exportToexcel = () => {
-    exportFromJSON({data, fileName,exportType})
+    exportFromJSON({ data, fileName,exportType})
   }
 
   const toggleFilter = (name) => {
@@ -176,7 +195,7 @@ const NewCases = ({
       />
 
       <NewTable
-        data={data}
+        data={violation_data}
         columns={columns}
         fetchData={fetchData}
         pageCount={numCases}

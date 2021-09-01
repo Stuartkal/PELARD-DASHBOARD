@@ -40,7 +40,7 @@ const Activities = () => {
   const user = useSelector(state => state.user)
   const violations = useSelector(state => state.violations)
   const total = useSelector(state => state.totalCases)
-  // console.log(violations.filter(el => el.location.district === 'Agago'),'ff')
+  // console.log(violations)
    
   const [limit, setLimit] = useState(total)
   
@@ -50,11 +50,12 @@ const Activities = () => {
     violations.map(violation => violationTypes.push(violation.type))
   }
   
+  const currentDate = moment(new Date()).format('MMM')
   
     
     let seriousCases = []
     violations.forEach(element => {
-      if(element.type === 'Destruction Of Property' && moment(element.reportedDateAndTime).format('MMM DD YYYY') === moment(new Date()).format('MMM DD YYYY')) seriousCases.push(element)
+      if(element.type === 'Destruction Of Property' && moment(element.reportedDateAndTime).format('MMM') === currentDate) seriousCases.push(element)
     })
 
     const lengthCheck = seriousCases.length

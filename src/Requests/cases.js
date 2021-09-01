@@ -39,6 +39,7 @@ export const getCaseAlleryAndAuthorities = async (_id, limit) => {
     }
   });
   const json = await response.json();
+  // console.log(json)
   return json;
 }
 
