@@ -34,7 +34,7 @@ const Explore = () => {
     total = explore.total
     violations = explore.violations
     
-    // console.log(explore,'object')
+    // console.log(total,'object')
 
     useEffect(() => {
         getcases()
@@ -122,7 +122,7 @@ const Explore = () => {
 
     // violations.sort((a,b) => moment(a.reportedDateAndTime).format("MMM Do YY") - moment(b.reportedDateAndTime).format("MMM Do YY") )
 
-    let data = [...violations.map(r => 
+    let data = [...violations && violations.map(r => 
     ({...r, 
       status: r.status.value,  
       district: `${r.location.district} `,

@@ -39,10 +39,10 @@ const Activities = () => {
   
   const user = useSelector(state => state.user)
   const violations = useSelector(state => state.violations)
-  const total = useSelector(state => state.totalCases)
+  const total = useSelector(state => state.exploreViolations.total)
    
   const [limit, setLimit] = useState(total)
-  // console.log(violations,'hoc')
+  // console.log(total,'hoc')
   
   const dispatch = useDispatch()
   

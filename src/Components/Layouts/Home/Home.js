@@ -9,7 +9,8 @@ import DistrictCase from './DistrictCase'
 import './Styles.css'
 const Home = () => {
 
-    const total = useSelector(state => state.totalCases)
+    const total = useSelector(state => state.exploreViolations.total)
+    // console.log(total)
     return (
         <div>
             <Navbar />
