@@ -28,11 +28,11 @@ const Explore = () => {
     
     let pageSize, pageNumber, limit, total, violations
     
-    pageSize = explore.pages
-    limit = explore.limit
-    pageNumber = explore.page
-    total = explore.total
-    violations =explore && explore.violations
+    pageSize = explore && explore.pages
+    limit = explore && explore.limit
+    pageNumber = explore && explore.page
+    total = explore && explore.total
+    violations = explore && explore.violations
     
     // console.log(total,'object')
 
