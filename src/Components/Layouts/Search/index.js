@@ -34,7 +34,7 @@ const Explore = () => {
     total = explore && explore.total
     violations = explore && explore.violations
     
-    // console.log(total,'object')
+    console.log(violations,'object')
 
     useEffect(() => {
         getcases()
@@ -123,7 +123,7 @@ const Explore = () => {
     // violations.sort((a,b) => moment(a.reportedDateAndTime).format("MMM Do YY") - moment(b.reportedDateAndTime).format("MMM Do YY") )
 
     let data = [...violations.map(r => 
-    ({ 
+    ({...r, 
       status: r.status.value,  
       district: `${r.location.district} `,
       town: `${r.location.name}`,
@@ -177,7 +177,18 @@ const Explore = () => {
                 </div>
                 <Table 
                     columns={columns} 
-                    dataSource={data} 
+                    dataSource={[...violations.map(r => 
+                        ({...r, 
+                        status: r.status.value,  
+                        district: `${r.location.district} `,
+                        town: `${r.location.name}`,
+                        violation: `${r.type}`,
+                        reporter: `${r.reporter.name}` , 
+                        phone: `${r.reporter.contact}`, 
+                        authorities: r.authorityResponse.map(a => a.name).join(), 
+                        date: `${moment(r.reportedDateAndTime).calendar()}`
+                        })
+                        )]} 
                     style={{width:'100%', marginBottom:'5rem'}} 
                     pagination={false} 
                 />
