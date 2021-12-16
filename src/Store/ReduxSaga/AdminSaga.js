@@ -11,6 +11,7 @@ import {
   filterDistrict,
   updateCaseStatus,
   updateCaseEvidence,
+  getExploreCases,
   dispatchTry
 } from "../../Requests/cases";
 import {
@@ -366,6 +367,19 @@ function* getViolations({ _id, limit }) {
 
 }
 
+function* gettingExploreViolations({ _id,pageIndex,limit }) {
+  try {
+      yield put(ActionCreators.loading());
+    const response = yield call(getExploreCases, _id, pageIndex,limit)
+    yield all([
+      put(ActionCreators.setExploreViolation(response.data)),
+    ]);
+      yield put(ActionCreators.stopLoading());
+  }
+  catch (error) { }
+
+}
+
 function* districtFilter({_id, district}) {
   try {
     const response = yield call(filterDistrict, _id, district)
@@ -459,6 +473,10 @@ function* watchGetViolations() {
   yield takeLatest(actions.GET_VIOLATIONS, getViolations);
 }
 
+function* watchGetExploreViolations() {
+  yield takeLatest(actions.GET_EXPLORE_VIOLATIONS, gettingExploreViolations);
+}
+
 function* watchFilterDistrict() {
   yield takeLatest(actions.GET_DISTRICT_FILTER, districtFilter);
 }
@@ -484,5 +502,6 @@ export {
   watchGetApplication,
   watchUpdateRoleAdmin,
   watchGetViolations,
+  watchGetExploreViolations,
   watchFilterDistrict
 };

@@ -131,7 +131,7 @@ const NewCases = ({
     ({...r, 
       status: r.status.value, 
       status: r.status.value, 
-      location: `${r.location.district} - ${r.location.name}`,
+      // location: `${r.location.district} - ${r.location.name}`,
       reporter: `${r.reporter.name} - ${r.reporter.contact}`, 
       authorities: r.authorityResponse.map(a => a.name).join(), 
       authorityResponse: r.authorityResponse.map(a => a.response).join(), 

@@ -280,9 +280,21 @@ export const setViolation = (payload) => ({
   payload
 })
 
+export const setExploreViolation = (payload) => ({
+  type: actions.SET_EXPLORE_VIOLATION,
+  payload
+})
+
 export const gettingViolation = (_id, limit) => ({
   type: actions.GET_VIOLATIONS,
   _id,
+  limit
+})
+
+export const getExploreViolation = (_id,pageIndex, limit) => ({
+  type: actions.GET_EXPLORE_VIOLATIONS,
+  _id,
+  pageIndex,
   limit
 })
 

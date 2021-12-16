@@ -200,6 +200,17 @@ const violations = (state = [], { type, payload }) => {
   }
 };
 
+const exploreViolations = (state = [], { type, payload }) => {
+  switch (type) {
+    case actions.SET_EXPLORE_VIOLATION:
+      return payload;
+    case actions.REMOVE_CASES:
+      return [];
+    default:
+      return state;
+  }
+};
+
 const districtFilter = (state = [], { type, payload }) => {
   switch (type) {
     case actions.SET_DISTRICT_FILTER:
@@ -229,6 +240,7 @@ export default {
   singleCase,
   numApplications,
   violations,
+  exploreViolations,
   districtFilter,
   totalCases
 };

@@ -28,7 +28,29 @@ export const getReportedCases = async (
   return json;
 };
 
+export const getExploreCases = async (
+  _id,
+  pageIndex,
+  limit,
+) => {
+  const Authorization = await getToken(_id);
+  let url = `${baseUrl}/violations?page=${pageIndex + 1
+    }&limit=${limit}`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization,
+    },
+  });
+
+  const json = await response.json();
+  // console.log(json,'ll')
+  return json;
+};
+
 export const getCaseAlleryAndAuthorities = async (_id, limit) => {
+  // console.log(limit,'limit')
   const Authorization = await getToken(_id);
   let url = `${baseUrl}/violations?limit=${limit}`
 

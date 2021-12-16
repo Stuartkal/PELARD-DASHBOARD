@@ -112,7 +112,7 @@ color: #059ca1;
   position: fixed;
   top: 0;
   left: 0;
-  width: 20%;
+  width: 15%;
   height: 100vh;
   z-index: 50;
   display: flex;
@@ -135,8 +135,8 @@ color: #059ca1;
 }
 
 .icon-column i {
-color: #fff;
-    font-size: 30px;
+color: rgb(219, 217, 217);
+    font-size: 25px;
     margin-right: 0.5rem;
 }
 

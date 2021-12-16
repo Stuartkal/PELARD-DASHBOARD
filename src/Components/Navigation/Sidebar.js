@@ -10,6 +10,7 @@ const Sidebar = (props) => {
   const [casebgColor, setCaseBgColor] = React.useState(false)
   const [appbgColor, setAppBgColor] = React.useState(false)
   const [insightbgColor, setInsightBgColor] = React.useState(false)
+  const [explorebgColor, setExploreBgColor] = React.useState(false)
   const [userbgColor, setUserBgColor] = React.useState(false)
 
   const role = user.role
@@ -43,11 +44,16 @@ const Sidebar = (props) => {
     setInsightBgColor(true)
   };
 
+  const onclickSearchsHandler = () => {
+    props.history.push("./search");
+    setExploreBgColor(true)
+  };
+
   let cases_link = (
     <div onClick={onclickCaseHandler} className={casebgColor ? "icon-bg" : "icon-hover"}>
       <div className="icon-column">
         <i className="material-icons">view_list</i>
-        <h4>Cases</h4>
+        <h4>Case Reports</h4>
       </div>
     </div>
   )
@@ -79,6 +85,15 @@ const Sidebar = (props) => {
     </div>
   )
 
+  let search = (
+    <div onClick={onclickSearchsHandler} className={explorebgColor ? "icon-bg" : "icon-hover"}>
+      <div className="icon-column">
+        <i className="material-icons">search</i>
+        <h4>Explore </h4>
+      </div>
+    </div>
+  )
+
   if (JSON.stringify(role) !== JSON.stringify(contributor) && JSON.stringify(role) !== JSON.stringify(admin)) {
     cases_link = null
     violations = null
@@ -102,6 +117,7 @@ const Sidebar = (props) => {
         {users}
         {applications}
         {violations}
+        {search}
         <div className="icon-hover">
           <div className="icon-column">
             <i className="material-icons">report_problem</i>

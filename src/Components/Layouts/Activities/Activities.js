@@ -40,9 +40,9 @@ const Activities = () => {
   const user = useSelector(state => state.user)
   const violations = useSelector(state => state.violations)
   const total = useSelector(state => state.totalCases)
-  // console.log(violations)
    
   const [limit, setLimit] = useState(total)
+  // console.log(violations,'hoc')
   
   const dispatch = useDispatch()
   
@@ -66,6 +66,7 @@ const Activities = () => {
 
     const destruction =  violations.filter(el => el.type === 'Destruction Of Property').length
     const destructionPercentage = ((destruction/total) * 100).toFixed(3)
+    // console.log(intimidation)
 
     const harrassment =  violations.filter(el => el.type === 'Harrassment').length
     const harrassmentPercentage = ((harrassment/total) * 100).toFixed(3)
@@ -133,7 +134,7 @@ const Activities = () => {
   
 
   useEffect(() => {
-    dispatch(ActionCreators.gettingViolation(user._id, total))
+    dispatch(ActionCreators.gettingViolation(user._id, limit))
     dispatch(ActionCreators.districtFilter(user._id, 'Gulu'))
     violationsArray()
     filterHandler(violationTypes)
@@ -288,3 +289,24 @@ const Activities = () => {
 }
 
 export default Activities
+
+// import React from 'react'
+// import Sidebar from '../../Navigation/Sidebar'
+// import Navbar from '../../Navigation/Navbar'
+// import './Styles.css'
+
+// export default function Activities() {
+//   return (
+//     <div>
+//       <Navbar/>
+//       <div className="activity-main">
+//       <div className="left-column">
+//         <Sidebar />
+//       </div>
+//       <div className="right-column">
+//           <h1>Insights</h1>
+//       </div>
+//     </div>
+//     </div>
+//   )
+// }

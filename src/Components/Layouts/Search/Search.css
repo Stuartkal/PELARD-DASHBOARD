@@ -1,0 +1,98 @@
+.search-main {
+  margin: 50px auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-column {
+  width: 15%;
+}
+
+.right-column {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem;
+}
+
+.search-header p {
+  color: #2376b6;
+}
+
+.search-input {
+  width: 20%;
+  height: 30px;
+}
+
+.search-input button {
+  background: #2783ca;
+  color: #fff;
+}
+
+.search-input button:hover {
+  background: #2376b6;
+}
+
+.toggle-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+}
+
+.toggle-buttons button {
+  background: none;
+  outline: none;
+  margin-right: 0.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  color: rgba(0,0,0,0.7);
+  /* width: 30px; */
+  height: 30px;
+  transition: 0.5s ease-in-out;
+}
+
+.toggle-buttons button:hover {
+  border: 1px solid #2783ca;
+  color: #2783ca;
+  cursor: pointer;
+}
+
+.toggle-buttons button:focus {
+  border: 1px solid #2783ca;
+  color: #2783ca;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.pagination button {
+  background: none;
+  outline: none;
+  border: 1px solid rgba(0,0,0,0.1);
+  color: rgba(0,0,0,0.7);
+  /* width: 30px; */
+  height: 30px;
+  transition: 0.5s ease-in-out;
+}
+
+.pagination button:hover {
+  border: 1px solid #2783ca;
+  color: #2783ca;
+  cursor: pointer;
+}

@@ -10,7 +10,6 @@ import './Styles.css'
 const Home = () => {
 
     const total = useSelector(state => state.totalCases)
-
     return (
         <div>
             <Navbar />

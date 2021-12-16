@@ -18,6 +18,7 @@ import {
   watchGetApplication,
   watchUpdateRoleAdmin,
   watchGetViolations,
+  watchGetExploreViolations,
   watchFilterDistrict,
   watchUpdateCaseStatus,
   watchUpdateCaseEvidence
@@ -45,6 +46,7 @@ export default function* rootSaga() {
     watchGetApplication(),
     watchUpdateRoleAdmin(),
     watchGetViolations(),
+    watchGetExploreViolations(),
     watchFilterDistrict()
   ]);
 }
