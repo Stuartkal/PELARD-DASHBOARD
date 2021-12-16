@@ -122,7 +122,7 @@ const Explore = () => {
 
     // violations.sort((a,b) => moment(a.reportedDateAndTime).format("MMM Do YY") - moment(b.reportedDateAndTime).format("MMM Do YY") )
 
-    let data = [...violations && violations.map(r => 
+    let data = [...violations.map(r => 
     ({...r, 
       status: r.status.value,  
       district: `${r.location.district} `,
