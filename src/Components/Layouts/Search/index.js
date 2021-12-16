@@ -32,7 +32,7 @@ const Explore = () => {
     limit = explore.limit
     pageNumber = explore.page
     total = explore.total
-    violations = explore.violations
+    violations =explore && explore.violations
     
     // console.log(total,'object')
 

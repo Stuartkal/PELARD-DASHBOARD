@@ -71,7 +71,9 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
           {
             label: "Case Reported",
             data,
-            backgroundColor: "#059ca183",
+            backgroundColor: "#fff",
+            borderColor: "#059ca183",
+            borderWidth:1
           },
         ],
       },
