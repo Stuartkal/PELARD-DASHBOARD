@@ -8,7 +8,9 @@
   align-items: center;
   justify-content: center;
   height: 50px;
-  background-color: #fff;
+  background: #fff;
+
+
 }
 
 .nav-container {
@@ -117,7 +119,11 @@ color: #059ca1;
   z-index: 50;
   display: flex;
   justify-content: center;
-  background-color: #01579b;
+  background: #00c6ff;  
+  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff); 
+  background: linear-gradient(to right, #0072ff, #00c6ff); 
+
+
   transition: 0.5s ease-in-out;
 }
 

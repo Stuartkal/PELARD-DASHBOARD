@@ -55,6 +55,7 @@
   background: none;
   outline: none;
   margin-right: 0.5rem;
+  background: #fff;
   border: 1px solid rgba(0,0,0,0.1);
   color: rgba(0,0,0,0.7);
   /* width: 30px; */
@@ -84,6 +85,7 @@
 .pagination button {
   background: none;
   outline: none;
+  background: #fff;
   border: 1px solid rgba(0,0,0,0.1);
   color: rgba(0,0,0,0.7);
   /* width: 30px; */
