@@ -1,16 +1,24 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import Navbar from '../../Navigation/Navbar'
 import Sidebar from '../../Navigation/Sidebar'
 import CaseChart from './CaseChart'
 import DistrictCase from './DistrictCase'
-// import * as actionCreators from '../../../Store/ActionCreators'
+import { ActionCreators } from '../../../Store/ActionCreators'
 
 import './Styles.css'
 const Home = () => {
 
     const total = useSelector(state => state.exploreViolations.total)
+    const user = useSelector(state => state.user)
     // console.log(total)
+
+    const dispatch = useDispatch()
+
+    React.useEffect(() => {
+        dispatch(ActionCreators.getExploreViolation(user._id, 0, 20))
+    },[])
+
     return (
         <div>
             <Navbar />
