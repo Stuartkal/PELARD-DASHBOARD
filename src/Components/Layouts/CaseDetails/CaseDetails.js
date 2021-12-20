@@ -24,11 +24,11 @@ const CaseDetails = (props) => {
     msg:''
   })
 
-  const violation = useSelector((state) => state.singleCase);
+  const violation = props.location.state.violation;
   const user = useSelector((state) => state.user);
 
-  // console.log(state.msg)
-  // console.log(violation)
+  // console.log(url,state.image,'ll')
+  // console.log(props.location.state.violation)
   const dispatch = useDispatch();
 
   const updateCaseStatus = () => {
@@ -39,7 +39,7 @@ const CaseDetails = (props) => {
         violation._id,
         state.status,
         state.narrative,
-        violation.status.value,
+        violation.status,
         state.status,
         (res) => {
           if(res.success) {
@@ -61,7 +61,7 @@ const CaseDetails = (props) => {
 
   const updateCaseEvidence = () => {
 
-    if(!state.evidenceDescription && !state.evidenceType && !url) return setState({msg:'Please enter all fields'})
+    if(!state.evidenceDescription && !url) return setState({msg:'Please enter all fields'})
 
     dispatch(
       ActionCreators.updatingCaseEvidence(
@@ -137,7 +137,7 @@ const CaseDetails = (props) => {
   const convertDate = (date) => new Date(date).toDateString();
   const involved = violation.involved;
   const responses = violation.authorityResponse;
-  const evidence = violation.evidence;
+  const injuries = violation.injuries;
   const information = violation.otherInfo;
 
   return (
@@ -153,7 +153,7 @@ const CaseDetails = (props) => {
             <div className="case-header">
               <h2>Case Details</h2>
               <div className="icons">
-                <h4>{convertDate(violation.dateTime)}</h4>
+                <h4>{convertDate(violation.reportedDateAndTime)}</h4>
                 <GetAppIcon style={{color:'#01579b', fontSize:'30px'}} className="case-icons"  onClick={() => dispatch(ActionCreators.generatingPdf(violation._id))} />
                 {update_link}
                 <DeleteIcon style={{color:'#01579b', fontSize:'30px'}} className="case-icons" onClick={deleteViolationHandler} />
@@ -165,7 +165,7 @@ const CaseDetails = (props) => {
                   <h4>Case Status: </h4>
                 </div>
                 <div className="status">
-                  {editModal ? null : <h5>{violation.status && violation.status.value}</h5>}
+                  {editModal ? null : <h5>{violation.status}</h5>}
                 {!editModal && user.role === 'admin' ? 
                 <EditIcon 
                 style={{color:'#01579b', fontSize:'20px'}} 
@@ -223,7 +223,7 @@ const CaseDetails = (props) => {
                   <h4>Reporter's Name: </h4>
                 </div>
                 <div className="detail">
-                  <h5>{violation.reporter && violation.reporter.name}</h5>
+                  <h5>{violation.reporter}</h5>
                 </div>
               </div>
               <div className="case-detail-row">
@@ -231,15 +231,15 @@ const CaseDetails = (props) => {
                   <h4>Phone Number: </h4>
                 </div>
                 <div className="detail">
-                  <h5>{violation.reporter && violation.reporter.contact}</h5>
+                  <h5>{violation.phone}</h5>
                 </div>
               </div>
               <div className="case-detail-row">
                 <div className="label">
-                  <h4>Location: </h4>
+                  <h4>Town: </h4>
                 </div>
                 <div className="detail">
-                  <h5>{violation.location && violation.location.name}</h5>
+                  <h5>{violation.town}</h5>
                 </div>
               </div>
               <div className="case-detail-row">
@@ -247,7 +247,7 @@ const CaseDetails = (props) => {
                   <h4>District: </h4>
                 </div>
                 <div className="detail">
-                  <h5>{violation.location && violation.location.district}</h5>
+                  <h5>{violation.district}</h5>
                 </div>
               </div>
               <div className="case-detail-row">
@@ -302,7 +302,7 @@ const CaseDetails = (props) => {
                             </div>
                             <div className="relative-row">
                               <div className="relative-label">
-                                <h5>Link: </h5>
+                                <h5>Gender: </h5>
                               </div>
                               <div className="relative-text">
                                 <h5>{link.link}</h5>
@@ -344,7 +344,7 @@ const CaseDetails = (props) => {
                   <h4>Evidence: </h4>
                 </div>
                 <div className="detail-column">
-                  {evidence && violation.evidence.map((injure) => (
+                  {injuries && violation.injuries.map((injure) => (
                       <div className="detail-column">
                         <div className="detail-row">
                           <div className="row-label">

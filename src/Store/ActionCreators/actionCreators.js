@@ -298,6 +298,13 @@ export const getExploreViolation = (_id,pageIndex, limit) => ({
   limit
 })
 
+export const getSearchViolation = (_id, limit, filter) => ({
+  type: actions.GET_SEARCH_VIOLATIONS,
+  _id,
+  limit,
+  filter
+})
+
 export const setDistrictFilter = (payload) => ({
   type: actions.SET_DISTRICT_FILTER,
   payload

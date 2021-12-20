@@ -11,7 +11,7 @@ import './Search.css'
 
 const { Search } = Input
 
-const Explore = () => {
+const Explore = (props) => {
 
     const [pageIndex, setPageIndex] = useState(0)
     const [_limit, setLimit] = useState(20)
@@ -144,9 +144,10 @@ const Explore = () => {
             </div>
             <div className="right-column">
                 <div className="search-header">
-                    {/* <Search
+                    <Search
                         className='search-input'
-                    /> */}
+                        onClick={() => dispatch(ActionCreators.getSearchViolation(user._id, 10, "Nyeko Martin"))}
+                    />
                     <div className="toggle-buttons">
                         <button onClick={() => setColumn(false)}>view more</button>
                         <button onClick={() => setColumn(true)}>view less</button>
@@ -186,11 +187,17 @@ const Explore = () => {
                         reporter: `${r.reporter.name}` , 
                         phone: `${r.reporter.contact}`, 
                         authorities: r.authorityResponse.map(a => a.name).join(), 
+                        gender: r.involved.map(a => a.relevantLinks)[0].map(g => g.link).slice(-1).pop(), 
                         date: `${moment(r.reportedDateAndTime).calendar()}`
                         })
                         )]} 
                     style={{width:'100%', marginBottom:'5rem'}} 
                     pagination={false} 
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: () => props.history.push("./case-details", {violation: record})
+                        }
+                    }}
                 />
             </div>
         </div>

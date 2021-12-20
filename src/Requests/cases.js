@@ -28,6 +28,26 @@ export const getReportedCases = async (
   return json;
 };
 
+export const searchCases = async (
+  _id,
+  limit,
+  filter
+) => {
+  const Authorization = await getToken(_id);
+  let url = `${baseUrl}/violations?limit=${limit}&filter=${JSON.stringify(filter)}`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization,
+    },
+  });
+
+  const json = await response.json();
+  console.log(json,'gop')
+  return json;
+};
+
 export const getExploreCases = async (
   _id,
   pageIndex,
@@ -118,14 +138,14 @@ export const updateCaseStatus = async (_id, id, status, description, prevStatus,
   });
 
   const json = await response.json();
-  // console.log(json,'ll')
+  console.log(json,'ll')
   return json;
 };
 
 export const updateCaseEvidence = async (_id, id, link, description, evidenceType) => {
   const Authorization = await getToken(_id);
   const url = `${baseUrl}/violations/${id}`;
-
+  console.log(link)
   const response = await fetch(url, {
     method: "PUT",
     headers: {
@@ -133,16 +153,15 @@ export const updateCaseEvidence = async (_id, id, link, description, evidenceTyp
       Authorization,
     },
     body: JSON.stringify({
-      evidence: [{
+      injuries: [{
         description: description,
         link: link,
-        type: evidenceType,
       }]
 })
   });
 
   const json = await response.json();
-  console.log(json,'ll')
+  // console.log(json,'ll')
   return json;
 };
 

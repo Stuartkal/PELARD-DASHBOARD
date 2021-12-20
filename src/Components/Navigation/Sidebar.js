@@ -89,7 +89,7 @@ const Sidebar = (props) => {
     <div onClick={onclickSearchsHandler} className={explorebgColor ? "icon-bg" : "icon-hover"}>
       <div className="icon-column">
         <i className="material-icons">search</i>
-        <h4>Explore </h4>
+        <h4>Case Reports </h4>
       </div>
     </div>
   )
@@ -113,7 +113,7 @@ const Sidebar = (props) => {
             <h4>Dashboard</h4>
           </div>
         </div>
-        {cases_link}
+        {/* {cases_link} */}
         {users}
         {applications}
         {violations}

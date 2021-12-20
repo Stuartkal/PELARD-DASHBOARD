@@ -41,6 +41,7 @@ const NewUsers = ({ getUsers, users, user, loading, numUsers }) => {
   const [showEndFilter, setShowEndFilter] = useState(false);
 
   const data = React.useMemo(() => usersDoc, [usersDoc]);
+  // console.log(data,'kk')
   const columns = React.useMemo(
     () => [
       { Header: "Email", accessor: "email" },

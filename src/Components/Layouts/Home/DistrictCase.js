@@ -57,7 +57,7 @@ const DistrictCase = ({ districtReport, user, getDistrictReport }) => {
           {
             label: "Case Total in Districts",
             data,
-            backgroundColor: "#fff",
+            backgroundColor: "rgba(0,0,0,0.1)",
             borderColor: "#059ca183",
             borderWidth:1
           },

@@ -12,6 +12,7 @@ import {
   updateCaseStatus,
   updateCaseEvidence,
   getExploreCases,
+  searchCases,
   dispatchTry
 } from "../../Requests/cases";
 import {
@@ -380,6 +381,19 @@ function* gettingExploreViolations({ _id,pageIndex,limit }) {
 
 }
 
+function* casesSearch({ _id,limit, filter }) {
+  try {
+      yield put(ActionCreators.loading());
+    const response = yield call(searchCases, _id,limit, filter)
+    yield all([
+      put(ActionCreators.setExploreViolation(response.data)),
+    ]);
+      yield put(ActionCreators.stopLoading());
+  }
+  catch (error) { }
+
+}
+
 function* districtFilter({_id, district}) {
   try {
     const response = yield call(filterDistrict, _id, district)
@@ -477,6 +491,10 @@ function* watchGetExploreViolations() {
   yield takeLatest(actions.GET_EXPLORE_VIOLATIONS, gettingExploreViolations);
 }
 
+function* watchSearchViolations() {
+  yield takeLatest(actions.GET_SEARCH_VIOLATIONS, casesSearch);
+}
+
 function* watchFilterDistrict() {
   yield takeLatest(actions.GET_DISTRICT_FILTER, districtFilter);
 }
@@ -503,5 +521,6 @@ export {
   watchUpdateRoleAdmin,
   watchGetViolations,
   watchGetExploreViolations,
+  watchSearchViolations,
   watchFilterDistrict
 };
