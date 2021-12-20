@@ -6,6 +6,8 @@ import { Table, Pagination, Input, Button } from 'antd'
 import { ActionCreators } from '../../../Store/ActionCreators'
 import moment from 'moment'
 import 'antd/dist/antd.css'
+import exportFromJSON from 'export-from-json'
+import excel from '../../../assets/images/excel.PNG'
 
 import './Search.css'
 
@@ -122,18 +124,31 @@ const Explore = (props) => {
 
     // violations.sort((a,b) => moment(a.reportedDateAndTime).format("MMM Do YY") - moment(b.reportedDateAndTime).format("MMM Do YY") )
 
-    // let data = [...violations.map(r => 
-    // ({...r, 
-    //   status: r.status.value,  
-    //   district: `${r.location.district} `,
-    //   town: `${r.location.name}`,
-    //   violation: `${r.type}`,
-    //   reporter: `${r.reporter.name}` , 
-    //   phone: `${r.reporter.contact}`, 
-    //   authorities: r.authorityResponse.map(a => a.name).join(), 
-    //   date: `${moment(r.reportedDateAndTime).calendar()}`
-    // })
-    // )]
+    const fileName = 'Report'  
+    const exportType = exportFromJSON.types.csv
+    let data = [...violations.map(r => 
+    ({...r, 
+      status: r.status.value, 
+      status: r.status.value, 
+      district: `${r.location.district} `,
+      town: `${r.location.name}`,
+      gender: r.involved.map(a => a.relevantLinks)[0].map(g => g.link).slice(-1).pop(),
+      reporter: `${r.reporter.name} - ${r.reporter.contact}`, 
+      authorities: r.authorityResponse.map(a => a.name).join(), 
+      authorityResponse: r.authorityResponse.map(a => a.response).join(), 
+      injuries: r.injuries.map(j => j.description).join(), 
+      otherInfo: r.otherInfo.map(o => o.description).join(), 
+      actions: r.actions.map(a => a.description).join(), 
+      evidence: r.evidence.map(e => e.link).join(), 
+      narratives: r.narratives.map(n => n.description).join(), 
+      involved: r.involved.map(i => i.name).join()
+    })
+    )]
+
+
+    const exportToexcel = () => {
+    exportFromJSON({ data, fileName,exportType})
+  }
 
     return (
         <div>
@@ -144,10 +159,14 @@ const Explore = (props) => {
             </div>
             <div className="right-column">
                 <div className="search-header">
-                    <Search
+                    {/* <Search
                         className='search-input'
                         onClick={() => dispatch(ActionCreators.getSearchViolation(user._id, 10, "Nyeko Martin"))}
-                    />
+                    /> */}
+                    <div onClick={exportToexcel} className="download-excel">
+                        <img src={excel}/>
+                        <h4>Download</h4>
+                    </div>
                     <div className="toggle-buttons">
                         <button onClick={() => setColumn(false)}>view more</button>
                         <button onClick={() => setColumn(true)}>view less</button>
