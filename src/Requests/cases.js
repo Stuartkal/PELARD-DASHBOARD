@@ -65,7 +65,7 @@ export const getExploreCases = async (
   });
 
   const json = await response.json();
-  // console.log(json,'ll')
+  console.log(json,'ll')
   return json;
 };
 

@@ -2,24 +2,26 @@ import React, { useEffect, useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import Sidebar from '../../Navigation/Sidebar'
 import Navbar from '../../Navigation/Navbar'
-import { Table, Pagination, Input, Button } from 'antd'
+import { Table, Pagination, Input, Select } from 'antd'
 import { ActionCreators } from '../../../Store/ActionCreators'
 import moment from 'moment'
 import 'antd/dist/antd.css'
 import exportFromJSON from 'export-from-json'
 import excel from '../../../assets/images/excel.PNG'
+import { Spin } from 'antd'
 
 import './Search.css'
 
 const { Search } = Input
+const { Option } = Select
 
 const Explore = (props) => {
 
     const [pageIndex, setPageIndex] = useState(0)
     const [_limit, setLimit] = useState(20)
     const [visible, setVisible] = useState(false)
-
     const [column ,setColumn] = useState(true)
+    const [reporter ,setReporter] = useState('')
 
     // const total = useSelector(state => state.totalCases)
     const user = useSelector(state => state.user)
@@ -36,13 +38,34 @@ const Explore = (props) => {
     total = explore && explore.total
     violations = explore && explore.violations
     
-    // console.log(violations,'object')
+    console.log(reporter,'object')
 
     useEffect(() => {
         getcases()
     },[])
 
     const getcases = () => dispatch(ActionCreators.getExploreViolation(user._id, pageIndex, _limit))
+
+
+    const onDistrictChange = (value) => {
+        if(!value) return
+        dispatch(ActionCreators.getSearchViolation(user._id, 2000, {"district": value}))
+    }
+
+    const onTypeChange = (value) => {
+        if(!value) return
+        dispatch(ActionCreators.getSearchViolation(user._id, 2000, {"type": value}))
+    }
+
+    const onStatusChange = (value) => {
+        if(!value) return
+        dispatch(ActionCreators.getSearchViolation(user._id, 2000, {"status": value}))
+    }
+
+    function onChange(value) {
+        console.log(`selected ${value}`);
+    }
+
 
     const columns = [
         {
@@ -128,11 +151,10 @@ const Explore = (props) => {
     const exportType = exportFromJSON.types.csv
     let data = [...violations.map(r => 
     ({...r, 
-      status: r.status.value, 
-      status: r.status.value, 
-      district: `${r.location.district} `,
+      status: r.status && `${r.status.value}`, 
+      district: `${r.location.district}`,
       town: `${r.location.name}`,
-      gender: r.involved.map(a => a.relevantLinks)[0].map(g => g.link).slice(-1).pop(),
+    //   gender: r.involved.map(a => a.relevantLinks)[0].map(g => g.link).slice(-1).pop(),
       reporter: `${r.reporter.name} - ${r.reporter.contact}`, 
       authorities: r.authorityResponse.map(a => a.name).join(), 
       authorityResponse: r.authorityResponse.map(a => a.response).join(), 
@@ -159,19 +181,27 @@ const Explore = (props) => {
             </div>
             <div className="right-column">
                 <div className="search-header">
-                    {/* <Search
-                        className='search-input'
-                        onClick={() => dispatch(ActionCreators.getSearchViolation(user._id, 10, "Nyeko Martin"))}
-                    /> */}
+                    <div className="search-input">
+                        <input
+                            placeholder="Search reporter"
+                            value={reporter}
+                            onChange={(e) => setReporter(e.target.value)}
+                        />
+                        <i 
+                            className="material-icons"
+                            onClick={() => dispatch(ActionCreators.getSearchViolation(user._id, 1000, {"reporter": reporter}))}
+                        >search
+                        </i>
+                    </div>
                     <div onClick={exportToexcel} className="download-excel">
                         <img src={excel}/>
                         <h4>Download</h4>
                     </div>
                     <div className="toggle-buttons">
-                        <button onClick={() => setColumn(false)}>view more</button>
-                        <button onClick={() => setColumn(true)}>view less</button>
+                        {column ? <button onClick={() => setColumn(false)}>view more</button> : null}
+                        {!column ? <button onClick={() => setColumn(true)}>view less</button> : null}
                     </div>
-                        {loading ? <p >Loading.....Please Wait</p> : null}
+                        {loading ? <Spin tip="Loading..."/> : null}
                         <div className="pagination">
                             {visible ? 
                                 <button 
@@ -183,39 +213,76 @@ const Explore = (props) => {
                                     </button> 
                                     : null
                             }
-                            <Pagination 
-                                defaultCurrent={1}
-                                current={pageNumber}
-                                pageSize={limit}
-                                total={total}
-                                onChange={() => {
-                                    dispatch(ActionCreators.getExploreViolation(user._id, pageNumber, limit))
-                                    setVisible(true)
-                                }}
-                            />
+                             <Select
+                                showSearch
+                                placeholder="Filter by District"
+                                onChange={onDistrictChange}
+                                >
+                                <Option value="Gulu">Gulu</Option>
+                                <Option value="Lamwo">Lamwo</Option>
+                                <Option value="Kitgum">Kitgum</Option>
+                                <Option value="Amuru">Amuru</Option>
+                                <Option value="Nwoya">Nwoya</Option>
+                                <Option value="Agago">Agago</Option>
+                                <Option value="Pader">Pader</Option>
+                            </Select>
+                            <Select
+                                showSearch
+                                placeholder="Filter by Violation Type"
+                                onChange={onTypeChange}
+                                >
+                                <Option value="Destruction Of Property">Destruction Of Property</Option>
+                                <Option value="Harrassment">Harrassment</Option>
+                                <Option value="Intimidation">Intimidation</Option>
+                                <Option value="Violation of right to privacy in unlawful entry by others of the premises of a person.">Unlawful entry by others of the premises of a person</Option>
+                                <Option value="Violation of right to privacy in unlawful search of the person, home or other personal">Unlawful search of the person, home or other personal</Option>
+                                <Option value="Violation of the right to own property">Violation of the right to own property</Option>
+                                <Option value="Land Dispute">Land Dispute</Option>
+                            </Select>
+                            <Select
+                                showSearch
+                                placeholder="Filter by Status"
+                                onChange={onStatusChange}
+                                >
+                                <Option value="pending">pending</Option>
+                                <Option value="referred">referred</Option>
+                                <Option value="under litigation">under litigation</Option>
+                                <Option value="resolved">resolved</Option>
+                            </Select>
                         </div>
                 </div>
                 <Table 
                     columns={columns} 
                     dataSource={[...violations.map(r => 
                         ({...r, 
-                        status: r.status.value,  
-                        district: `${r.location.district} `,
+                        status: r.status && `${r.status.value}`,  
+                        district: `${r.location.district}`,
                         town: `${r.location.name}`,
                         violation: `${r.type}`,
                         reporter: `${r.reporter.name}` , 
                         phone: `${r.reporter.contact}`, 
                         authorities: r.authorityResponse.map(a => a.name).join(), 
-                        gender: r.involved.map(a => a.relevantLinks)[0].map(g => g.link).slice(-1).pop(), 
+                        // gender: r.involved.map(a => a.relevantLinks)[0].map(g => g.link).slice(-1).pop(), 
                         date: `${moment(r.reportedDateAndTime).calendar()}`
                         })
                         )]} 
-                    style={{width:'100%', marginBottom:'5rem'}} 
+                    style={{width:'100%', marginBottom:'1rem'}} 
                     pagination={false} 
                     onRow={(record, rowIndex) => {
                         return {
                             onClick: () => props.history.push("./case-details", {violation: record})
                         }
+                    }}
+                />
+                <Pagination 
+                    style={{marginBottom:'1rem'}}
+                    defaultCurrent={1}
+                    current={pageNumber}
+                    pageSize={limit}
+                    total={total}
+                    onChange={() => {
+                        dispatch(ActionCreators.getExploreViolation(user._id, pageNumber, limit))
+                        setVisible(true)
                     }}
                 />
             </div>

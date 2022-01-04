@@ -28,7 +28,7 @@ const CaseDetails = (props) => {
   const user = useSelector((state) => state.user);
 
   // console.log(url,state.image,'ll')
-  // console.log(props.location.state.violation)
+  console.log(props.location.state.violation)
   const dispatch = useDispatch();
 
   const updateCaseStatus = () => {
@@ -172,9 +172,9 @@ const CaseDetails = (props) => {
                 className="case-icons" 
                 onClick={() => setEditModal(true)}/>
                  : null}
-                 {violation.status.value === 'pending' ? <button>update to referred request</button> : null}
+                 {/* {violation.status.value === 'pending' ? <button>update to referred request</button> : null}
                  {violation.status.value === 'referred' ? <button>update to under litigation request</button> : null}
-                 {violation.status.value === 'under litigation' ? <button>update to resolved request</button> : null}
+                 {violation.status.value === 'under litigation' ? <button>update to resolved request</button> : null} */}
                 </div>
                   {editModal ? <div className="status-update">
                     <select value={state.status} onChange={(e) => setState({ ...state, status: e.target.value })}>
