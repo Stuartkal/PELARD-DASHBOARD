@@ -38,7 +38,7 @@ const Explore = (props) => {
     total = explore && explore.total
     violations = explore && explore.violations
     
-    console.log(reporter,'object')
+    // console.log(reporter,'object')
 
     useEffect(() => {
         getcases()

@@ -28,7 +28,7 @@ const CaseDetails = (props) => {
   const user = useSelector((state) => state.user);
 
   // console.log(url,state.image,'ll')
-  console.log(props.location.state.violation)
+  // console.log(props.location.state.violation)
   const dispatch = useDispatch();
 
   const updateCaseStatus = () => {
