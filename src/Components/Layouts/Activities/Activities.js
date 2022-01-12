@@ -62,38 +62,38 @@ const Activities = () => {
      
     
     const intimidation =  violations.filter(el => el.type === 'Intimidation').length
-    const intimidationPercentage = ((intimidation/total) * 100).toFixed(3)
+    const intimidationPercentage = ((intimidation/total) * 100).toFixed(0)
 
     const destruction =  violations.filter(el => el.type === 'Destruction Of Property').length
-    const destructionPercentage = ((destruction/total) * 100).toFixed(3)
+    const destructionPercentage = ((destruction/total) * 100).toFixed(0)
     // console.log(intimidation)
 
     const harrassment =  violations.filter(el => el.type === 'Harrassment').length
-    const harrassmentPercentage = ((harrassment/total) * 100).toFixed(3)
+    const harrassmentPercentage = ((harrassment/total) * 100).toFixed(0)
 
     const premises =  violations.filter(el => el.type === 'Violation of right to privacy in unlawful entry by others of the premises of a person.').length
-    const premisesPercentage = ((premises/total) * 100).toFixed(3)
+    const premisesPercentage = ((premises/total) * 100).toFixed(0)
 
     const home =  violations.filter(el => el.type === 'Violation of right to privacy in unlawful search of the person, home or other personal').length
-    const homePercentage = ((home/total) * 100).toFixed(3)
+    const homePercentage = ((home/total) * 100).toFixed(0)
 
     const property =  violations.filter(el => el.type === 'Violation of the right to own property').length
-    const propertyPercentage = ((property/total) * 100).toFixed(3)
+    const propertyPercentage = ((property/total) * 100).toFixed(0)
 
     const land =  violations.filter(el => el.type === 'Land Dispute').length
-    const landPercentage = ((land/total) * 100).toFixed(3)
+    const landPercentage = ((land/total) * 100).toFixed(0)
 
     const pending =  violations.filter(el => el.status.value === 'pending').length
-    const pendingPercentage = ((pending/total) * 100).toFixed(3)
+    const pendingPercentage = ((pending/total) * 100).toFixed(0)
   
     const resolved =  violations.filter(el => el.status.value === 'resolved').length
-    const resolvedPercentage = ((resolved/total) * 100).toFixed(3)
+    const resolvedPercentage = ((resolved/total) * 100).toFixed(0)
 
     const referred =  violations.filter(el => el.status.value === 'referred').length
-    const referredPercentage = ((referred/total) * 100).toFixed(3)
+    const referredPercentage = ((referred/total) * 100).toFixed(0)
 
     const litigation =  violations.filter(el => el.status.value === 'under litigation').length
-    const litigationPercentage = ((litigation/total) * 100).toFixed(3)
+    const litigationPercentage = ((litigation/total) * 100).toFixed(0)
 
 
   const filterHandler = (arr) => {
