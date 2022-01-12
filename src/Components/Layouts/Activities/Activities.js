@@ -191,6 +191,14 @@ const Activities = () => {
                           <h4>Land Dispute</h4>
                           <LinearProgressWithLabel value={landPercentage} />
                       </div>
+                      <div className="violation-stat">
+                          <h4>Gender Based Violence/Male</h4>
+                          <LinearProgressWithLabel value={20} />
+                      </div>
+                      <div className="violation-stat">
+                          <h4>Gender Based Violence/Female</h4>
+                          <LinearProgressWithLabel value={45} />
+                      </div>
                   </div>
                 </div>
               </AccordionDetails>
@@ -281,7 +289,6 @@ const Activities = () => {
               </AccordionDetails>
             </Accordion>
           </div>
-
         </div>
       </div>
     </div>
