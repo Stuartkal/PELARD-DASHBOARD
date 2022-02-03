@@ -1,6 +1,7 @@
 import Chart from "chart.js";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { connect, useStore } from "react-redux";
+import { connect, useStore, useSelector, useDispatch } from "react-redux";
 import { ActionCreators } from "../../../Store/ActionCreators";
 import "./Styles.css";
 
@@ -38,8 +39,22 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
   const data = Object.values(months);
   data.splice(12, 2);
 
+  const dispatch = useDispatch()
+
+  const violations = useSelector(state => state.violations)
+  const total = useSelector(state => state.exploreViolations.total)
+
+  const year2020 = violations.filter(el => moment(el.reportedDateAndTime).format('YYYY') === '2020' ).length
+  const year2021 = violations.filter(el => moment(el.reportedDateAndTime).format('YYYY') === '2021' ).length
+  const year2022 = violations.filter(el => moment(el.reportedDateAndTime).format('YYYY') === '2022' ).length
+
+  const time = '2021-12-20T11:51:22.000Z'
+
+  // console.log(year2022)
+
   useEffect(() => {
     getMonthlyReport(user._id, year);
+    dispatch(ActionCreators.gettingViolation(user._id, total));
   }, [getMonthlyReport, user._id, year]);
 
   useEffect(() => {
@@ -98,10 +113,24 @@ const CaseChart = ({ monthlyReport, user, getMonthlyReport }) => {
       </div>
       <h3>{months.year} Monthly Reported Cases</h3>
       <canvas height={height} id="myChart" ref={chartRef} />
-      <div className="total">
-        <h5>{year} cases</h5>
-        <div className="total-div">
-          <h1>{months.total}</h1>
+      <div style={{display: 'flex', alignItems:'center', justifyContent:'space-between', width:'50%'}}>
+          <div className="total">
+          <h5>2020 cases</h5>
+          <div className="total-div">
+            <h1>{year2020}</h1>
+          </div>
+        </div>
+        <div className="total">
+          <h5>2021 cases</h5>
+          <div className="total-div">
+            <h1>{year2021}</h1>
+          </div>
+        </div>
+        <div className="total">
+          <h5>2022 cases</h5>
+          <div className="total-div">
+            <h1>{year2022}</h1>
+          </div>
         </div>
       </div>
     </div>

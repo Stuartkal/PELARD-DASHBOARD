@@ -44,7 +44,7 @@ export const searchCases = async (
   });
 
   const json = await response.json();
-  console.log(json,'gop')
+  // console.log(json,'gop')
   return json;
 };
 
@@ -65,7 +65,7 @@ export const getExploreCases = async (
   });
 
   const json = await response.json();
-  console.log(json,'ll')
+  // console.log(json,'ll')
   return json;
 };
 
@@ -138,7 +138,7 @@ export const updateCaseStatus = async (_id, id, status, description, prevStatus,
   });
 
   const json = await response.json();
-  console.log(json,'ll')
+  // console.log(json,'ll')
   return json;
 };
 
