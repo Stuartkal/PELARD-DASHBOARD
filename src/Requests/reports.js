@@ -12,6 +12,7 @@ export const monthlyReport = async (_id, year) => {
   });
 
   const json = await response.json();
+  // console.log(json,'report');
   return json;
 };
 
